@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Accounting</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;font-size:18px;color:#1a2744}
+body.rtl{direction:rtl}
+/* NAV */
+#topbar{background:#0a1628;color:#fff;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.4)}
+#topbar h1{font-size:20px;font-weight:700;color:#00c4a7;letter-spacing:0.5px}
+#tabs{display:flex;gap:4px}
+.tab-btn{background:transparent;border:none;color:#aab;padding:10px 18px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;transition:all 0.2s}
+.tab-btn:hover{background:rgba(0,196,167,0.15);color:#00c4a7}
+.tab-btn.active{background:#00c4a7;color:#0a1628}
+#lang-toggle{background:#1e3a5f;border:1px solid #00c4a7;color:#00c4a7;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:700;transition:all 0.2s}
+#lang-toggle:hover{background:#00c4a7;color:#0a1628}
+/* PROGRESS */
+#progress-bar{background:#0a1628;border-bottom:1px solid #1e3a5f;padding:8px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:64px;z-index:99}
+.progress-step{width:32px;height:32px;border-radius:50%;background:#1e3a5f;color:#aab;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;border:2px solid transparent}
+.progress-step.active{background:#00c4a7;color:#0a1628;border-color:#00c4a7}
+.progress-step.done{background:#1e5a3a;color:#22c55e;border-color:#22c55e}
+.progress-connector{width:24px;height:2px;background:#1e3a5f}
+#progress-label{color:#aab;font-size:14px;margin-left:auto}
+/* MAIN */
+#main{max-width:1100px;margin:0 auto;padding:32px 24px}
+.section{display:none}
+.section.active{display:block}
+/* STEP NAV */
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.btn-nav{background:#0a1628;color:#00c4a7;border:2px solid #00c4a7;padding:12px 28px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:700;transition:all 0.2s}
+.btn-nav:hover{background:#00c4a7;color:#0a1628}
+.btn-nav:disabled{opacity:0.3;cursor:not-allowed}
+/* CARDS */
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;margin-bottom:24px;transition:transform 0.2s,box-shadow 0.2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.12)}
+.card h2{font-size:24px;font-weight:800;color:#0a1628;margin-bottom:8px}
+.card h3{font-size:20px;font-weight:700;color:#0a1628;margin-bottom:12px}
+.teal{color:#00c4a7;font-weight:800}
+.big-num{font-size:36px;font-weight:900;color:#00c4a7}
+/* QUESTIONS */
+.question-block{background:#f8fafc;border-radius:12px;padding:20px;margin-top:20px;border-left:4px solid #00c4a7}
+.rtl .question-block{border-left:none;border-right:4px solid #00c4a7}
+.question-text{font-size:18px;font-weight:700;color:#0a1628;margin-bottom:16px}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt-btn{background:#fff;border:2px solid #d1d5db;color:#1a2744;padding:12px 18px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;text-align:left;transition:all 0.2s}
+.rtl .opt-btn{text-align:right}
+.opt-btn:hover:not(:disabled){border-color:#00c4a7;background:#f0fdfb}
+.opt-btn.correct{border-color:#22c55e;background:#f0fdf4;color:#166534}
+.opt-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#991b1b}
+.opt-btn:disabled{cursor:not-allowed}
+.explanation{margin-top:14px;padding:14px;background:#e0fdf4;border-radius:8px;color:#065f46;font-size:16px;font-weight:600;display:none;animation:fadeIn 0.3s ease}
+.explanation.show{display:block}
+/* REVEAL */
+.reveal-btn{background:#00c4a7;color:#0a1628;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:700;transition:all 0.2s;margin-top:12px}
+.reveal-btn:hover{background:#00a891;transform:translateY(-1px)}
+.reveal-answer{margin-top:12px;padding:16px;background:#e0fdf4;border-radius:8px;color:#065f46;font-size:17px;font-weight:600;display:none;animation:fadeIn 0.35s ease}
+.reveal-answer.show{display:block}
+/* CHART containers */
+.chart-wrap{position:relative;height:340px;margin:20px 0}
+.chart-wrap-sm{position:relative;height:260px;margin:20px 0}
+/* BALANCE SHEET */
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+.bs-col{background:#f8fafc;border-radius:12px;padding:20px}
+.bs-col h4{font-size:16px;font-weight:700;color:#0a1628;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #00c4a7}
+.bs-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e5e7eb;font-size:16px}
+.bs-row.total{font-weight:800;color:#0a1628;border-bottom:none;border-top:2px solid #0a1628;margin-top:4px}
+/* SVG FLOW DIAGRAM */
+#flow-diagram{width:100%;margin:20px 0}
+.flow-box{fill:#1e3a5f;rx:12;cursor:pointer;transition:fill 0.3s}
+.flow-box:hover{fill:#2a4a7f}
+.flow-box.highlighted{fill:#00c4a7}
+.flow-text{fill:#fff;font-size:14px;font-weight:700;text-anchor:middle}
+.flow-text.highlighted{fill:#0a1628}
+.arrow-path{fill:none;stroke:#00c4a7;stroke-width:2.5;stroke-dasharray:200;stroke-dashoffset:200;animation:drawArrow 1.5s ease forwards}
+.arrow-label{fill:#64748b;font-size:11px;text-anchor:middle}
+@keyframes drawArrow{to{stroke-dashoffset:0}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+/* SECTION B CARDS */
+.concepts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.concept-card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:22px;transition:transform 0.2s,box-shadow 0.2s;position:relative}
+.concept-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.concept-title{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.concept-title h3{font-size:18px;font-weight:800;color:#0a1628;margin:0}
+.info-icon{width:22px;height:22px;border-radius:50%;background:#e0f2fe;color:#0369a1;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;flex-shrink:0}
+.info-icon:hover{background:#0369a1;color:#fff}
+.tooltip-box{display:none;background:#0a1628;color:#e2e8f0;font-size:14px;padding:12px;border-radius:8px;margin-top:8px;animation:fadeIn 0.2s ease;border-left:3px solid #00c4a7}
+.rtl .tooltip-box{border-left:none;border-right:3px solid #00c4a7}
+.tooltip-box.show{display:block}
+.concept-def{color:#475569;font-size:15px;margin-bottom:12px}
+.concept-num{background:#f0fdfb;border:1px solid #00c4a7;border-radius:8px;padding:10px 14px;font-size:20px;font-weight:900;color:#00c4a7;margin-bottom:12px}
+.whatif-q{font-size:14px;color:#64748b;font-weight:600;margin-bottom:6px}
+/* SECTION C */
+.cycle-diagram{display:flex;justify-content:center;align-items:center;gap:0;margin:24px 0;flex-wrap:wrap}
+.cycle-box{background:#1e3a5f;color:#fff;border-radius:12px;padding:16px 20px;text-align:center;min-width:140px}
+.cycle-box h4{font-size:14px;color:#00c4a7;font-weight:700;margin-bottom:4px}
+.cycle-box .days{font-size:28px;font-weight:900;color:#fff}
+.cycle-box .label{font-size:12px;color:#aab}
+.cycle-arrow{font-size:28px;color:#00c4a7;padding:0 8px;align-self:center}
+.ratio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:20px 0}
+.ratio-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:20px;text-align:center}
+.ratio-card .ratio-val{font-size:42px;font-weight:900;color:#00c4a7}
+.ratio-card .ratio-name{font-size:14px;color:#64748b;font-weight:700;margin-bottom:8px}
+.ratio-bar-wrap{height:8px;background:#e5e7eb;border-radius:4px;margin-top:10px;position:relative}
+.ratio-bar-fill{height:100%;background:#00c4a7;border-radius:4px;transition:width 0.6s ease}
+.ratio-avg-line{position:absolute;top:-4px;width:2px;height:16px;background:#ef4444}
+/* SECTION D */
+.mult-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-bottom:28px}
+.mult-card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:22px}
+.mult-card .mult-name{font-size:15px;font-weight:700;color:#64748b;margin-bottom:4px}
+.mult-card .mult-val{font-size:40px;font-weight:900;color:#00c4a7;margin-bottom:6px}
+.mult-card .mult-formula{font-size:13px;color:#94a3b8;margin-bottom:10px;font-family:monospace}
+.mult-range-label{font-size:12px;color:#64748b;margin-bottom:4px}
+.mult-range-bar{height:10px;background:#e5e7eb;border-radius:5px;position:relative;margin-bottom:4px}
+.mult-range-fill{height:100%;background:linear-gradient(90deg,#1e3a5f,#00c4a7);border-radius:5px}
+.mult-marker{position:absolute;top:-5px;width:4px;height:20px;background:#ef4444;border-radius:2px}
+/* SLIDER */
+.slider-card{background:#0a1628;border-radius:16px;padding:28px;color:#fff;margin-bottom:24px}
+.slider-card h3{color:#00c4a7;font-size:22px;margin-bottom:16px}
+#ebitda-slider{width:100%;-webkit-appearance:none;appearance:none;height:8px;background:linear-gradient(90deg,#ef4444,#00c4a7);border-radius:4px;outline:none}
+#ebitda-slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.slider-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:20px}
+.slider-stat{background:#1e3a5f;border-radius:10px;padding:16px;text-align:center}
+.slider-stat .ss-label{font-size:13px;color:#aab;margin-bottom:4px}
+.slider-stat .ss-val{font-size:28px;font-weight:900;color:#00c4a7;transition:all 0.3s}
+/* Section header */
+.section-header{margin-bottom:28px}
+.section-header h1{font-size:32px;font-weight:900;color:#0a1628;margin-bottom:6px}
+.section-header p{font-size:17px;color:#64748b}
+/* Step container */
+.step-container{display:none}
+.step-container.active{display:block}
+/* Responsive */
+@media(max-width:700px){
+  .bs-grid{grid-template-columns:1fr}
+  #tabs{gap:2px}
+  .tab-btn{padding:8px 10px;font-size:14px}
+  #topbar h1{font-size:16px}
+  .concepts-grid{grid-template-columns:1fr}
+  .mult-grid{grid-template-columns:1fr 1fr}
+}
+.step-title{font-size:22px;font-weight:800;color:#0a1628;margin-bottom:4px}
+.step-subtitle{font-size:15px;color:#64748b;margin-bottom:20px}
+.highlight-box{background:linear-gradient(135deg,#0a1628,#1e3a5f);border-radius:12px;padding:20px;color:#fff;margin:16px 0}
+.highlight-box .hb-label{font-size:13px;color:#aab;margin-bottom:4px}
+.highlight-box .hb-val{font-size:32px;font-weight:900;color:#00c4a7}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+.stat-chip{background:#0a1628;color:#fff;border-radius:10px;padding:14px 20px;flex:1;min-width:140px;text-align:center}
+.stat-chip .sc-label{font-size:12px;color:#aab;margin-bottom:4px}
+.stat-chip .sc-val{font-size:24px;font-weight:900;color:#00c4a7}
+.flow-connections{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px}
+@media(max-width:600px){.flow-connections{grid-template-columns:1fr}}
+.flow-conn-item{background:#f8fafc;border-radius:10px;padding:14px;border-top:3px solid #00c4a7}
+.flow-conn-item h4{font-size:14px;font-weight:700;color:#0a1628;margin-bottom:4px}
+.flow-conn-item p{font-size:13px;color:#64748b}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <h1 data-t="app_title">Nova Financial Explorer</h1>
+  <div id="tabs">
+    <button class="tab-btn active" data-section="A" data-t="nav_a">A — The 3 Reports</button>
+    <button class="tab-btn" data-section="B" data-t="nav_b">B — Key Concepts</button>
+    <button class="tab-btn" data-section="C" data-t="nav_c">C — Ratios</button>
+    <button class="tab-btn" data-section="D" data-t="nav_d">D — Multipliers</button>
+  </div>
+  <button id="lang-toggle">עברית</button>
+</div>
+
+<!-- PROGRESS -->
+<div id="progress-bar">
+  <div id="progress-steps"></div>
+  <span id="progress-label" data-t="progress_label"></span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- SECTION A -->
+  <div class="section active" id="section-A">
+    <div class="section-header">
+      <h1 data-t="sec_a_title">The 3 Financial Reports</h1>
+      <p data-t="sec_a_sub">Every public company publishes three core reports. Let's explore Nova's 2024 data.</p>
+    </div>
+
+    <!-- Step A1: P&L -->
+    <div class="step-container active" id="step-A1">
+      <div class="card">
+        <div class="step-title" data-t="a1_title">Step 1: Profit & Loss Statement (P&L)</div>
+        <div class="step-subtitle" data-t="a1_sub">Shows revenue, costs, and profit over a period. Read it top-to-bottom — each line subtracts costs.</div>
+        <div class="stats-row">
+          <div class="stat-chip"><div class="sc-label" data-t="revenue">Revenue</div><div class="sc-val">$672.4M</div></div>
+          <div class="stat-chip"><div class="sc-label" data-t="gross_profit">Gross Profit</div><div class="sc-val">$387.1M</div></div>
+          <div class="stat-chip"><div class="sc-label" data-t="ebit">EBIT</div><div class="sc-val">$187.5M</div></div>
+          <div class="stat-chip"><div class="sc-label" data-t="net_income">Net Income</div><div class="sc-val">$183.8M</div></div>
+        </div>
+        <div class="chart-wrap"><canvas id="chart-pl"></canvas></div>
+        <!-- Q1 -->
+        <div class="question-block">
+          <div class="question-text" data-t="a1_q1_text">Q1: If revenue grows 10% but COGS grows 15%, what happens to gross margin?</div>
+          <div class="options" id="a1-q1-opts">
+            <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_a">a) Increases</button>
+            <button class="opt-btn" data-correct="true"  data-q="a1q1" data-t="a1_q1_b">b) Decreases</button>
+            <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_c">c) Stays the same</button>
+          </div>
+          <div class="explanation" id="a1q1-exp" data-t="a1_q1_exp">
+            Correct! When COGS grows faster than revenue, the gap (gross profit) shrinks as a percentage of revenue — so gross margin decreases. Example: Revenue $739.6M (+10%), COGS $328.1M (+15%), Gross Profit = $411.5M = 55.6% margin vs. original 57.6%.
+          </div>
+        </div>
+        <!-- Q2 Reveal -->
+        <div class="question-block" style="margin-top:16px">
+          <div class="question-text" data-t="a1_q2_text">Q2: Nova's net margin is 27.3%. Is that high or low for a semiconductor equipment company?</div>
+          <button class="reveal-btn" onclick="toggleReveal('a1q2-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+          <div class="reveal-answer" id="a1q2-rev" data-t="a1_q2_ans">Very high. Industry average is ~10–15%. Nova is exceptionally profitable thanks to its software-intensive metrology tools, high switching costs, and strong pricing power.</div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-nav" disabled data-t="btn_prev">← Previous</button>
+        <button class="btn-nav" onclick="goStep('A',2)" data-t="btn_next">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step A2: Cash Flow -->
+    <div class="step-container" id="step-A2">
+      <div class="card">
+        <div class="step-title" data-t="a2_title">Step 2: Cash Flow Statement</div>
+        <div class="step-subtitle" data-t="a2_sub">Shows how cash actually moved — because profit ≠ cash. Three sections: Operating, Investing, Financing.</div>
+        <div class="stats-row">
+          <div class="stat-chip"><div class="sc-label" data-t="op_cf">Operating CF</div><div class="sc-val">$235.3M</div></div>
+          <div class="stat-chip"><div class="sc-label" data-t="capex_lbl">CAPEX</div><div class="sc-val">$17.2M</div></div>
+          <div class="stat-chip"><div class="sc-label" data-t="fcf_lbl">Free Cash Flow</div><div class="sc-val">$218.1M</div></div>
+        </div>
+        <div class="chart-wrap-sm"><canvas id="chart-cf"></canvas></div>
+        <div class="question-block">
+          <div class="question-text" data-t="a2_q1_text">Q: Nova's Operating CF is $235.3M but Net Income is $183.8M. Why is CF higher?</div>
+          <div class="options" id="a2-q1-opts">
+            <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_a">a) Accounting error</button>
+            <button class="opt-btn" data-correct="true"  data-q="a2q1" data-t="a2_q1_b">b) Non-cash charges like depreciation are added back</button>
+            <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_c">c) They borrowed money</button>
+          </div>
+          <div class="explanation" id="a2q1-exp" data-t="a2_q1_exp">Correct! Net income includes non-cash expenses (like depreciation ~$17.4M). When calculating cash flow, these are added back because no cash actually left. Also, changes in working capital affect cash flow. OCF = Net Income + D&A ± Working Capital changes.</div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-nav" onclick="goStep('A',1)" data-t="btn_prev">← Previous</button>
+        <button class="btn-nav" onclick="goStep('A',3)" data-t="btn_next">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step A3: Balance Sheet -->
+    <div class="step-container" id="step-A3">
+      <div class="card">
+        <div class="step-title" data-t="a3_title">Step 3: Balance Sheet</div>
+        <div class="step-subtitle" data-t="a3_sub">A snapshot of what the company OWNS (Assets) vs. what it OWES (Liabilities) + what belongs to shareholders (Equity).</div>
+        <div class="bs-grid">
+          <div class="bs-col">
+            <h4 data-t="bs_assets">ASSETS</h4>
+            <div class="bs-row"><span data-t="bs_current_assets">Current Assets</span><span class="teal">$900M</span></div>
+            <div class="bs-row"><span data-t="bs_other_assets">Other Assets (PP&E, Intangibles)</span><span class="teal">$500M</span></div>
+            <div class="bs-row total"><span data-t="bs_total_assets">Total Assets</span><span>$1,400M</span></div>
+          </div>
+          <div class="bs-col">
+            <h4 data-t="bs_le">LIABILITIES + EQUITY</h4>
+            <div class="bs-row"><span data-t="bs_debt">Total Debt</span><span class="teal">$350M</span></div>
+            <div class="bs-row"><span data-t="bs_other_liab">Other Liabilities</span><span class="teal">$350M</span></div>
+            <div class="bs-row"><span data-t="bs_equity">Shareholders' Equity</span><span class="teal">$700M</span></div>
+            <div class="bs-row total"><span data-t="bs_total_le">Total L+E</span><span>$1,400M</span></div>
+          </div>
+        </div>
+        <div class="question-block">
+          <div class="question-text" data-t="a3_q1_text">Q: The balance sheet always balances. What is the fundamental accounting equation?</div>
+          <button class="reveal-btn" onclick="toggleReveal('a3q1-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+          <div class="reveal-answer" id="a3q1-rev" data-t="a3_q1_ans">Assets = Liabilities + Equity. Always. This is the bedrock of double-entry accounting. Every transaction affects at least two accounts and keeps this equation in balance. Nova: $1,400M = $700M + $700M ✓</div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-nav" onclick="goStep('A',2)" data-t="btn_prev">← Previous</button>
+        <button class="btn-nav" onclick="goStep('A',4)" data-t="btn_next">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step A4: How They Connect -->
+    <div class="step-container" id="step-A4">
+      <div class="card">
+        <div class="step-title" data-t="a4_title">Step 4: How the 3 Reports Connect</div>
+        <div class="step-subtitle" data-t="a4_sub">The three statements are not independent — they flow into each other. Click each box to highlight the connections.</div>
+        <svg id="flow-diagram" viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto">
+          <!-- P&L Box -->
+          <rect id="box-pl" x="20" y="60" width="180" height="100" rx="12" fill="#1e3a5f" class="flow-box" style="cursor:pointer" onclick="highlightFlow('pl')"/>
+          <text x="110" y="105" class="flow-text" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">P&amp;L</text>
+          <text x="110" y="125" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">Net Income: $183.8M</text>
+          <text x="110" y="145" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">EBIT: $187.5M</text>
+          <!-- Cash Flow Box -->
+          <rect id="box-cf" x="300" y="60" width="180" height="100" rx="12" fill="#1e3a5f" class="flow-box" style="cursor:pointer" onclick="highlightFlow('cf')"/>
+          <text x="390" y="105" class="flow-text" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" data-t-svg="cf_label">Cash Flow</text>
+          <text x="390" y="125" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">OCF: $235.3M</text>
+          <text x="390" y="145" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">CAPEX: $17.2M</text>
+          <!-- Balance Sheet Box -->
+          <rect id="box-bs" x="580" y="60" width="180" height="100" rx="12" fill="#1e3a5f" class="flow-box" style="cursor:pointer" onclick="highlightFlow('bs')"/>
+          <text x="670" y="105" class="flow-text" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" data-t-svg="bs_label">Balance Sheet</text>
+          <text x="670" y="125" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">Assets: $1.4B</text>
+          <text x="670" y="145" class="flow-text" text-anchor="middle" fill="#aab" font-size="12">Equity: $700M</text>
+          <!-- Arrow: P&L → CF (top arc) -->
+          <path id="arrow-pl-cf" d="M200 90 Q250 30 300 90" fill="none" stroke="#00c4a7" stroke-width="2.5" stroke-dasharray="200" stroke-dashoffset="0" marker-end="url(#arrowhead)"/>
+          <text x="250" y="45" fill="#00c4a7" font-size="11" text-anchor="middle" data-t-svg="arr_ni_cf">Net Income →</text>
+          <!-- Arrow: P&L → BS (bottom arc) -->
+          <path id="arrow-pl-bs" d="M200 140 Q390 210 580 140" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-dasharray="400" stroke-dashoffset="0" marker-end="url(#arrowhead2)"/>
+          <text x="390" y="205" fill="#22c55e" font-size="11" text-anchor="middle" data-t-svg="arr_ni_bs">Retained Earnings ↑</text>
+          <!-- Arrow: CF → BS -->
+          <path id="arrow-cf-bs" d="M480 90 Q530 30 580 90" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="200" stroke-dashoffset="0" marker-end="url(#arrowhead3)"/>
+          <text x="530" y="45" fill="#f59e0b" font-size="11" text-anchor="middle" data-t-svg="arr_capex_bs">CAPEX → Asset</text>
+          <!-- Arrowheads -->
+          <defs>
+            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#00c4a7"/></marker>
+            <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#22c55e"/></marker>
+            <marker id="arrowhead3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#f59e0b"/></marker>
+          </defs>
+        </svg>
+        <div class="flow-connections">
+          <div class="flow-conn-item">
+            <h4 data-t="conn1_title">P&L → Cash Flow</h4>
+            <p data-t="conn1_desc">Net Income is the starting point of the Cash Flow statement. D&A and working capital changes are then added/subtracted to arrive at Operating CF.</p>
+          </div>
+          <div class="flow-conn-item">
+            <h4 data-t="conn2_title">P&L → Balance Sheet</h4>
+            <p data-t="conn2_desc">Net Income flows into Retained Earnings (part of Equity). Profitable companies grow their equity over time.</p>
+          </div>
+          <div class="flow-conn-item">
+            <h4 data-t="conn3_title">Cash Flow → Balance Sheet</h4>
+            <p data-t="conn3_desc">CAPEX (from investing activities) becomes a long-term asset on the Balance Sheet. Cash used for CAPEX reduces the cash balance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-nav" onclick="goStep('A',3)" data-t="btn_prev">← Previous</button>
+        <button class="btn-nav" onclick="switchSection('B')" data-t="btn_next_b">Next Section: B →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B -->
+  <div class="section" id="section-B">
+    <div class="section-header">
+      <h1 data-t="sec_b_title">Key Financial Concepts</h1>
+      <p data-t="sec_b_sub">11 essential terms — with Nova's real numbers and "What If?" scenarios. Click ⓘ for a deeper definition.</p>
+    </div>
+    <div class="concepts-grid" id="concepts-grid"></div>
+    <div class="step-nav" style="margin-top:24px">
+      <button class="btn-nav" onclick="switchSection('A')" data-t="btn_prev_a">← Section A</button>
+      <button class="btn-nav" onclick="switchSection('C')" data-t="btn_next_c">Next Section: C →</button>
+    </div>
+  </div>
+
+  <!-- SECTION C -->
+  <div class="section" id="section-C">
+    <div class="section-header">
+      <h1 data-t="sec_c_title">Financial Ratios</h1>
+      <p data-t="sec_c_sub">Ratios turn raw numbers into comparable insights. How does Nova stack up?</p>
+    </div>
+
+    <!-- Part 1: Profitability -->
+    <div class="card">
+      <h2 data-t="c1_title">Profitability Margins</h2>
+      <p style="color:#64748b;margin-bottom:16px" data-t="c1_sub">Nova vs. sector averages (red lines). Nova consistently beats the sector.</p>
+      <div class="chart-wrap"><canvas id="chart-margins"></canvas></div>
+      <div class="question-block">
+        <div class="question-text" data-t="c1_q1_text">Q: Which margin ratio do investors focus on most when comparing companies?</div>
+        <div class="options" id="c1-q1-opts">
+          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_a">a) Gross Margin</button>
+          <button class="opt-btn" data-correct="true"  data-q="c1q1" data-t="c1_q1_b">b) EBITDA Margin</button>
+          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_c">c) Net Margin</button>
+          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_d">d) All equally</button>
+        </div>
+        <div class="explanation" id="c1q1-exp" data-t="c1_q1_exp">EBITDA Margin is the most widely used for cross-company comparisons because it strips out non-cash charges (D&A) and the effects of financing structure (interest, taxes). This makes companies with different capital structures or tax situations comparable on an apples-to-apples basis.</div>
+      </div>
+    </div>
+
+    <!-- Part 2: CCC -->
+    <div class="card">
+      <h2 data-t="c2_title">Cash Conversion Cycle (CCC)</h2>
+      <p style="color:#64748b;margin-bottom:20px" data-t="c2_sub">How many days does it take for Nova to convert investments in inventory back into cash?</p>
+      <div class="cycle-diagram">
+        <div class="cycle-box">
+          <h4 data-t="ccc_dso">DSO</h4>
+          <div class="days">65</div>
+          <div class="label" data-t="ccc_days">days</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-box">
+          <h4 data-t="ccc_inv">Inventory Days</h4>
+          <div class="days">102</div>
+          <div class="label" data-t="ccc_days">days</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-box">
+          <h4 data-t="ccc_dpo">DPO</h4>
+          <div class="days">77</div>
+          <div class="label" data-t="ccc_days">days</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-box" style="background:#00c4a7">
+          <h4 style="color:#0a1628" data-t="ccc_total">CCC</h4>
+          <div class="days" style="color:#0a1628">90</div>
+          <div class="label" style="color:#0a1628" data-t="ccc_days">days</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:#64748b;text-align:center" data-t="ccc_formula">CCC = DSO (65) + Inventory Days (102) − DPO (77) = 90 days</p>
+      <div style="margin-top:12px;background:#f8fafc;border-radius:8px;padding:14px;font-size:14px;color:#475569">
+        <strong data-t="ccc_note_title">Note on estimates: </strong><span data-t="ccc_note">AR ≈ $120M, Inventory ≈ $80M, AP ≈ $60M are estimated from public filings.</span>
+      </div>
+      <div class="question-block" style="margin-top:16px">
+        <div class="question-text" data-t="c2_q1_text">What If: If DSO jumps from 65 to 90 days, what happens to Nova's cash position?</div>
+        <button class="reveal-btn" onclick="toggleReveal('c2q1-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+        <div class="reveal-answer" id="c2q1-rev" data-t="c2_q1_ans">Nova would need ~$46M more cash tied up in receivables: [(90−65)/365] × $672.4M = $46.1M. That's $46M less cash available for share buybacks, R&D investment, or acquisitions — a real cost even though it doesn't show up on the P&L.</div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-nav" onclick="switchSection('B')" data-t="btn_prev_b">← Section B</button>
+      <button class="btn-nav" onclick="switchSection('D')" data-t="btn_next_d">Next Section: D →</button>
+    </div>
+  </div>
+
+  <!-- SECTION D -->
+  <div class="section" id="section-D">
+    <div class="section-header">
+      <h1 data-t="sec_d_title">Valuation Multiples</h1>
+      <p data-t="sec_d_sub">How the market prices Nova relative to its financials. Each multiple tells a different story.</p>
+    </div>
+
+    <div class="mult-grid" id="mult-grid"></div>
+
+    <!-- Slider -->
+    <div class="slider-card">
+      <h3 data-t="slider_title">Live Stress Test: EBITDA Sensitivity</h3>
+      <p style="color:#aab;margin-bottom:20px;font-size:15px" data-t="slider_sub">Drag to simulate an EBITDA decline and see how valuation metrics update in real time.</p>
+      <label style="color:#fff;font-weight:700;font-size:16px" data-t="slider_label">EBITDA Change: <span id="slider-pct">0%</span></label>
+      <input type="range" id="ebitda-slider" min="-30" max="0" value="0" oninput="updateSlider(this.value)">
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-top:4px">
+        <span>−30%</span><span>0%</span>
+      </div>
+      <div class="slider-stats">
+        <div class="slider-stat"><div class="ss-label" data-t="ss_ebitda">EBITDA</div><div class="ss-val" id="ss-ebitda">$204.9M</div></div>
+        <div class="slider-stat"><div class="ss-label" data-t="ss_ev_ebitda">EV/EBITDA</div><div class="ss-val" id="ss-ev-ebitda">20.7x</div></div>
+        <div class="slider-stat"><div class="ss-label" data-t="ss_impl_ev">Implied EV</div><div class="ss-val" id="ss-impl-ev">$4,250M</div></div>
+        <div class="slider-stat"><div class="ss-label" data-t="ss_impl_price">Implied Price</div><div class="ss-val" id="ss-impl-price">~$140</div></div>
+      </div>
+    </div>
+
+    <!-- Discussion -->
+    <div class="card">
+      <h2 data-t="d_disc_title">Open Discussion</h2>
+      <div class="question-block">
+        <div class="question-text" data-t="d_disc_q">Nova trades at ~20.7x EBITDA. A direct competitor trades at 8x EBITDA. What are 3 possible explanations?</div>
+        <button class="reveal-btn" onclick="toggleReveal('d-disc-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+        <div class="reveal-answer" id="d-disc-rev" data-t="d_disc_ans">1. Nova has higher growth expectations — analysts forecast faster revenue growth.<br>2. Nova has a stronger competitive moat — its process control technology is mission-critical with high switching costs.<br>3. Nova operates in a more profitable niche (metrology/process control) with software-heavy revenue.<br>4. Scarcity premium — few comparable pure-play companies exist, so investors pay up for exposure.</div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-nav" onclick="switchSection('C')" data-t="btn_prev_c">← Section C</button>
+      <button class="btn-nav" disabled data-t="btn_end">End of Dashboard</button>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ===================== TRANSLATIONS =====================
+const translations = {
+  en: {
+    app_title: "Learning Accounting",
+    nav_a: "A — The 3 Reports",
+    nav_b: "B — Key Concepts",
+    nav_c: "C — Ratios",
+    nav_d: "D — Multipliers",
+    lang_toggle: "עברית",
+    progress_label: "Use tabs or Next buttons to navigate",
+    sec_a_title: "The 3 Financial Reports",
+    sec_a_sub: "Every public company publishes three core reports. Let's explore Nova's 2024 data.",
+    a1_title: "Step 1: Profit & Loss Statement (P&L)",
+    a1_sub: "Shows revenue, costs, and profit over a period. Read it top-to-bottom — each line subtracts costs.",
+    revenue: "Revenue",
+    gross_profit: "Gross Profit",
+    ebit: "EBIT",
+    net_income: "Net Income",
+    a1_q1_text: "Q1: If revenue grows 10% but COGS grows 15%, what happens to gross margin?",
+    a1_q1_a: "a) Increases",
+    a1_q1_b: "b) Decreases",
+    a1_q1_c: "c) Stays the same",
+    a1_q1_exp: "Correct! When COGS grows faster than revenue, the gap (gross profit) shrinks as a percentage of revenue — so gross margin decreases. Example: Revenue $739.6M (+10%), COGS $328.1M (+15%), Gross Profit = $411.5M = 55.6% margin vs. original 57.6%.",
+    a1_q2_text: "Q2: Nova's net margin is 27.3%. Is that high or low for a semiconductor equipment company?",
+    a1_q2_ans: "Very high. Industry average is ~10–15%. Nova is exceptionally profitable thanks to its software-intensive metrology tools, high switching costs, and strong pricing power.",
+    a2_title: "Step 2: Cash Flow Statement",
+    a2_sub: "Shows how cash actually moved — because profit ≠ cash. Three sections: Operating, Investing, Financing.",
+    op_cf: "Operating CF",
+    capex_lbl: "CAPEX",
+    fcf_lbl: "Free Cash Flow",
+    a2_q1_text: "Q: Nova's Operating CF is $235.3M but Net Income is $183.8M. Why is CF higher?",
+    a2_q1_a: "a) Accounting error",
+    a2_q1_b: "b) Non-cash charges like depreciation are added back",
+    a2_q1_c: "c) They borrowed money",
+    a2_q1_exp: "Correct! Net income includes non-cash expenses (like depreciation ~$17.4M). When calculating cash flow, these are added back because no cash actually left. Also, changes in working capital affect cash flow. OCF = Net Income + D&A ± Working Capital changes.",
+    a3_title: "Step 3: Balance Sheet",
+    a3_sub: "A snapshot of what the company OWNS (Assets) vs. what it OWES (Liabilities) + what belongs to shareholders (Equity).",
+    bs_assets: "ASSETS",
+    bs_current_assets: "Current Assets",
+    bs_other_assets: "Other Assets (PP&E, Intangibles)",
+    bs_total_assets: "Total Assets",
+    bs_le: "LIABILITIES + EQUITY",
+    bs_debt: "Total Debt",
+    bs_other_liab: "Other Liabilities",
+    bs_equity: "Shareholders' Equity",
+    bs_total_le: "Total L+E",
+    a3_q1_text: "Q: The balance sheet always balances. What is the fundamental accounting equation?",
+    a3_q1_ans: "Assets = Liabilities + Equity. Always. This is the bedrock of double-entry accounting. Every transaction affects at least two accounts and keeps this equation in balance. Nova: $1,400M = $700M + $700M ✓",
+    a4_title: "Step 4: How the 3 Reports Connect",
+    a4_sub: "The three statements are not independent — they flow into each other. Click each box to highlight the connections.",
+    conn1_title: "P&L → Cash Flow",
+    conn1_desc: "Net Income is the starting point of the Cash Flow statement. D&A and working capital changes are then added/subtracted to arrive at Operating CF.",
+    conn2_title: "P&L → Balance Sheet",
+    conn2_desc: "Net Income flows into Retained Earnings (part of Equity). Profitable companies grow their equity over time.",
+    conn3_title: "Cash Flow → Balance Sheet",
+    conn3_desc: "CAPEX (from investing activities) becomes a long-term asset on the Balance Sheet. Cash used for CAPEX reduces the cash balance.",
+    cf_label: "Cash Flow",
+    bs_label: "Balance Sheet",
+    arr_ni_cf: "Net Income →",
+    arr_ni_bs: "Retained Earnings ↑",
+    arr_capex_bs: "CAPEX → Asset",
+    btn_prev: "← Previous",
+    btn_next: "Next →",
+    btn_prev_a: "← Section A",
+    btn_prev_b: "← Section B",
+    btn_prev_c: "← Section C",
+    btn_next_b: "Next Section: B →",
+    btn_next_c: "Next Section: C →",
+    btn_next_d: "Next Section: D →",
+    btn_end: "End of Dashboard",
+    reveal_btn: "Reveal Answer",
+    hide_btn: "Hide Answer",
+    sec_b_title: "Key Financial Concepts",
+    sec_b_sub: "11 essential terms — with Nova's real numbers and \"What If?\" scenarios. Click ⓘ for a deeper definition.",
+    sec_c_title: "Financial Ratios",
+    sec_c_sub: "Ratios turn raw numbers into comparable insights. How does Nova stack up?",
+    c1_title: "Profitability Margins",
+    c1_sub: "Nova vs. sector averages (red lines). Nova consistently beats the sector.",
+    c1_q1_text: "Q: Which margin ratio do investors focus on most when comparing companies?",
+    c1_q1_a: "a) Gross Margin",
+    c1_q1_b: "b) EBITDA Margin",
+    c1_q1_c: "c) Net Margin",
+    c1_q1_d: "d) All equally",
+    c1_q1_exp: "EBITDA Margin is the most widely used for cross-company comparisons because it strips out non-cash charges (D&A) and the effects of financing structure (interest, taxes). This makes companies with different capital structures or tax situations comparable on an apples-to-apples basis.",
+    c2_title: "Cash Conversion Cycle (CCC)",
+    c2_sub: "How many days does it take for Nova to convert investments in inventory back into cash?",
+    ccc_dso: "DSO",
+    ccc_inv: "Inventory Days",
+    ccc_dpo: "DPO",
+    ccc_total: "CCC",
+    ccc_days: "days",
+    ccc_formula: "CCC = DSO (65) + Inventory Days (102) − DPO (77) = 90 days",
+    ccc_note_title: "Note on estimates: ",
+    ccc_note: "AR ≈ $120M, Inventory ≈ $80M, AP ≈ $60M are estimated from public filings.",
+    c2_q1_text: "What If: If DSO jumps from 65 to 90 days, what happens to Nova's cash position?",
+    c2_q1_ans: "Nova would need ~$46M more cash tied up in receivables: [(90−65)/365] × $672.4M = $46.1M. That's $46M less cash available for share buybacks, R&D investment, or acquisitions — a real cost even though it doesn't show up on the P&L.",
+    sec_d_title: "Valuation Multiples",
+    sec_d_sub: "How the market prices Nova relative to its financials. Each multiple tells a different story.",
+    slider_title: "Live Stress Test: EBITDA Sensitivity",
+    slider_sub: "Drag to simulate an EBITDA decline and see how valuation metrics update in real time.",
+    slider_label: "EBITDA Change: ",
+    ss_ebitda: "EBITDA",
+    ss_ev_ebitda: "EV/EBITDA",
+    ss_impl_ev: "Implied EV",
+    ss_impl_price: "Implied Price",
+    d_disc_title: "Open Discussion",
+    d_disc_q: "Nova trades at ~20.7x EBITDA. A direct competitor trades at 8x EBITDA. What are 3 possible explanations?",
+    d_disc_ans: "1. Nova has higher growth expectations — analysts forecast faster revenue growth.<br>2. Nova has a stronger competitive moat — its process control technology is mission-critical with high switching costs.<br>3. Nova operates in a more profitable niche (metrology/process control) with software-heavy revenue.<br>4. Scarcity premium — few comparable pure-play companies exist, so investors pay up for exposure.",
+    // Chart labels
+    chart_pl_labels: ["Revenue","Cost of Revenue","Gross Profit","OpEx","EBIT","Net Income"],
+    chart_cf_labels: ["Operating CF","CAPEX","Free Cash Flow"],
+    chart_margins_labels: ["Gross Margin","EBIT Margin","EBITDA Margin","Net Margin"],
+    // Glossary tooltips
+    tip_revenue: "Revenue is the total amount of money earned from selling products/services before any costs are deducted. Also called 'top line' or 'turnover'.",
+    tip_gross_profit: "Gross Profit = Revenue minus Cost of Revenue (COGS). It measures how efficiently a company produces its goods/services.",
+    tip_net_profit: "Net Profit (Net Income) = what remains after ALL expenses, interest, and taxes. Also called 'bottom line'.",
+    tip_ebitda: "EBITDA = Earnings Before Interest, Taxes, Depreciation & Amortization. Widely used to compare operating profitability across companies regardless of financing or accounting choices.",
+    tip_ebit: "EBIT = Earnings Before Interest and Taxes. Also called Operating Income. Shows profitability from core business operations before financing costs.",
+    tip_capex: "CAPEX = Capital Expenditure. Money spent on acquiring or upgrading physical/long-term assets like machinery, buildings, or equipment.",
+    tip_opex: "OPEX = Operating Expenses. Day-to-day costs of running the business — R&D, sales, marketing, G&A. Does NOT include COGS.",
+    tip_depreciation: "Depreciation = spreading the cost of a long-term asset over its useful life. It's a non-cash expense — it reduces profit but doesn't involve actual cash leaving the company.",
+    tip_working_capital: "Working Capital = Current Assets − Current Liabilities. Measures short-term liquidity. Positive = company can meet its near-term obligations.",
+    tip_ev: "Enterprise Value (EV) = Market Cap + Total Debt − Cash. Represents the total cost to 'buy' the entire company, including its debt.",
+    tip_market_cap: "Market Cap = Share Price × Shares Outstanding. The total market value of all the company's shares. Reflects what investors collectively think the company is worth.",
+    tip_dso: "DSO = Days Sales Outstanding. The average number of days it takes to collect payment after a sale. Lower = faster cash collection.",
+    tip_inv_days: "Inventory Days = how long inventory sits before being sold. Lower = more efficient inventory management.",
+    tip_dpo: "DPO = Days Payable Outstanding. How long the company takes to pay its suppliers. Higher = company keeps cash longer.",
+    tip_gross_margin: "Gross Margin = Gross Profit / Revenue. Shows what percentage of revenue remains after direct production costs.",
+    tip_ebitda_margin: "EBITDA Margin = EBITDA / Revenue. The most common profitability comparison metric across companies.",
+    tip_net_margin: "Net Margin = Net Income / Revenue. Shows the percentage of revenue that becomes actual profit after all costs.",
+    tip_ev_ebitda: "EV/EBITDA = Enterprise Value divided by EBITDA. The most common valuation multiple for comparing companies in M&A and equity analysis.",
+    tip_pe: "P/E = Price-to-Earnings. Stock price divided by earnings per share. Shows how much investors pay for each dollar of profit.",
+    tip_ev_rev: "EV/Revenue = Enterprise Value divided by annual Revenue. Used for high-growth companies that aren't yet profitable.",
+    tip_pb: "P/B = Price-to-Book. Market Cap divided by Book Value (equity). Shows premium paid over net asset value.",
+    // Concept cards
+    c_revenue_name: "Revenue",
+    c_revenue_def: "The 'top line' — total money earned from selling products or services before any expenses are deducted.",
+    c_revenue_num: "$672.4M",
+    c_revenue_whatif: "What If: Nova loses its top 3 customers (30% of revenue). What's the new revenue?",
+    c_revenue_reveal: "$672.4M × 70% = $470.7M. A 30% revenue drop would likely cause operating leverage to significantly amplify the impact on profit.",
+    c_gp_name: "Gross Profit",
+    c_gp_def: "Revenue minus the direct cost of making the product (COGS). Measures manufacturing/delivery efficiency.",
+    c_gp_num: "$387.1M (57.6% margin)",
+    c_gp_whatif: "What If: Raw material costs rise 10%. By how much does gross profit fall?",
+    c_gp_reveal: "COGS × 10% = $285.3M × 10% = $28.5M. Gross Profit drops to $358.6M (48.6% margin). A significant margin hit from input cost inflation.",
+    c_np_name: "Net Profit",
+    c_np_def: "What remains after ALL expenses — COGS, OpEx, interest, and taxes. The 'bottom line'.",
+    c_np_num: "$183.8M (27.3% margin)",
+    c_np_whatif: "What If: Nova spends $50M on a new factory. Does net profit change immediately?",
+    c_np_reveal: "Not immediately. CAPEX is capitalized as an asset on the balance sheet, not expensed immediately. Only the annual depreciation (~$5–10M/year over 5–10 years) hits the P&L. This is a key accounting concept.",
+    c_ebitda_name: "EBITDA",
+    c_ebitda_def: "Earnings Before Interest, Taxes, Depreciation & Amortization. A proxy for operating cash generation, widely used in valuation.",
+    c_ebitda_num: "$204.9M (30.5% margin)",
+    c_ebitda_whatif: "Why is EBITDA ($204.9M) higher than Net Income ($183.8M)?",
+    c_ebitda_reveal: "Because D&A (~$17.4M) and taxes/interest (~$3.7M) are added back to Net Income. Formula: EBITDA = Net Income + Interest + Taxes + D&A. These are real economic costs, but EBITDA ignores them to isolate operating performance.",
+    c_ebit_name: "EBIT",
+    c_ebit_def: "Earnings Before Interest and Taxes = Operating Income. Shows profitability from core operations, before financing decisions.",
+    c_ebit_num: "$187.5M (27.9% margin)",
+    c_ebit_whatif: "What's the difference between EBIT and EBITDA?",
+    c_ebit_reveal: "EBITDA = EBIT + Depreciation & Amortization. Nova: $187.5M + ~$17.4M = ~$204.9M ✓. D&A is the only difference — and it's a non-cash accounting charge.",
+    c_capex_name: "CAPEX",
+    c_capex_def: "Capital Expenditure — money invested in long-term physical assets. Low CAPEX = asset-light business model.",
+    c_capex_num: "$17.2M (2.6% of revenue)",
+    c_capex_whatif: "What does low CAPEX tell you about Nova's business model?",
+    c_capex_reveal: "At just 2.6% of revenue, Nova is highly asset-light. Its value comes from intellectual property and software, not factories. This means high FCF conversion: most profit becomes free cash. Compare: a steel mill might spend 15–20% of revenue on CAPEX.",
+    c_opex_name: "OPEX",
+    c_opex_def: "Operating Expenses — day-to-day costs including R&D, sales, and administration. Does not include cost of goods sold.",
+    c_opex_num: "$199.5M (R&D: $110.3M + SG&A: ~$89.2M)",
+    c_opex_whatif: "Nova spends $110.3M on R&D — 16.4% of revenue. How does this compare to industry?",
+    c_opex_reveal: "Semiconductor equipment companies typically spend 10–18% of revenue on R&D. Nova's 16.4% is on the higher end, signaling aggressive investment in next-generation technology to maintain competitive advantage.",
+    c_dep_name: "Depreciation",
+    c_dep_def: "Spreading the cost of a long-term asset over its useful life. Non-cash — reduces accounting profit but not actual cash.",
+    c_dep_num: "D&A: ~$17.4M",
+    c_dep_whatif: "If depreciation is non-cash, why does it matter?",
+    c_dep_reveal: "Depreciation is why EBITDA differs from EBIT, and why OCF ($235.3M) exceeds Net Income ($183.8M). It also has tax benefits — it reduces taxable income. For asset-heavy companies, D&A can be enormous and significantly impacts reported profitability.",
+    c_wc_name: "Working Capital",
+    c_wc_def: "Current Assets minus Current Liabilities. Measures the company's short-term financial health and liquidity.",
+    c_wc_num: "~$500M (CA $900M − CL ~$400M)",
+    c_wc_whatif: "If payables double (from ~$400M to ~$800M CL), what happens to Working Capital?",
+    c_wc_reveal: "WC drops from ~$500M to ~$100M. While still positive, the company has less cushion. This could signal financial stress or aggressive supplier payment terms — worth monitoring closely.",
+    c_ev_name: "Enterprise Value (EV)",
+    c_ev_def: "The 'true' cost to buy a company: Market Cap + Debt − Cash. Includes the debt acquirer must assume.",
+    c_ev_num: "~$4,250M (MC $4,500M + Debt $350M − Cash $600M)",
+    c_ev_whatif: "Why do we subtract cash when calculating EV?",
+    c_ev_reveal: "Because if you buy the company, you get the cash too — so it offsets the purchase price. A company with $1B in cash and a $3B market cap effectively 'costs' only $2B in EV (ignoring debt). Cash is an asset you inherit.",
+    c_mc_name: "Market Cap",
+    c_mc_def: "Share Price × Shares Outstanding. The total market value of all equity — what investors collectively believe the company is worth.",
+    c_mc_num: "~$4,500M ($140 × 29M shares ≈ $4,060M, rounded to ~$4.5B)",
+    c_mc_whatif: "If stock price drops 20%, what happens to Market Cap and EV?",
+    c_mc_reveal: "Market Cap falls from ~$4,500M to ~$3,600M (−$900M). EV also falls by ~$900M to ~$3,350M. But note: EV/EBITDA would drop from ~20.7x to ~16.4x — potentially making the stock look cheaper to value investors.",
+    // Multiple cards
+    mult_ev_ebitda_name: "EV/EBITDA",
+    mult_ev_ebitda_formula: "$4,250M / $204.9M",
+    mult_ev_ebitda_range: "Sector: 15–25x",
+    mult_pe_name: "P/E Ratio",
+    mult_pe_formula: "$140 / $6.34 EPS",
+    mult_pe_range: "Sector: 18–28x",
+    mult_ev_rev_name: "EV/Revenue",
+    mult_ev_rev_formula: "$4,250M / $672.4M",
+    mult_ev_rev_range: "Sector: 4–8x",
+    mult_pb_name: "P/B Ratio",
+    mult_pb_formula: "$4,500M / $700M",
+    mult_pb_range: "Sector: 3–8x",
+  },
+  he: {
+    app_title: "לימוד חשבונאות",
+    nav_a: "א — 3 הדוחות",
+    nav_b: "ב — מושגי מפתח",
+    nav_c: "ג — יחסים",
+    nav_d: "ד — מכפילים",
+    lang_toggle: "English",
+    progress_label: "השתמשו בטאבים או בכפתור 'הבא' לניווט",
+    sec_a_title: "3 הדוחות הפיננסיים",
+    sec_a_sub: "כל חברה ציבורית מפרסמת שלושה דוחות מרכזיים. בואו נחקור את נתוני נובה לשנת 2024.",
+    a1_title: "שלב 1: דוח רווח והפסד (P&L)",
+    a1_sub: "מציג הכנסות, עלויות ורווח לאורך תקופה. קוראים מלמעלה למטה — כל שורה מחסירה עלויות.",
+    revenue: "הכנסות",
+    gross_profit: "רווח גולמי",
+    ebit: "EBIT",
+    net_income: "רווח נקי",
+    a1_q1_text: "ש1: אם ההכנסות גדלות ב-10% אך עלות המכר גדלה ב-15%, מה קורה לשולי הרווח הגולמי?",
+    a1_q1_a: "א) גדלים",
+    a1_q1_b: "ב) קטנים",
+    a1_q1_c: "ג) נשארים ללא שינוי",
+    a1_q1_exp: "נכון! כאשר עלות המכר גדלה מהר יותר מההכנסות, הפער (רווח גולמי) מצטמצם כאחוז מההכנסות — לכן שולי הרווח הגולמי יורדים. דוגמה: הכנסות $739.6M (+10%), עלות מכר $328.1M (+15%), רווח גולמי = $411.5M = שולי 55.6% לעומת 57.6% מקורי.",
+    a1_q2_text: "ש2: שולי הרווח הנקי של נובה הם 27.3%. האם זה גבוה או נמוך לחברת ציוד מוליכים למחצה?",
+    a1_q2_ans: "גבוה מאוד. ממוצע ענפי הוא ~10–15%. נובה רווחית באופן יוצא דופן הודות לכלי המדידה העשירים בתוכנה, עלויות מיתוג גבוהות וכוח תמחור חזק.",
+    a2_title: "שלב 2: דוח תזרים מזומנים",
+    a2_sub: "מראה כיצד מזומן באמת זז — כי רווח ≠ מזומן. שלושה חלקים: תפעולי, השקעות, מימון.",
+    op_cf: "תזרים תפעולי",
+    capex_lbl: "CAPEX",
+    fcf_lbl: "תזרים חופשי",
+    a2_q1_text: "ש: תזרים תפעולי של נובה הוא $235.3M אך רווח נקי הוא $183.8M. מדוע תזרים גבוה יותר?",
+    a2_q1_a: "א) טעות חשבונאית",
+    a2_q1_b: "ב) הוצאות לא-מזומניות כגון פחת מוחזרות",
+    a2_q1_c: "ג) הם לוו כסף",
+    a2_q1_exp: "נכון! הרווח הנקי כולל הוצאות לא-מזומניות (כגון פחת ~$17.4M). בחישוב תזרים מזומנים, אלו מוחזרות כיוון שלא יצא מזומן בפועל. כמו כן, שינויים בהון חוזר משפיעים על תזרים. OCF = רווח נקי + פחת ± שינויי הון חוזר.",
+    a3_title: "שלב 3: מאזן",
+    a3_sub: "תמונת מצב של מה שהחברה מחזיקה (נכסים) מול מה שהיא חייבת (התחייבויות) + מה שייך לבעלי המניות (הון עצמי).",
+    bs_assets: "נכסים",
+    bs_current_assets: "נכסים שוטפים",
+    bs_other_assets: "נכסים אחרים (רכוש קבוע, נכסים בלתי-מוחשיים)",
+    bs_total_assets: "סך נכסים",
+    bs_le: "התחייבויות + הון עצמי",
+    bs_debt: "חוב כולל",
+    bs_other_liab: "התחייבויות אחרות",
+    bs_equity: "הון עצמי",
+    bs_total_le: "סך ה+ה",
+    a3_q1_text: "ש: המאזן תמיד מאוזן. מה משוואת החשבונאות הבסיסית?",
+    a3_q1_ans: "נכסים = התחייבויות + הון עצמי. תמיד. זהו בסיס החשבונאות הכפולה. כל עסקה משפיעה על לפחות שני חשבונות ושומרת על איזון המשוואה. נובה: $1,400M = $700M + $700M ✓",
+    a4_title: "שלב 4: כיצד 3 הדוחות מתחברים",
+    a4_sub: "שלושת הדוחות אינם עצמאיים — הם זורמים זה לזה. לחצו על כל תיבה להדגשת הקשרים.",
+    conn1_title: "P&L → תזרים מזומנים",
+    conn1_desc: "הרווח הנקי הוא נקודת המוצא של דוח תזרים המזומנים. פחת ושינויי הון חוזר מתווספים/מחסירים להגעת תזרים תפעולי.",
+    conn2_title: "P&L → מאזן",
+    conn2_desc: "הרווח הנקי זורם לרווחים שמורים (חלק מהון עצמי). חברות רווחיות מגדילות את הונן העצמי לאורך זמן.",
+    conn3_title: "תזרים מזומנים → מאזן",
+    conn3_desc: "CAPEX (מפעילות השקעות) הופך לנכס לטווח ארוך במאזן. מזומן ששימש ל-CAPEX מקטין את יתרת המזומן.",
+    cf_label: "תזרים מזומנים",
+    bs_label: "מאזן",
+    arr_ni_cf: "רווח נקי →",
+    arr_ni_bs: "רווחים שמורים ↑",
+    arr_capex_bs: "CAPEX → נכס",
+    btn_prev: "← הקודם",
+    btn_next: "הבא →",
+    btn_prev_a: "← פרק א",
+    btn_prev_b: "← פרק ב",
+    btn_prev_c: "← פרק ג",
+    btn_next_b: "פרק הבא: ב →",
+    btn_next_c: "פרק הבא: ג →",
+    btn_next_d: "פרק הבא: ד →",
+    btn_end: "סוף הלוח",
+    reveal_btn: "גלה תשובה",
+    hide_btn: "הסתר תשובה",
+    sec_b_title: "מושגי מפתח פיננסיים",
+    sec_b_sub: "11 מונחים חיוניים — עם המספרים האמיתיים של נובה ותרחישי 'מה אם'. לחצו על ⓘ להגדרה מעמיקה.",
+    sec_c_title: "יחסים פיננסיים",
+    sec_c_sub: "יחסים הופכים מספרים גולמיים לתובנות ניתנות להשוואה. איך נובה עומדת?",
+    c1_title: "שולי רווחיות",
+    c1_sub: "נובה מול ממוצעי המגזר (קווים אדומים). נובה עקבית בהישגה מעל המגזר.",
+    c1_q1_text: "ש: באיזה יחס שוליים משקיעים מתמקדים ביותר בהשוואת חברות?",
+    c1_q1_a: "א) שולי רווח גולמי",
+    c1_q1_b: "ב) שולי EBITDA",
+    c1_q1_c: "ג) שולי רווח נקי",
+    c1_q1_d: "ד) כולם שווים",
+    c1_q1_exp: "שולי EBITDA הם הנפוצים ביותר להשוואה בין-חברתית כיוון שהם מנטרלים הוצאות לא-מזומניות (פחת) והשפעות מבנה מימון (ריבית, מסים). זה מאפשר השוואה נכונה בין חברות עם מבני הון שונים.",
+    c2_title: "מחזור המרת מזומן (CCC)",
+    c2_sub: "כמה ימים לוקח לנובה להמיר השקעות במלאי בחזרה למזומן?",
+    ccc_dso: "DSO",
+    ccc_inv: "ימי מלאי",
+    ccc_dpo: "DPO",
+    ccc_total: "CCC",
+    ccc_days: "ימים",
+    ccc_formula: "CCC = DSO (65) + ימי מלאי (102) − DPO (77) = 90 ימים",
+    ccc_note_title: "הערה על הערכות: ",
+    ccc_note: "חייבים ≈ $120M, מלאי ≈ $80M, זכאים ≈ $60M — הערכות מדוחות פומביים.",
+    c2_q1_text: "מה אם: אם DSO קופץ מ-65 ל-90 ימים, מה קורה למצב המזומן של נובה?",
+    c2_q1_ans: "נובה תזדקק לעוד ~$46M מזומן קשור בחייבים: [(90−65)/365] × $672.4M = $46.1M. זה $46M פחות מזומן זמין לרכישות עצמיות, השקעות R&D, או רכישות — עלות אמיתית שאינה מופיעה בדוח רווח-הפסד.",
+    sec_d_title: "מכפילי שווי",
+    sec_d_sub: "כיצד השוק מתמחר את נובה ביחס לנתוניה הפיננסיים. כל מכפיל מספר סיפור שונה.",
+    slider_title: "מבחן עמידות חי: רגישות EBITDA",
+    slider_sub: "גרור לסימולציית ירידה ב-EBITDA וראה כיצד מדדי שווי מתעדכנים בזמן אמת.",
+    slider_label: "שינוי EBITDA: ",
+    ss_ebitda: "EBITDA",
+    ss_ev_ebitda: "EV/EBITDA",
+    ss_impl_ev: "EV משוער",
+    ss_impl_price: "מחיר משוער",
+    d_disc_title: "דיון פתוח",
+    d_disc_q: "נובה נסחרת ב-~20.7x EBITDA. מתחרה ישיר נסחר ב-8x EBITDA. מה 3 הסברים אפשריים?",
+    d_disc_ans: "1. לנובה ציפיות צמיחה גבוהות יותר — אנליסטים צופים צמיחת הכנסות מהירה יותר.<br>2. לנובה חפיר תחרותי חזק יותר — טכנולוגיית בקרת תהליכים שלה קריטית למשימה עם עלויות מיתוג גבוהות.<br>3. נובה פועלת בנישה רווחית יותר (מדידה/בקרת תהליכים) עם הכנסות עשירות בתוכנה.<br>4. פרמיית נדירות — קיימות מעט חברות comparable טהורות, לכן משקיעים משלמים פרמיה.",
+    chart_pl_labels: ["הכנסות","עלות מכר","רווח גולמי","הוצאות תפעול","EBIT","רווח נקי"],
+    chart_cf_labels: ["תזרים תפעולי","CAPEX","תזרים חופשי"],
+    chart_margins_labels: ["שולי רווח גולמי","שולי EBIT","שולי EBITDA","שולי רווח נקי"],
+    tip_revenue: "הכנסות הן סך הכסף שהרוויחה החברה ממכירת מוצרים/שירותים לפני ניכוי עלויות כלשהן. נקראות גם 'שורה עליונה' או 'מחזור'.",
+    tip_gross_profit: "רווח גולמי = הכנסות פחות עלות מכר. מודד עד כמה ביעילות החברה מייצרת את מוצריה/שירותיה.",
+    tip_net_profit: "רווח נקי = מה שנותר אחרי כל ההוצאות, הריבית והמסים. נקרא גם 'שורה תחתונה'.",
+    tip_ebitda: "EBITDA = רווח לפני ריבית, מסים, פחת והפחתות. משמש נרחבות להשוואת רווחיות תפעולית בין חברות ללא תלות בהחלטות מימון.",
+    tip_ebit: "EBIT = רווח לפני ריבית ומסים. נקרא גם רווח תפעולי. מראה רווחיות מפעילות עסקית ליבה לפני עלויות מימון.",
+    tip_capex: "CAPEX = הוצאות הון. כסף שמושקע ברכישה או שדרוג נכסים פיזיים/לטווח ארוך כגון מכונות, מבנים או ציוד.",
+    tip_opex: "OPEX = הוצאות תפעול. עלויות יום-יומיות של ניהול העסק — R&D, מכירות, שיווק, הנהלה כללית. אינו כולל עלות מכר.",
+    tip_depreciation: "פחת = פריסת עלות נכס לטווח ארוך על פני חייו השימושיים. הוצאה לא-מזומנית — מקטינה רווח חשבונאי אך אינה כרוכה ביציאת מזומן בפועל.",
+    tip_working_capital: "הון חוזר = נכסים שוטפים פחות התחייבויות שוטפות. מודד נזילות לטווח קצר. חיובי = החברה יכולה לעמוד בהתחייבויותיה לטווח הקרוב.",
+    tip_ev: "שווי פירמה (EV) = שווי שוק + חוב כולל פחות מזומן. מייצג את עלות 'הרכישה' הכוללת של חברה, כולל חובותיה.",
+    tip_market_cap: "שווי שוק = מחיר מניה × מניות בסחר. שווי השוק הכולל של כל מניות החברה. משקף מה משקיעים ביחד מאמינים שהחברה שווה.",
+    tip_dso: "DSO = ימי חייבים. מספר הימים הממוצע לגבייה לאחר מכירה. נמוך יותר = גבייה מהירה יותר.",
+    tip_inv_days: "ימי מלאי = כמה זמן המלאי נשאר לפני מכירה. נמוך יותר = ניהול מלאי יעיל יותר.",
+    tip_dpo: "DPO = ימי זכאים. כמה זמן לוקח לחברה לשלם לספקיה. גבוה יותר = החברה שומרת מזומן זמן רב יותר.",
+    tip_gross_margin: "שולי רווח גולמי = רווח גולמי / הכנסות. מראה איזה אחוז מהכנסות נשאר לאחר עלויות ייצור ישירות.",
+    tip_ebitda_margin: "שולי EBITDA = EBITDA / הכנסות. מדד הרווחיות הנפוץ ביותר להשוואה בין חברות.",
+    tip_net_margin: "שולי רווח נקי = רווח נקי / הכנסות. מראה איזה אחוז מהכנסות הופך לרווח אמיתי לאחר כל העלויות.",
+    tip_ev_ebitda: "EV/EBITDA = שווי פירמה חלקי EBITDA. מכפיל השווי הנפוץ ביותר להשוואת חברות בעסקאות M&A וניתוח מניות.",
+    tip_pe: "P/E = מחיר לרווח. מחיר מניה חלקי רווח למניה. מראה כמה משקיעים משלמים על כל דולר רווח.",
+    tip_ev_rev: "EV/Revenue = שווי פירמה חלקי הכנסות שנתיות. משמש לחברות צמיחה גבוהה שאינן רווחיות עדיין.",
+    tip_pb: "P/B = מחיר להון עצמי. שווי שוק חלקי שווי ספרים (הון עצמי). מראה פרמיה ששולמה מעל שווי נכסים נטו.",
+    c_revenue_name: "הכנסות",
+    c_revenue_def: "'השורה העליונה' — סך הכסף שהרוויחה ממכירת מוצרים/שירותים לפני ניכוי הוצאות.",
+    c_revenue_num: "$672.4M",
+    c_revenue_whatif: "מה אם: נובה מאבדת את 3 הלקוחות הגדולים שלה (30% מהכנסות). מה ההכנסות החדשות?",
+    c_revenue_reveal: "$672.4M × 70% = $470.7M. ירידה של 30% בהכנסות תגרום ככל הנראה למינוף תפעולי שיגביר משמעותית את ההשפעה על הרווח.",
+    c_gp_name: "רווח גולמי",
+    c_gp_def: "הכנסות פחות עלות ייצור ישירה (עלות מכר). מודד יעילות ייצור/אספקה.",
+    c_gp_num: "$387.1M (שולי 57.6%)",
+    c_gp_whatif: "מה אם: עלויות חומרי הגלם עולות ב-10%. בכמה יורד הרווח הגולמי?",
+    c_gp_reveal: "עלות מכר × 10% = $285.3M × 10% = $28.5M. הרווח הגולמי יורד ל-$358.6M (שולי 48.6%). פגיעה משמעותית בשוליים מאינפלציית עלויות תשומה.",
+    c_np_name: "רווח נקי",
+    c_np_def: "מה שנותר לאחר כל ההוצאות — עלות מכר, הוצאות תפעול, ריבית ומסים. 'השורה התחתונה'.",
+    c_np_num: "$183.8M (שולי 27.3%)",
+    c_np_whatif: "מה אם: נובה מוציאה $50M על מפעל חדש. האם הרווח הנקי משתנה מיד?",
+    c_np_reveal: "לא מיד. CAPEX מהוון כנכס במאזן, לא מוצא מיד. רק הפחת השנתי (~$5–10M/שנה על פני 5–10 שנים) פוגע בדוח רווח-הפסד. זהו מושג חשבונאי מרכזי.",
+    c_ebitda_name: "EBITDA",
+    c_ebitda_def: "רווח לפני ריבית, מסים, פחת והפחתות. פרוקסי לייצור מזומן תפעולי, בשימוש נרחב בשווי.",
+    c_ebitda_num: "$204.9M (שולי 30.5%)",
+    c_ebitda_whatif: "מדוע EBITDA ($204.9M) גבוה מרווח נקי ($183.8M)?",
+    c_ebitda_reveal: "כיוון שפחת (~$17.4M) ומסים/ריבית (~$3.7M) מוחזרים לרווח הנקי. נוסחה: EBITDA = רווח נקי + ריבית + מסים + פחת. אלו עלויות כלכליות אמיתיות, אך EBITDA מתעלם מהן כדי לבודד ביצועים תפעוליים.",
+    c_ebit_name: "EBIT",
+    c_ebit_def: "רווח לפני ריבית ומסים = רווח תפעולי. מראה רווחיות מפעילות ליבה לפני החלטות מימון.",
+    c_ebit_num: "$187.5M (שולי 27.9%)",
+    c_ebit_whatif: "מה ההבדל בין EBIT ל-EBITDA?",
+    c_ebit_reveal: "EBITDA = EBIT + פחת והפחתות. נובה: $187.5M + ~$17.4M = ~$204.9M ✓. פחת הוא ההבדל היחיד — וזו הוצאה חשבונאית לא-מזומנית.",
+    c_capex_name: "CAPEX",
+    c_capex_def: "הוצאות הון — כסף המושקע בנכסים פיזיים לטווח ארוך. CAPEX נמוך = מודל עסקי קל-נכסים.",
+    c_capex_num: "$17.2M (2.6% מהכנסות)",
+    c_capex_whatif: "מה CAPEX נמוך מספר על מודל העסקי של נובה?",
+    c_capex_reveal: "ב-2.6% בלבד מהכנסות, נובה קלת-נכסים ביותר. ערכה מגיע מקניין רוחני ותוכנה, לא ממפעלים. זה אומר המרת FCF גבוהה: רוב הרווח הופך לתזרים חופשי. השוואה: מפעל פלדה עשוי להוציא 15–20% מהכנסות על CAPEX.",
+    c_opex_name: "OPEX",
+    c_opex_def: "הוצאות תפעול — עלויות יום-יומיות כולל R&D, מכירות והנהלה. אינו כולל עלות מכר.",
+    c_opex_num: "$199.5M (R&D: $110.3M + SG&A: ~$89.2M)",
+    c_opex_whatif: "נובה מוציאה $110.3M על R&D — 16.4% מהכנסות. איך זה מושווה לתעשייה?",
+    c_opex_reveal: "חברות ציוד מוליכים למחצה מוציאות בדרך כלל 10–18% מהכנסות על R&D. ה-16.4% של נובה בצד הגבוה, המאותת על השקעה אגרסיבית בטכנולוגיית הדור הבא לשמירת יתרון תחרותי.",
+    c_dep_name: "פחת",
+    c_dep_def: "פריסת עלות נכס לטווח ארוך על פני חייו השימושיים. לא-מזומנית — מקטינה רווח חשבונאי אך לא מזומן אמיתי.",
+    c_dep_num: "פחת: ~$17.4M",
+    c_dep_whatif: "אם פחת הוא לא-מזומן, מדוע זה חשוב?",
+    c_dep_reveal: "פחת הוא הסיבה שEBITDA שונה מ-EBIT, ומדוע תזרים תפעולי ($235.3M) עולה על רווח נקי ($183.8M). יש לו גם הטבות מס — הוא מקטין הכנסה חייבת. לחברות עתירות נכסים, פחת יכול להיות עצום ולהשפיע משמעותית על רווחיות מדווחת.",
+    c_wc_name: "הון חוזר",
+    c_wc_def: "נכסים שוטפים פחות התחייבויות שוטפות. מודד בריאות פיננסית לטווח קצר ונזילות.",
+    c_wc_num: "~$500M (נכסים שוטפים $900M − ה. שוטפות ~$400M)",
+    c_wc_whatif: "אם זכאים מוכפלים (מ-~$400M ל-~$800M ה. שוטפות), מה קורה להון החוזר?",
+    c_wc_reveal: "הון חוזר יורד מ-~$500M ל-~$100M. למרות שעדיין חיובי, לחברה יש פחות כרית. זה עלול להצביע על לחץ פיננסי או תנאי תשלום אגרסיביים לספקים — שווה לעקוב מקרוב.",
+    c_ev_name: "שווי פירמה (EV)",
+    c_ev_def: "העלות 'האמיתית' לרכישת חברה: שווי שוק + חוב פחות מזומן. כולל חוב שהרוכש חייב לקחת.",
+    c_ev_num: "~$4,250M (שווי שוק $4,500M + חוב $350M − מזומן $600M)",
+    c_ev_whatif: "מדוע מחסירים מזומן בחישוב EV?",
+    c_ev_reveal: "כיוון שאם קונים את החברה, מקבלים גם את המזומן — לכן הוא מקזז את מחיר הרכישה. חברה עם $1B מזומן ושווי שוק $3B עולה 'רק' $2B ב-EV (ללא חוב). מזומן הוא נכס שאתה יורש.",
+    c_mc_name: "שווי שוק",
+    c_mc_def: "מחיר מניה × מניות בסחר. שווי השוק הכולל של כל ההון — מה שמשקיעים ביחד מאמינים שהחברה שווה.",
+    c_mc_num: "~$4,500M ($140 × 29M מניות ≈ $4,060M, מעוגל ל-~$4.5B)",
+    c_mc_whatif: "אם מחיר המניה יורד ב-20%, מה קורה לשווי שוק ו-EV?",
+    c_mc_reveal: "שווי שוק יורד מ-~$4,500M ל-~$3,600M (−$900M). EV גם יורד ב-~$900M ל-~$3,350M. אך שים לב: EV/EBITDA יירד מ-~20.7x ל-~16.4x — מה שעלול לגרום למניה להיראות זולה יותר למשקיעי ערך.",
+    mult_ev_ebitda_name: "EV/EBITDA",
+    mult_ev_ebitda_formula: "$4,250M / $204.9M",
+    mult_ev_ebitda_range: "מגזר: 15–25x",
+    mult_pe_name: "מכפיל רווח (P/E)",
+    mult_pe_formula: "$140 / $6.34 EPS",
+    mult_pe_range: "מגזר: 18–28x",
+    mult_ev_rev_name: "EV/הכנסות",
+    mult_ev_rev_formula: "$4,250M / $672.4M",
+    mult_ev_rev_range: "מגזר: 4–8x",
+    mult_pb_name: "מכפיל הון (P/B)",
+    mult_pb_formula: "$4,500M / $700M",
+    mult_pb_range: "מגזר: 3–8x",
+  }
+};
+
+let currentLang = 'en';
+let currentSection = 'A';
+let currentStepA = 1;
+let charts = {};
+
+function t(key) {
+  return translations[currentLang][key] || translations['en'][key] || key;
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    const val = t(key);
+    if (el.tagName === 'INPUT' && el.type === 'button') {
+      el.value = val;
+    } else {
+      el.innerHTML = val;
+    }
+  });
+  // reveal/hide buttons with data-t-reveal
+  document.querySelectorAll('.reveal-btn').forEach(btn => {
+    const isHidden = btn.getAttribute('data-revealed') === 'true';
+    btn.textContent = isHidden ? t('hide_btn') : t('reveal_btn');
+  });
+  document.getElementById('lang-toggle').textContent = t('lang_toggle');
+  document.body.dir = currentLang === 'he' ? 'rtl' : 'ltr';
+  if (currentLang === 'he') document.body.classList.add('rtl');
+  else document.body.classList.remove('rtl');
+}
+
+// ===================== NAV =====================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchSection(btn.getAttribute('data-section'));
+  });
+});
+
+function switchSection(sec) {
+  currentSection = sec;
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + sec).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-section') === sec);
+  });
+  updateProgress();
+  if (sec === 'C') {
+    setTimeout(() => { initChartMargins(); }, 100);
+  }
+  if (sec === 'B') buildConceptCards();
+  if (sec === 'D') buildMultCards();
+  window.scrollTo(0, 0);
+}
+
+// ===================== STEP NAV (Section A) =====================
+function goStep(section, stepNum) {
+  if (section === 'A') {
+    document.querySelectorAll('#section-A .step-container').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('step-A' + stepNum);
+    if (el) el.classList.add('active');
+    currentStepA = stepNum;
+    updateProgress();
+    if (stepNum === 1) { setTimeout(() => initChartPL(), 100); }
+    if (stepNum === 2) { setTimeout(() => initChartCF(), 100); }
+    if (stepNum === 4) { setTimeout(() => animateFlowArrows(), 300); }
+    window.scrollTo(0, 0);
+  }
+}
+
+// ===================== PROGRESS =====================
+const sectionSteps = { A: 4, B: 1, C: 1, D: 1 };
+const sectionLabels = { A: 'A', B: 'B', C: 'C', D: 'D' };
+
+function updateProgress() {
+  const container = document.getElementById('progress-steps');
+  container.innerHTML = '';
+  const steps = sectionSteps[currentSection] || 1;
+  const currentStep = currentSection === 'A' ? currentStepA : 1;
+  for (let i = 1; i <= steps; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'progress-step' + (i === currentStep ? ' active' : (i < currentStep ? ' done' : ''));
+    dot.textContent = sectionLabels[currentSection] + i;
+    dot.onclick = (function(s, n) { return function() { if (currentSection === 'A') goStep('A', n); }; })(currentSection, i);
+    container.appendChild(dot);
+    if (i < steps) {
+      const con = document.createElement('div');
+      con.className = 'progress-connector';
+      container.appendChild(con);
+    }
+  }
+}
+
+// ===================== QUESTIONS =====================
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('opt-btn') && !e.target.disabled) {
+    const q = e.target.getAttribute('data-q');
+    const isCorrect = e.target.getAttribute('data-correct') === 'true';
+    // Disable all options in this group
+    document.querySelectorAll('[data-q="' + q + '"]').forEach(btn => {
+      btn.disabled = true;
+    });
+    e.target.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) {
+      // Highlight correct
+      document.querySelectorAll('[data-q="' + q + '"][data-correct="true"]').forEach(btn => {
+        btn.classList.add('correct');
+      });
+    }
+    const exp = document.getElementById(q + '-exp');
+    if (exp) exp.classList.add('show');
+  }
+});
+
+function toggleReveal(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const showing = el.classList.toggle('show');
+  btn.setAttribute('data-revealed', showing ? 'true' : 'false');
+  btn.textContent = showing ? t('hide_btn') : t('reveal_btn');
+}
+
+// ===================== CHARTS =====================
+function initChartPL() {
+  const ctx = document.getElementById('chart-pl');
+  if (!ctx) return;
+  if (charts['pl']) { charts['pl'].destroy(); }
+  const labels = t('chart_pl_labels');
+  const data = [
+    [0, 672.4],
+    [387.1, 672.4],
+    [0, 387.1],
+    [187.5, 387.1],
+    [0, 187.5],
+    [0, 183.8]
+  ];
+  const colors = ['#00c4a7','#ef4444','#22c55e','#ef4444','#3b82f6','#22c55e'];
+  charts['pl'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: '$M',
+        data: data,
+        backgroundColor: colors,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.raw;
+              return '$' + (v[1] - v[0]).toFixed(1) + 'M';
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } },
+        y: {
+          min: 0, max: 750,
+          ticks: { callback: v => '$' + v + 'M', color: '#475569', font: { size: 12 } },
+          grid: { color: '#f1f5f9' }
+        }
+      }
+    }
+  });
+}
+
+function initChartCF() {
+  const ctx = document.getElementById('chart-cf');
+  if (!ctx) return;
+  if (charts['cf']) { charts['cf'].destroy(); }
+  const labels = t('chart_cf_labels');
+  charts['cf'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: '$M',
+        data: [235.3, 17.2, 218.1],
+        backgroundColor: ['#00c4a7', '#ef4444', '#22c55e'],
+        borderRadius: 8,
+        maxBarThickness: 80,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => '$' + ctx.raw + 'M' } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 14, weight: '700' } } },
+        y: { ticks: { callback: v => '$' + v + 'M', color: '#475569' }, grid: { color: '#f1f5f9' } }
+      }
+    }
+  });
+}
+
+function initChartMargins() {
+  const ctx = document.getElementById('chart-margins');
+  if (!ctx) return;
+  if (charts['margins']) { charts['margins'].destroy(); }
+  const labels = t('chart_margins_labels');
+  const sectorAvg = [45, 15, 18, 12];
+  const nova = [57.6, 27.9, 30.5, 27.3];
+  charts['margins'] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Nova',
+          data: nova,
+          backgroundColor: '#00c4a7',
+          borderRadius: 6,
+          maxBarThickness: 60,
+        },
+        {
+          label: t('c1_sub') ? 'Sector Avg' : 'Sector Avg',
+          data: sectorAvg,
+          backgroundColor: 'rgba(239,68,68,0.3)',
+          borderColor: '#ef4444',
+          borderWidth: 2,
+          borderRadius: 6,
+          maxBarThickness: 60,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: {
+        legend: { labels: { color: '#475569', font: { size: 14 } } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+      },
+      scales: {
+        x: { max: 70, ticks: { callback: v => v + '%', color: '#475569' }, grid: { color: '#f1f5f9' } },
+        y: { ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
+      }
+    }
+  });
+}
+
+// ===================== FLOW ANIMATION =====================
+function animateFlowArrows() {
+  ['arrow-pl-cf','arrow-pl-bs','arrow-cf-bs'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const len = el.getTotalLength ? el.getTotalLength() : 200;
+      el.style.strokeDasharray = len;
+      el.style.strokeDashoffset = len;
+      setTimeout(() => {
+        el.style.transition = 'stroke-dashoffset 1.2s ease';
+        el.style.strokeDashoffset = 0;
+      }, i * 400);
+    }
+  });
+}
+
+let highlightedFlow = null;
+function highlightFlow(type) {
+  // Reset all
+  ['box-pl','box-cf','box-bs'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute('fill', '#1e3a5f');
+  });
+  ['arrow-pl-cf','arrow-pl-bs','arrow-cf-bs'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.opacity = '0.3'; }
+  });
+  if (highlightedFlow === type) {
+    highlightedFlow = null;
+    ['arrow-pl-cf','arrow-pl-bs','arrow-cf-bs'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.opacity = '1';
+    });
+    return;
+  }
+  highlightedFlow = type;
+  if (type === 'pl') {
+    document.getElementById('box-pl').setAttribute('fill','#00c4a7');
+    document.getElementById('arrow-pl-cf').style.opacity = '1';
+    document.getElementById('arrow-pl-bs').style.opacity = '1';
+  } else if (type === 'cf') {
+    document.getElementById('box-cf').setAttribute('fill','#00c4a7');
+    document.getElementById('arrow-pl-cf').style.opacity = '1';
+    document.getElementById('arrow-cf-bs').style.opacity = '1';
+  } else if (type === 'bs') {
+    document.getElementById('box-bs').setAttribute('fill','#00c4a7');
+    document.getElementById('arrow-pl-bs').style.opacity = '1';
+    document.getElementById('arrow-cf-bs').style.opacity = '1';
+  }
+}
+
+// ===================== SECTION B: CONCEPT CARDS =====================
+const conceptDefs = [
+  { key: 'revenue', tipKey: 'tip_revenue' },
+  { key: 'gp', tipKey: 'tip_gross_profit' },
+  { key: 'np', tipKey: 'tip_net_profit' },
+  { key: 'ebitda', tipKey: 'tip_ebitda' },
+  { key: 'ebit', tipKey: 'tip_ebit' },
+  { key: 'capex', tipKey: 'tip_capex' },
+  { key: 'opex', tipKey: 'tip_opex' },
+  { key: 'dep', tipKey: 'tip_depreciation' },
+  { key: 'wc', tipKey: 'tip_working_capital' },
+  { key: 'ev', tipKey: 'tip_ev' },
+  { key: 'mc', tipKey: 'tip_market_cap' },
+];
+
+let cardsBuilt = false;
+function buildConceptCards() {
+  const grid = document.getElementById('concepts-grid');
+  grid.innerHTML = '';
+  conceptDefs.forEach((def, i) => {
+    const card = document.createElement('div');
+    card.className = 'concept-card';
+    const nameKey = 'c_' + def.key + '_name';
+    const defKey = 'c_' + def.key + '_def';
+    const numKey = 'c_' + def.key + '_num';
+    const wiKey = 'c_' + def.key + '_whatif';
+    const revKey = 'c_' + def.key + '_reveal';
+    const tipId = 'tip-' + def.key + '-' + i;
+    const revId = 'rev-' + def.key + '-' + i;
+    card.innerHTML = `
+      <div class="concept-title">
+        <h3>${t(nameKey)}</h3>
+        <span class="info-icon" onclick="toggleTip('${tipId}')">ⓘ</span>
+      </div>
+      <div class="tooltip-box" id="${tipId}">${t(def.tipKey)}</div>
+      <div class="concept-def">${t(defKey)}</div>
+      <div class="concept-num">${t(numKey)}</div>
+      <div class="whatif-q">${t(wiKey)}</div>
+      <button class="reveal-btn" onclick="toggleReveal('${revId}',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">${t('reveal_btn')}</button>
+      <div class="reveal-answer" id="${revId}">${t(revKey)}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleTip(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+// ===================== SECTION D: MULTIPLES =====================
+const multData = [
+  { key: 'ev_ebitda', val: '20.7x', minPct: 40, maxPct: 100, novaPct: 70, color: '#00c4a7' },
+  { key: 'pe', val: '22.1x', minPct: 20, maxPct: 100, novaPct: 55, color: '#3b82f6' },
+  { key: 'ev_rev', val: '6.3x', minPct: 30, maxPct: 100, novaPct: 57, color: '#8b5cf6' },
+  { key: 'pb', val: '6.4x', minPct: 20, maxPct: 100, novaPct: 68, color: '#f59e0b' },
+];
+
+function buildMultCards() {
+  const grid = document.getElementById('mult-grid');
+  if (grid.children.length > 0) {
+    // Rebuild for translation
+    grid.innerHTML = '';
+  }
+  multData.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'mult-card';
+    card.innerHTML = `
+      <div class="mult-name">${t('mult_' + m.key + '_name')}</div>
+      <div class="mult-val" style="color:${m.color}">${m.val}</div>
+      <div class="mult-formula">${t('mult_' + m.key + '_formula')}</div>
+      <div class="mult-range-label">${t('mult_' + m.key + '_range')}</div>
+      <div class="mult-range-bar">
+        <div class="mult-range-fill" style="width:${m.maxPct}%;background:linear-gradient(90deg,#1e3a5f,${m.color})"></div>
+        <div class="mult-marker" style="left:${m.novaPct}%"></div>
+      </div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:2px">◄ Low &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High ►</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// ===================== SLIDER =====================
+function updateSlider(val) {
+  const pct = parseInt(val);
+  document.getElementById('slider-pct').textContent = pct + '%';
+  const baseEBITDA = 204.9;
+  const baseEV = 4250;
+  const baseMultiple = 20.7;
+  const basePrice = 140;
+  const shares = 29;
+  const debt = 350;
+  const cash = 600;
+  const newEBITDA = baseEBITDA * (1 + pct / 100);
+  const impliedEV = newEBITDA * baseMultiple;
+  const newMultiple = impliedEV / newEBITDA;
+  const impliedMC = impliedEV - debt + cash;
+  const impliedPrice = impliedMC / shares;
+  document.getElementById('ss-ebitda').textContent = '$' + newEBITDA.toFixed(1) + 'M';
+  document.getElementById('ss-ev-ebitda').textContent = newMultiple.toFixed(1) + 'x';
+  document.getElementById('ss-impl-ev').textContent = '$' + Math.round(impliedEV) + 'M';
+  document.getElementById('ss-impl-price').textContent = '~$' + Math.round(impliedPrice);
+}
+
+// ===================== LANGUAGE TOGGLE =====================
+document.getElementById('lang-toggle').addEventListener('click', () => {
+  currentLang = currentLang === 'en' ? 'he' : 'en';
+  applyTranslations();
+  // Rebuild dynamic sections
+  if (currentSection === 'B') buildConceptCards();
+  if (currentSection === 'D') buildMultCards();
+  // Rebuild charts
+  if (currentSection === 'A') {
+    if (currentStepA === 1) setTimeout(() => initChartPL(), 50);
+    if (currentStepA === 2) setTimeout(() => initChartCF(), 50);
+  }
+  if (currentSection === 'C') setTimeout(() => initChartMargins(), 50);
+});
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
+  updateProgress();
+  applyTranslations();
+  setTimeout(() => initChartPL(), 200);
+});
+</script>
+</body>
+</html>
