@@ -19,7 +19,8 @@ body.rtl{direction:rtl}
 #lang-toggle{background:#1e3a5f;border:1px solid #00c4a7;color:#00c4a7;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:700;transition:all 0.2s}
 #lang-toggle:hover{background:#00c4a7;color:#0a1628}
 /* PROGRESS */
-#progress-bar{background:#0a1628;border-bottom:1px solid #1e3a5f;padding:8px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:64px;z-index:99}
+#progress-bar{background:#0a1628;border-bottom:1px solid #1e3a5f;padding:8px 24px;display:none;align-items:center;gap:12px;position:sticky;top:64px;z-index:99}
+#progress-bar.visible{display:flex}
 .progress-step{width:32px;height:32px;border-radius:50%;background:#1e3a5f;color:#aab;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;border:2px solid transparent}
 .progress-step.active{background:#00c4a7;color:#0a1628;border-color:#00c4a7}
 .progress-step.done{background:#1e5a3a;color:#22c55e;border-color:#22c55e}
@@ -80,7 +81,7 @@ body.rtl{direction:rtl}
 @keyframes drawArrow{to{stroke-dashoffset:0}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 /* SECTION B CARDS */
-.concepts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.concepts-grid{display:block}
 .concept-card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:22px;transition:transform 0.2s,box-shadow 0.2s;position:relative}
 .concept-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
 .concept-title{display:flex;align-items:center;gap:8px;margin-bottom:10px}
@@ -156,6 +157,49 @@ body.rtl{direction:rtl}
 .flow-conn-item{background:#f8fafc;border-radius:10px;padding:14px;border-top:3px solid #00c4a7}
 .flow-conn-item h4{font-size:14px;font-weight:700;color:#0a1628;margin-bottom:4px}
 .flow-conn-item p{font-size:13px;color:#64748b}
+/* CALLOUT */
+.consultant-callout{background:#e0fdf4;border-left:5px solid #00c4a7;border-radius:10px;padding:16px 20px;margin-bottom:24px;font-size:16px;color:#065f46;font-weight:600}
+.rtl .consultant-callout{border-left:none;border-right:5px solid #00c4a7}
+.consultant-callout::before{content:"💼 ";font-size:18px}
+/* WELCOME */
+#welcome-screen{max-width:800px;margin:60px auto;text-align:center;padding:40px 24px}
+#welcome-screen h1{font-size:40px;font-weight:900;color:#0a1628;margin-bottom:16px}
+#welcome-screen p{font-size:19px;color:#475569;line-height:1.7;margin-bottom:32px}
+.section-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.section-pill{background:#0a1628;color:#fff;border-radius:20px;padding:10px 20px;font-size:15px;font-weight:700}
+.section-pill span{color:#00c4a7}
+.btn-start{background:#00c4a7;color:#0a1628;border:none;padding:16px 48px;border-radius:12px;font-size:20px;font-weight:800;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,196,167,0.3)}
+.btn-start:hover{background:#00a891;transform:translateY(-2px)}
+/* SUB-PROGRESS */
+#sub-progress{background:#f0f4f8;border-bottom:1px solid #d1d5db;padding:10px 24px;display:none;position:sticky;top:128px;z-index:98}
+#sub-progress.visible{display:flex}
+.sub-steps{display:flex;align-items:center;gap:0;margin:0 auto;max-width:700px}
+.sub-step-btn{background:none;border:none;color:#64748b;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.sub-step-btn.active{background:#00c4a7;color:#0a1628}
+.sub-step-connector{color:#d1d5db;font-size:16px;padding:0 2px}
+/* REVEAL-DATA */
+.reveal-data-wrap{text-align:center;padding:20px 0}
+.btn-reveal-data{background:#0a1628;color:#00c4a7;border:2px solid #00c4a7;padding:14px 36px;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-reveal-data:hover{background:#00c4a7;color:#0a1628}
+.data-content{display:none;animation:fadeIn 0.5s ease}
+.data-content.shown{display:block}
+/* ONE-AT-A-TIME QUESTIONS */
+.q-step{display:none;animation:fadeIn 0.4s ease}
+.q-step.active{display:block}
+.btn-skip{background:none;border:1px solid #d1d5db;color:#64748b;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:14px;margin-top:10px;transition:all 0.2s}
+.btn-skip:hover{border-color:#00c4a7;color:#00c4a7}
+/* CONCEPT CAROUSEL */
+.concept-carousel{position:relative}
+.concept-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.concept-counter{font-size:15px;color:#64748b;font-weight:700}
+/* MULTIPLE EXPLAIN */
+.mult-explain-toggle{background:none;border:none;color:#64748b;font-size:14px;cursor:pointer;padding:4px 0;text-align:left;display:block;margin-bottom:8px}
+.mult-explain-toggle:hover{color:#00c4a7}
+.mult-explain-body{display:none;background:#f8fafc;border-radius:8px;padding:12px;font-size:14px;color:#475569;margin-bottom:12px;animation:fadeIn 0.2s ease}
+.mult-explain-body.show{display:block}
+/* SLIDER color states */
+.slider-stat.positive .ss-val{color:#22c55e}
+.slider-stat.negative .ss-val{color:#ef4444}
 </style>
 </head>
 <body>
@@ -164,25 +208,52 @@ body.rtl{direction:rtl}
 <div id="topbar">
   <h1 data-t="app_title">Nova Financial Explorer</h1>
   <div id="tabs">
-    <button class="tab-btn active" data-section="A" data-t="nav_a">A — The 3 Reports</button>
-    <button class="tab-btn" data-section="B" data-t="nav_b">B — Key Concepts</button>
+    <button class="tab-btn active" data-section="B" data-t="nav_a">A — Key Concepts</button>
+    <button class="tab-btn" data-section="A" data-t="nav_b">B — The 3 Reports</button>
     <button class="tab-btn" data-section="C" data-t="nav_c">C — Ratios</button>
     <button class="tab-btn" data-section="D" data-t="nav_d">D — Multipliers</button>
   </div>
   <button id="lang-toggle">עברית</button>
 </div>
 
-<!-- PROGRESS -->
+<!-- PROGRESS BAR -->
 <div id="progress-bar">
   <div id="progress-steps"></div>
-  <span id="progress-label" data-t="progress_label"></span>
+  <div id="progress-label"></div>
+</div>
+
+<!-- SUB-PROGRESS (Section A steps) -->
+<div id="sub-progress">
+  <div class="sub-steps">
+    <button class="sub-step-btn active" onclick="goStep('A',1)" data-t="sub_a1">P&amp;L Statement</button>
+    <span class="sub-step-connector">→</span>
+    <button class="sub-step-btn" onclick="goStep('A',2)" data-t="sub_a2">Cash Flow</button>
+    <span class="sub-step-connector">→</span>
+    <button class="sub-step-btn" onclick="goStep('A',3)" data-t="sub_a3">Balance Sheet</button>
+    <span class="sub-step-connector">→</span>
+    <button class="sub-step-btn" onclick="goStep('A',4)" data-t="sub_a4">How They Connect</button>
+  </div>
 </div>
 
 <!-- MAIN -->
 <div id="main">
 
+  <!-- WELCOME SCREEN -->
+  <div id="welcome-screen">
+    <h1 data-t="welcome_title">Nova Ltd — Financial Literacy Training</h1>
+    <p data-t="welcome_sub">In the next 60 minutes, you'll learn to read the 3 core financial reports, understand the key metrics consultants use every day, and see how Nova Ltd — a real Israeli semiconductor company — scores on all of them.</p>
+    <div class="section-pills">
+      <div class="section-pill"><span>A</span> &nbsp;<span data-t="pill_a">~15 min</span></div>
+      <div class="section-pill"><span>B</span> &nbsp;<span data-t="pill_b">~15 min</span></div>
+      <div class="section-pill"><span>C</span> &nbsp;<span data-t="pill_c">~10 min</span></div>
+      <div class="section-pill"><span>D</span> &nbsp;<span data-t="pill_d">~10 min</span></div>
+    </div>
+    <button class="btn-start" onclick="startDashboard()" data-t="welcome_btn">Let's Start →</button>
+  </div>
+
   <!-- SECTION A -->
-  <div class="section active" id="section-A">
+  <div class="section" id="section-A">
+    <div class="consultant-callout" data-t="callout_a">As a consultant, you'll be handed financial reports on Day 1. Knowing how to read them immediately sets you apart.</div>
     <div class="section-header">
       <h1 data-t="sec_a_title">The 3 Financial Reports</h1>
       <p data-t="sec_a_sub">Every public company publishes three core reports. Let's explore Nova's 2024 data.</p>
@@ -193,35 +264,45 @@ body.rtl{direction:rtl}
       <div class="card">
         <div class="step-title" data-t="a1_title">Step 1: Profit & Loss Statement (P&L)</div>
         <div class="step-subtitle" data-t="a1_sub">Shows revenue, costs, and profit over a period. Read it top-to-bottom — each line subtracts costs.</div>
-        <div class="stats-row">
-          <div class="stat-chip"><div class="sc-label" data-t="revenue">Revenue</div><div class="sc-val">$672.4M</div></div>
-          <div class="stat-chip"><div class="sc-label" data-t="gross_profit">Gross Profit</div><div class="sc-val">$387.1M</div></div>
-          <div class="stat-chip"><div class="sc-label" data-t="ebit">EBIT</div><div class="sc-val">$187.5M</div></div>
-          <div class="stat-chip"><div class="sc-label" data-t="net_income">Net Income</div><div class="sc-val">$183.8M</div></div>
+        <p style="font-size:19px;font-weight:700;color:#0a1628;margin-bottom:20px;padding:14px;background:#f0f4f8;border-radius:8px" data-t="a1_intro">What did the company earn and spend? Did it make a profit?</p>
+        <div class="reveal-data-wrap" id="rd-a1">
+          <button class="btn-reveal-data" onclick="revealData('a1')" data-t="reveal_data_btn">Reveal the data →</button>
         </div>
-        <div class="chart-wrap"><canvas id="chart-pl"></canvas></div>
-        <!-- Q1 -->
-        <div class="question-block">
-          <div class="question-text" data-t="a1_q1_text">Q1: If revenue grows 10% but COGS grows 15%, what happens to gross margin?</div>
-          <div class="options" id="a1-q1-opts">
-            <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_a">a) Increases</button>
-            <button class="opt-btn" data-correct="true"  data-q="a1q1" data-t="a1_q1_b">b) Decreases</button>
-            <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_c">c) Stays the same</button>
+        <div class="data-content" id="dc-a1">
+          <div class="stats-row">
+            <div class="stat-chip"><div class="sc-label" data-t="revenue">Revenue</div><div class="sc-val">$672.4M</div></div>
+            <div class="stat-chip"><div class="sc-label" data-t="gross_profit">Gross Profit</div><div class="sc-val">$387.1M</div></div>
+            <div class="stat-chip"><div class="sc-label" data-t="ebit">EBIT</div><div class="sc-val">$187.5M</div></div>
+            <div class="stat-chip"><div class="sc-label" data-t="net_income">Net Income</div><div class="sc-val">$183.8M</div></div>
           </div>
-          <div class="explanation" id="a1q1-exp" data-t="a1_q1_exp">
-            Correct! When COGS grows faster than revenue, the gap (gross profit) shrinks as a percentage of revenue — so gross margin decreases. Example: Revenue $739.6M (+10%), COGS $328.1M (+15%), Gross Profit = $411.5M = 55.6% margin vs. original 57.6%.
+          <div class="chart-wrap"><canvas id="chart-pl"></canvas></div>
+          <!-- Q1 -->
+          <div class="q-step" id="qs-a1-0">
+            <div class="question-block">
+              <div class="question-text" data-t="a1_q1_text">Q1: If revenue grows 10% but COGS grows 15%, what happens to gross margin?</div>
+              <div class="options">
+                <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_a">a) Increases</button>
+                <button class="opt-btn" data-correct="true"  data-q="a1q1" data-t="a1_q1_b">b) Decreases</button>
+                <button class="opt-btn" data-correct="false" data-q="a1q1" data-t="a1_q1_c">c) Stays the same</button>
+              </div>
+              <div class="explanation" id="a1q1-exp" data-t="a1_q1_exp">Correct! When COGS grows faster than revenue, the gap (gross profit) shrinks as a percentage of revenue — so gross margin decreases. Example: Revenue $739.6M (+10%), COGS $328.1M (+15%), Gross Profit = $411.5M = 55.6% margin vs. original 57.6%.</div>
+              <button class="btn-skip" onclick="skipQuestion('a1',0)" data-t="btn_skip">Skip →</button>
+            </div>
           </div>
-        </div>
-        <!-- Q2 Reveal -->
-        <div class="question-block" style="margin-top:16px">
-          <div class="question-text" data-t="a1_q2_text">Q2: Nova's net margin is 27.3%. Is that high or low for a semiconductor equipment company?</div>
-          <button class="reveal-btn" onclick="toggleReveal('a1q2-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
-          <div class="reveal-answer" id="a1q2-rev" data-t="a1_q2_ans">Very high. Industry average is ~10–15%. Nova is exceptionally profitable thanks to its software-intensive metrology tools, high switching costs, and strong pricing power.</div>
+          <!-- Q2 -->
+          <div class="q-step" id="qs-a1-1">
+            <div class="question-block">
+              <div class="question-text" data-t="a1_q2_text">Q2: Nova's net margin is 27.3%. Is that high or low for a semiconductor equipment company?</div>
+              <button class="reveal-btn" onclick="toggleRevealQ('a1q2-rev',this,'a1',1)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+              <div class="reveal-answer" id="a1q2-rev" data-t="a1_q2_ans">Very high. Industry average is ~10–15%. Nova is exceptionally profitable thanks to its software-intensive metrology tools, high switching costs, and strong pricing power.</div>
+              <button class="btn-skip" onclick="skipQuestion('a1',1)" data-t="btn_skip">Skip →</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-nav">
-        <button class="btn-nav" disabled data-t="btn_prev">← Previous</button>
-        <button class="btn-nav" onclick="goStep('A',2)" data-t="btn_next">Next →</button>
+        <button class="btn-nav" onclick="switchSection('B')" data-t="btn_prev_a">← Section A</button>
+        <button class="btn-nav" id="next-a1" style="display:none" onclick="goStep('A',2)" data-t="btn_next">Next →</button>
       </div>
     </div>
 
@@ -230,25 +311,34 @@ body.rtl{direction:rtl}
       <div class="card">
         <div class="step-title" data-t="a2_title">Step 2: Cash Flow Statement</div>
         <div class="step-subtitle" data-t="a2_sub">Shows how cash actually moved — because profit ≠ cash. Three sections: Operating, Investing, Financing.</div>
-        <div class="stats-row">
-          <div class="stat-chip"><div class="sc-label" data-t="op_cf">Operating CF</div><div class="sc-val">$235.3M</div></div>
-          <div class="stat-chip"><div class="sc-label" data-t="capex_lbl">CAPEX</div><div class="sc-val">$17.2M</div></div>
-          <div class="stat-chip"><div class="sc-label" data-t="fcf_lbl">Free Cash Flow</div><div class="sc-val">$218.1M</div></div>
+        <p style="font-size:19px;font-weight:700;color:#0a1628;margin-bottom:20px;padding:14px;background:#f0f4f8;border-radius:8px" data-t="a2_intro">Did money actually come in and go out? Profit ≠ Cash.</p>
+        <div class="reveal-data-wrap" id="rd-a2">
+          <button class="btn-reveal-data" onclick="revealData('a2')" data-t="reveal_data_btn">Reveal the data →</button>
         </div>
-        <div class="chart-wrap-sm"><canvas id="chart-cf"></canvas></div>
-        <div class="question-block">
-          <div class="question-text" data-t="a2_q1_text">Q: Nova's Operating CF is $235.3M but Net Income is $183.8M. Why is CF higher?</div>
-          <div class="options" id="a2-q1-opts">
-            <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_a">a) Accounting error</button>
-            <button class="opt-btn" data-correct="true"  data-q="a2q1" data-t="a2_q1_b">b) Non-cash charges like depreciation are added back</button>
-            <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_c">c) They borrowed money</button>
+        <div class="data-content" id="dc-a2">
+          <div class="stats-row">
+            <div class="stat-chip"><div class="sc-label" data-t="op_cf">Operating CF</div><div class="sc-val">$235.3M</div></div>
+            <div class="stat-chip"><div class="sc-label" data-t="capex_lbl">CAPEX</div><div class="sc-val">$17.2M</div></div>
+            <div class="stat-chip"><div class="sc-label" data-t="fcf_lbl">Free Cash Flow</div><div class="sc-val">$218.1M</div></div>
           </div>
-          <div class="explanation" id="a2q1-exp" data-t="a2_q1_exp">Correct! Net income includes non-cash expenses (like depreciation ~$17.4M). When calculating cash flow, these are added back because no cash actually left. Also, changes in working capital affect cash flow. OCF = Net Income + D&A ± Working Capital changes.</div>
+          <div class="chart-wrap-sm"><canvas id="chart-cf"></canvas></div>
+          <div class="q-step" id="qs-a2-0">
+            <div class="question-block">
+              <div class="question-text" data-t="a2_q1_text">Q: Nova's Operating CF is $235.3M but Net Income is $183.8M. Why is CF higher?</div>
+              <div class="options">
+                <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_a">a) Accounting error</button>
+                <button class="opt-btn" data-correct="true"  data-q="a2q1" data-t="a2_q1_b">b) Non-cash charges like depreciation are added back</button>
+                <button class="opt-btn" data-correct="false" data-q="a2q1" data-t="a2_q1_c">c) They borrowed money</button>
+              </div>
+              <div class="explanation" id="a2q1-exp" data-t="a2_q1_exp">Correct! Net income includes non-cash expenses (like depreciation ~$17.4M). When calculating cash flow, these are added back because no cash actually left. OCF = Net Income + D&A ± Working Capital changes.</div>
+              <button class="btn-skip" onclick="skipQuestion('a2',0)" data-t="btn_skip">Skip →</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-nav">
         <button class="btn-nav" onclick="goStep('A',1)" data-t="btn_prev">← Previous</button>
-        <button class="btn-nav" onclick="goStep('A',3)" data-t="btn_next">Next →</button>
+        <button class="btn-nav" id="next-a2" style="display:none" onclick="goStep('A',3)" data-t="btn_next">Next →</button>
       </div>
     </div>
 
@@ -257,30 +347,39 @@ body.rtl{direction:rtl}
       <div class="card">
         <div class="step-title" data-t="a3_title">Step 3: Balance Sheet</div>
         <div class="step-subtitle" data-t="a3_sub">A snapshot of what the company OWNS (Assets) vs. what it OWES (Liabilities) + what belongs to shareholders (Equity).</div>
-        <div class="bs-grid">
-          <div class="bs-col">
-            <h4 data-t="bs_assets">ASSETS</h4>
-            <div class="bs-row"><span data-t="bs_current_assets">Current Assets</span><span class="teal">$900M</span></div>
-            <div class="bs-row"><span data-t="bs_other_assets">Other Assets (PP&E, Intangibles)</span><span class="teal">$500M</span></div>
-            <div class="bs-row total"><span data-t="bs_total_assets">Total Assets</span><span>$1,400M</span></div>
-          </div>
-          <div class="bs-col">
-            <h4 data-t="bs_le">LIABILITIES + EQUITY</h4>
-            <div class="bs-row"><span data-t="bs_debt">Total Debt</span><span class="teal">$350M</span></div>
-            <div class="bs-row"><span data-t="bs_other_liab">Other Liabilities</span><span class="teal">$350M</span></div>
-            <div class="bs-row"><span data-t="bs_equity">Shareholders' Equity</span><span class="teal">$700M</span></div>
-            <div class="bs-row total"><span data-t="bs_total_le">Total L+E</span><span>$1,400M</span></div>
-          </div>
+        <p style="font-size:19px;font-weight:700;color:#0a1628;margin-bottom:20px;padding:14px;background:#f0f4f8;border-radius:8px" data-t="a3_intro">What does the company own and owe right now?</p>
+        <div class="reveal-data-wrap" id="rd-a3">
+          <button class="btn-reveal-data" onclick="revealData('a3')" data-t="reveal_data_btn">Reveal the data →</button>
         </div>
-        <div class="question-block">
-          <div class="question-text" data-t="a3_q1_text">Q: The balance sheet always balances. What is the fundamental accounting equation?</div>
-          <button class="reveal-btn" onclick="toggleReveal('a3q1-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
-          <div class="reveal-answer" id="a3q1-rev" data-t="a3_q1_ans">Assets = Liabilities + Equity. Always. This is the bedrock of double-entry accounting. Every transaction affects at least two accounts and keeps this equation in balance. Nova: $1,400M = $700M + $700M ✓</div>
+        <div class="data-content" id="dc-a3">
+          <div class="bs-grid">
+            <div class="bs-col">
+              <h4 data-t="bs_assets">ASSETS</h4>
+              <div class="bs-row"><span data-t="bs_current_assets">Current Assets</span><span class="teal">$900M</span></div>
+              <div class="bs-row"><span data-t="bs_other_assets">Other Assets (PP&E, Intangibles)</span><span class="teal">$500M</span></div>
+              <div class="bs-row total"><span data-t="bs_total_assets">Total Assets</span><span>$1,400M</span></div>
+            </div>
+            <div class="bs-col">
+              <h4 data-t="bs_le">LIABILITIES + EQUITY</h4>
+              <div class="bs-row"><span data-t="bs_debt">Total Debt</span><span class="teal">$350M</span></div>
+              <div class="bs-row"><span data-t="bs_other_liab">Other Liabilities</span><span class="teal">$350M</span></div>
+              <div class="bs-row"><span data-t="bs_equity">Shareholders' Equity</span><span class="teal">$700M</span></div>
+              <div class="bs-row total"><span data-t="bs_total_le">Total L+E</span><span>$1,400M</span></div>
+            </div>
+          </div>
+          <div class="q-step" id="qs-a3-0">
+            <div class="question-block">
+              <div class="question-text" data-t="a3_q1_text">Q: The balance sheet always balances. What is the fundamental accounting equation?</div>
+              <button class="reveal-btn" onclick="toggleRevealQ('a3q1-rev',this,'a3',0)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+              <div class="reveal-answer" id="a3q1-rev" data-t="a3_q1_ans">Assets = Liabilities + Equity. Always. This is the bedrock of double-entry accounting. Every transaction affects at least two accounts and keeps this equation in balance. Nova: $1,400M = $700M + $700M ✓</div>
+              <button class="btn-skip" onclick="skipQuestion('a3',0)" data-t="btn_skip">Skip →</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-nav">
         <button class="btn-nav" onclick="goStep('A',2)" data-t="btn_prev">← Previous</button>
-        <button class="btn-nav" onclick="goStep('A',4)" data-t="btn_next">Next →</button>
+        <button class="btn-nav" id="next-a3" style="display:none" onclick="goStep('A',4)" data-t="btn_next">Next →</button>
       </div>
     </div>
 
@@ -288,7 +387,11 @@ body.rtl{direction:rtl}
     <div class="step-container" id="step-A4">
       <div class="card">
         <div class="step-title" data-t="a4_title">Step 4: How the 3 Reports Connect</div>
-        <div class="step-subtitle" data-t="a4_sub">The three statements are not independent — they flow into each other. Click each box to highlight the connections.</div>
+        <div class="step-subtitle" data-t="a4_sub">The three statements are not independent — they flow into each other. Click each box or arrow to highlight the connections.</div>
+        <div class="reveal-data-wrap" id="rd-a4">
+          <button class="btn-reveal-data" onclick="revealData('a4')" data-t="reveal_data_btn">Reveal the data →</button>
+        </div>
+        <div class="data-content" id="dc-a4">
         <svg id="flow-diagram" viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto">
           <!-- P&L Box -->
           <rect id="box-pl" x="20" y="60" width="180" height="100" rx="12" fill="#1e3a5f" class="flow-box" style="cursor:pointer" onclick="highlightFlow('pl')"/>
@@ -335,29 +438,39 @@ body.rtl{direction:rtl}
             <p data-t="conn3_desc">CAPEX (from investing activities) becomes a long-term asset on the Balance Sheet. Cash used for CAPEX reduces the cash balance.</p>
           </div>
         </div>
+        </div><!-- /data-content dc-a4 -->
       </div>
       <div class="step-nav">
         <button class="btn-nav" onclick="goStep('A',3)" data-t="btn_prev">← Previous</button>
-        <button class="btn-nav" onclick="switchSection('B')" data-t="btn_next_b">Next Section: B →</button>
+        <button class="btn-nav" id="next-a4" onclick="switchSection('C')" data-t="btn_next_c">Next Section: C →</button>
       </div>
     </div>
   </div>
 
   <!-- SECTION B -->
   <div class="section" id="section-B">
+    <div class="consultant-callout" data-t="callout_b">These are the terms you'll hear in every client meeting and deck. Knowing them cold is table stakes.</div>
     <div class="section-header">
       <h1 data-t="sec_b_title">Key Financial Concepts</h1>
       <p data-t="sec_b_sub">11 essential terms — with Nova's real numbers and "What If?" scenarios. Click ⓘ for a deeper definition.</p>
     </div>
-    <div class="concepts-grid" id="concepts-grid"></div>
+    <div class="concept-carousel">
+      <div class="concepts-grid" id="concepts-grid"></div>
+      <div class="concept-nav">
+        <button class="btn-nav" id="concept-prev" onclick="moveConcept(-1)" data-t="btn_prev">← Previous</button>
+        <span class="concept-counter" id="concept-counter">1 / 11</span>
+        <button class="btn-nav" id="concept-next" onclick="moveConcept(1)" data-t="btn_next">Next →</button>
+      </div>
+    </div>
     <div class="step-nav" style="margin-top:24px">
-      <button class="btn-nav" onclick="switchSection('A')" data-t="btn_prev_a">← Section A</button>
-      <button class="btn-nav" onclick="switchSection('C')" data-t="btn_next_c">Next Section: C →</button>
+      <button class="btn-nav" disabled data-t="btn_prev">← Previous</button>
+      <button class="btn-nav" onclick="switchSection('A')" data-t="btn_next">Next →</button>
     </div>
   </div>
 
   <!-- SECTION C -->
   <div class="section" id="section-C">
+    <div class="consultant-callout" data-t="callout_c">Ratios let you compare companies of different sizes. They answer 'is this company healthy?' in 10 seconds.</div>
     <div class="section-header">
       <h1 data-t="sec_c_title">Financial Ratios</h1>
       <p data-t="sec_c_sub">Ratios turn raw numbers into comparable insights. How does Nova stack up?</p>
@@ -367,16 +480,24 @@ body.rtl{direction:rtl}
     <div class="card">
       <h2 data-t="c1_title">Profitability Margins</h2>
       <p style="color:#64748b;margin-bottom:16px" data-t="c1_sub">Nova vs. sector averages (red lines). Nova consistently beats the sector.</p>
-      <div class="chart-wrap"><canvas id="chart-margins"></canvas></div>
-      <div class="question-block">
-        <div class="question-text" data-t="c1_q1_text">Q: Which margin ratio do investors focus on most when comparing companies?</div>
-        <div class="options" id="c1-q1-opts">
-          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_a">a) Gross Margin</button>
-          <button class="opt-btn" data-correct="true"  data-q="c1q1" data-t="c1_q1_b">b) EBITDA Margin</button>
-          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_c">c) Net Margin</button>
-          <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_d">d) All equally</button>
+      <div class="reveal-data-wrap" id="rd-c1">
+        <button class="btn-reveal-data" onclick="revealData('c1')" data-t="reveal_data_btn">Reveal the data →</button>
+      </div>
+      <div class="data-content" id="dc-c1">
+        <div class="chart-wrap"><canvas id="chart-margins"></canvas></div>
+        <div class="q-step" id="qs-c1-0">
+          <div class="question-block">
+            <div class="question-text" data-t="c1_q1_text">Q: Which margin ratio do investors focus on most when comparing companies?</div>
+            <div class="options">
+              <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_a">a) Gross Margin</button>
+              <button class="opt-btn" data-correct="true"  data-q="c1q1" data-t="c1_q1_b">b) EBITDA Margin</button>
+              <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_c">c) Net Margin</button>
+              <button class="opt-btn" data-correct="false" data-q="c1q1" data-t="c1_q1_d">d) All equally</button>
+            </div>
+            <div class="explanation" id="c1q1-exp" data-t="c1_q1_exp">EBITDA Margin is the most widely used for cross-company comparisons because it strips out non-cash charges (D&A) and the effects of financing structure (interest, taxes). This makes companies with different capital structures or tax situations comparable on an apples-to-apples basis.</div>
+            <button class="btn-skip" onclick="skipQuestion('c1',0)" data-t="btn_skip">Skip →</button>
+          </div>
         </div>
-        <div class="explanation" id="c1q1-exp" data-t="c1_q1_exp">EBITDA Margin is the most widely used for cross-company comparisons because it strips out non-cash charges (D&A) and the effects of financing structure (interest, taxes). This makes companies with different capital structures or tax situations comparable on an apples-to-apples basis.</div>
       </div>
     </div>
 
@@ -384,50 +505,43 @@ body.rtl{direction:rtl}
     <div class="card">
       <h2 data-t="c2_title">Cash Conversion Cycle (CCC)</h2>
       <p style="color:#64748b;margin-bottom:20px" data-t="c2_sub">How many days does it take for Nova to convert investments in inventory back into cash?</p>
-      <div class="cycle-diagram">
-        <div class="cycle-box">
-          <h4 data-t="ccc_dso">DSO</h4>
-          <div class="days">65</div>
-          <div class="label" data-t="ccc_days">days</div>
-        </div>
-        <div class="cycle-arrow">→</div>
-        <div class="cycle-box">
-          <h4 data-t="ccc_inv">Inventory Days</h4>
-          <div class="days">102</div>
-          <div class="label" data-t="ccc_days">days</div>
-        </div>
-        <div class="cycle-arrow">→</div>
-        <div class="cycle-box">
-          <h4 data-t="ccc_dpo">DPO</h4>
-          <div class="days">77</div>
-          <div class="label" data-t="ccc_days">days</div>
-        </div>
-        <div class="cycle-arrow">→</div>
-        <div class="cycle-box" style="background:#00c4a7">
-          <h4 style="color:#0a1628" data-t="ccc_total">CCC</h4>
-          <div class="days" style="color:#0a1628">90</div>
-          <div class="label" style="color:#0a1628" data-t="ccc_days">days</div>
-        </div>
+      <div class="reveal-data-wrap" id="rd-c2">
+        <button class="btn-reveal-data" onclick="revealData('c2')" data-t="reveal_data_btn">Reveal the data →</button>
       </div>
-      <p style="font-size:14px;color:#64748b;text-align:center" data-t="ccc_formula">CCC = DSO (65) + Inventory Days (102) − DPO (77) = 90 days</p>
-      <div style="margin-top:12px;background:#f8fafc;border-radius:8px;padding:14px;font-size:14px;color:#475569">
-        <strong data-t="ccc_note_title">Note on estimates: </strong><span data-t="ccc_note">AR ≈ $120M, Inventory ≈ $80M, AP ≈ $60M are estimated from public filings.</span>
-      </div>
-      <div class="question-block" style="margin-top:16px">
-        <div class="question-text" data-t="c2_q1_text">What If: If DSO jumps from 65 to 90 days, what happens to Nova's cash position?</div>
-        <button class="reveal-btn" onclick="toggleReveal('c2q1-rev',this)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
-        <div class="reveal-answer" id="c2q1-rev" data-t="c2_q1_ans">Nova would need ~$46M more cash tied up in receivables: [(90−65)/365] × $672.4M = $46.1M. That's $46M less cash available for share buybacks, R&D investment, or acquisitions — a real cost even though it doesn't show up on the P&L.</div>
+      <div class="data-content" id="dc-c2">
+        <div class="cycle-diagram">
+          <div class="cycle-box"><h4 data-t="ccc_dso">DSO</h4><div class="days">65</div><div class="label" data-t="ccc_days">days</div></div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-box"><h4 data-t="ccc_inv">Inventory Days</h4><div class="days">102</div><div class="label" data-t="ccc_days">days</div></div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-box"><h4 data-t="ccc_dpo">DPO</h4><div class="days">77</div><div class="label" data-t="ccc_days">days</div></div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-box" style="background:#00c4a7"><h4 style="color:#0a1628" data-t="ccc_total">CCC</h4><div class="days" style="color:#0a1628">90</div><div class="label" style="color:#0a1628" data-t="ccc_days">days</div></div>
+        </div>
+        <p style="font-size:14px;color:#64748b;text-align:center" data-t="ccc_formula">CCC = DSO (65) + Inventory Days (102) − DPO (77) = 90 days</p>
+        <div style="margin-top:12px;background:#f8fafc;border-radius:8px;padding:14px;font-size:14px;color:#475569">
+          <strong data-t="ccc_note_title">Note on estimates: </strong><span data-t="ccc_note">AR ≈ $120M, Inventory ≈ $80M, AP ≈ $60M are estimated from public filings.</span>
+        </div>
+        <div class="q-step" id="qs-c2-0">
+          <div class="question-block" style="margin-top:16px">
+            <div class="question-text" data-t="c2_q1_text">What If: If DSO jumps from 65 to 90 days, what happens to Nova's cash position?</div>
+            <button class="reveal-btn" onclick="toggleRevealQ('c2q1-rev',this,'c2',0)" data-t-reveal="reveal_btn" data-t-hide="hide_btn">Reveal Answer</button>
+            <div class="reveal-answer" id="c2q1-rev" data-t="c2_q1_ans">Nova would need ~$46M more cash tied up in receivables: [(90−65)/365] × $672.4M = $46.1M. That's $46M less cash available for share buybacks, R&D investment, or acquisitions — a real cost even though it doesn't show up on the P&L.</div>
+            <button class="btn-skip" onclick="skipQuestion('c2',0)" data-t="btn_skip">Skip →</button>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="step-nav">
-      <button class="btn-nav" onclick="switchSection('B')" data-t="btn_prev_b">← Section B</button>
+      <button class="btn-nav" onclick="switchSection('A')" data-t="btn_prev_b">← Section B</button>
       <button class="btn-nav" onclick="switchSection('D')" data-t="btn_next_d">Next Section: D →</button>
     </div>
   </div>
 
   <!-- SECTION D -->
   <div class="section" id="section-D">
+    <div class="consultant-callout" data-t="callout_d">Multiples are how deals get priced. Understanding them means you can follow — and contribute to — any valuation conversation.</div>
     <div class="section-header">
       <h1 data-t="sec_d_title">Valuation Multiples</h1>
       <p data-t="sec_d_sub">How the market prices Nova relative to its financials. Each multiple tells a different story.</p>
@@ -439,10 +553,10 @@ body.rtl{direction:rtl}
     <div class="slider-card">
       <h3 data-t="slider_title">Live Stress Test: EBITDA Sensitivity</h3>
       <p style="color:#aab;margin-bottom:20px;font-size:15px" data-t="slider_sub">Drag to simulate an EBITDA decline and see how valuation metrics update in real time.</p>
-      <label style="color:#fff;font-weight:700;font-size:16px" data-t="slider_label">EBITDA Change: <span id="slider-pct">0%</span></label>
-      <input type="range" id="ebitda-slider" min="-30" max="0" value="0" oninput="updateSlider(this.value)">
+      <label style="color:#fff;font-weight:700;font-size:16px"><span data-t="slider_label">EBITDA Change: </span><span id="slider-pct">0%</span></label>
+      <input type="range" id="ebitda-slider" min="-30" max="30" value="0" oninput="updateSlider(parseInt(this.value))">
       <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-top:4px">
-        <span>−30%</span><span>0%</span>
+        <span>−30%</span><span>0%</span><span>+30%</span>
       </div>
       <div class="slider-stats">
         <div class="slider-stat"><div class="ss-label" data-t="ss_ebitda">EBITDA</div><div class="ss-val" id="ss-ebitda">$204.9M</div></div>
@@ -475,8 +589,8 @@ body.rtl{direction:rtl}
 const translations = {
   en: {
     app_title: "Learning Accounting",
-    nav_a: "A — The 3 Reports",
-    nav_b: "B — Key Concepts",
+    nav_a: "A — Key Concepts",
+    nav_b: "B — The 3 Reports",
     nav_c: "C — Ratios",
     nav_d: "D — Multipliers",
     lang_toggle: "עברית",
@@ -580,7 +694,7 @@ const translations = {
     d_disc_q: "Nova trades at ~20.7x EBITDA. A direct competitor trades at 8x EBITDA. What are 3 possible explanations?",
     d_disc_ans: "1. Nova has higher growth expectations — analysts forecast faster revenue growth.<br>2. Nova has a stronger competitive moat — its process control technology is mission-critical with high switching costs.<br>3. Nova operates in a more profitable niche (metrology/process control) with software-heavy revenue.<br>4. Scarcity premium — few comparable pure-play companies exist, so investors pay up for exposure.",
     // Chart labels
-    chart_pl_labels: ["Revenue","Cost of Revenue","Gross Profit","OpEx","EBIT","Net Income"],
+    chart_pl_labels: ["Revenue","− Cost of Revenue","= Gross Profit","− OpEx","= EBIT","+ D&A","= EBITDA","− Tax/Int","= Net Income"],
     chart_cf_labels: ["Operating CF","CAPEX","Free Cash Flow"],
     chart_margins_labels: ["Gross Margin","EBIT Margin","EBITDA Margin","Net Margin"],
     // Glossary tooltips
@@ -674,11 +788,36 @@ const translations = {
     mult_pb_name: "P/B Ratio",
     mult_pb_formula: "$4,500M / $700M",
     mult_pb_range: "Sector: 3–8x",
+    mult_what_means: "What does this mean?",
+    mult_ev_ebitda_explain: "Compares total company value to operating profit. Most used in M&A and consulting. High = expensive or high growth expected.",
+    mult_pe_explain: "Price per share ÷ earnings per share. How much investors pay for $1 of profit. High = growth premium; Low = value or risk.",
+    mult_ev_rev_explain: "Used when EBITDA is negative or misleading. Common for high-growth or SaaS companies.",
+    mult_pb_explain: "Market price ÷ book value of equity. High P/B (like Nova's 6.4x) signals strong intangible value — IP, software, brand.",
+    welcome_title: "Nova Ltd — Financial Literacy Training",
+    welcome_sub: "In the next 60 minutes, you'll learn to read the 3 core financial reports, understand the key metrics consultants use every day, and see how Nova Ltd — a real Israeli semiconductor company — scores on all of them.",
+    pill_a: "~15 min",
+    pill_b: "~15 min",
+    pill_c: "~10 min",
+    pill_d: "~10 min",
+    welcome_btn: "Let's Start →",
+    callout_a: "As a consultant, you'll be handed financial reports on Day 1. Knowing how to read them immediately sets you apart.",
+    callout_b: "These are the terms you'll hear in every client meeting and deck. Knowing them cold is table stakes.",
+    callout_c: "Ratios let you compare companies of different sizes. They answer 'is this company healthy?' in 10 seconds.",
+    callout_d: "Multiples are how deals get priced. Understanding them means you can follow — and contribute to — any valuation conversation.",
+    sub_a1: "P&L Statement",
+    sub_a2: "Cash Flow",
+    sub_a3: "Balance Sheet",
+    sub_a4: "How They Connect",
+    a1_intro: "What did the company earn and spend? Did it make a profit?",
+    a2_intro: "Did money actually come in and go out? Profit ≠ Cash.",
+    a3_intro: "What does the company own and owe right now?",
+    reveal_data_btn: "Reveal the data →",
+    btn_skip: "Skip →",
   },
   he: {
     app_title: "לימוד חשבונאות",
-    nav_a: "א — 3 הדוחות",
-    nav_b: "ב — מושגי מפתח",
+    nav_a: "א — מושגי מפתח",
+    nav_b: "ב — 3 הדוחות",
     nav_c: "ג — יחסים",
     nav_d: "ד — מכפילים",
     lang_toggle: "English",
@@ -781,7 +920,7 @@ const translations = {
     d_disc_title: "דיון פתוח",
     d_disc_q: "נובה נסחרת ב-~20.7x EBITDA. מתחרה ישיר נסחר ב-8x EBITDA. מה 3 הסברים אפשריים?",
     d_disc_ans: "1. לנובה ציפיות צמיחה גבוהות יותר — אנליסטים צופים צמיחת הכנסות מהירה יותר.<br>2. לנובה חפיר תחרותי חזק יותר — טכנולוגיית בקרת תהליכים שלה קריטית למשימה עם עלויות מיתוג גבוהות.<br>3. נובה פועלת בנישה רווחית יותר (מדידה/בקרת תהליכים) עם הכנסות עשירות בתוכנה.<br>4. פרמיית נדירות — קיימות מעט חברות comparable טהורות, לכן משקיעים משלמים פרמיה.",
-    chart_pl_labels: ["הכנסות","עלות מכר","רווח גולמי","הוצאות תפעול","EBIT","רווח נקי"],
+    chart_pl_labels: ["הכנסות","− עלות מכר","= רווח גולמי","− הוצ' תפעול","= EBIT","+ פחת","= EBITDA","− מס/ריבית","= רווח נקי"],
     chart_cf_labels: ["תזרים תפעולי","CAPEX","תזרים חופשי"],
     chart_margins_labels: ["שולי רווח גולמי","שולי EBIT","שולי EBITDA","שולי רווח נקי"],
     tip_revenue: "הכנסות הן סך הכסף שהרוויחה החברה ממכירת מוצרים/שירותים לפני ניכוי עלויות כלשהן. נקראות גם 'שורה עליונה' או 'מחזור'.",
@@ -872,6 +1011,31 @@ const translations = {
     mult_pb_name: "מכפיל הון (P/B)",
     mult_pb_formula: "$4,500M / $700M",
     mult_pb_range: "מגזר: 3–8x",
+    mult_what_means: "מה זה אומר?",
+    mult_ev_ebitda_explain: "משווה את שווי החברה הכולל לרווח התפעולי. הנפוץ ביותר בעסקאות M&A ובייעוץ. גבוה = יקר או ציפיות צמיחה גבוהות.",
+    mult_pe_explain: "מחיר מניה ÷ רווח למניה. כמה משקיעים משלמים על כל $1 רווח. גבוה = פרמיית צמיחה; נמוך = ערך או סיכון.",
+    mult_ev_rev_explain: "משמש כאשר EBITDA שלילי או מטעה. נפוץ בחברות צמיחה גבוהה או SaaS.",
+    mult_pb_explain: "מחיר שוק ÷ שווי ספרים של הון עצמי. P/B גבוה (כמו 6.4x של נובה) מסמן ערך בלתי מוחשי חזק — קניין רוחני, תוכנה, מותג.",
+    welcome_title: "נובה בע\"מ — הכשרה לאוריינות פיננסית",
+    welcome_sub: "ב-60 הדקות הקרובות תלמדו לקרוא את 3 הדוחות הפיננסיים המרכזיים, להבין את המדדים שיועצים משתמשים בהם יום-יום, ולראות איך נובה — חברת מוליכים למחצה ישראלית אמיתית — מדורגת בכולם.",
+    pill_a: "~15 דקות",
+    pill_b: "~15 דקות",
+    pill_c: "~10 דקות",
+    pill_d: "~10 דקות",
+    welcome_btn: "בואו נתחיל →",
+    callout_a: "כיועץ, תקבלו דוחות פיננסיים ביום הראשון. היכולת לקרוא אותם מיידית מבדילה אתכם.",
+    callout_b: "אלה המונחים שתשמעו בכל פגישת לקוח ומצגת. להכיר אותם על בוריים זה מינימום הנדרש.",
+    callout_c: "יחסים מאפשרים להשוות חברות בגדלים שונים. הם עונים על 'האם החברה בריאה?' תוך 10 שניות.",
+    callout_d: "מכפילים הם הדרך שבה עסקאות מתומחרות. הבנתם מאפשרת לכם לעקוב אחרי — ולתרום ל — כל שיחת הערכת שווי.",
+    sub_a1: "דוח רווח והפסד",
+    sub_a2: "תזרים מזומנים",
+    sub_a3: "מאזן",
+    sub_a4: "הקשרים בין הדוחות",
+    a1_intro: "מה הרוויחה ומה הוציאה החברה? האם היא הרוויחה?",
+    a2_intro: "האם כסף אמיתי נכנס ויצא? רווח ≠ מזומן.",
+    a3_intro: "מה החברה מחזיקה וחייבת כרגע?",
+    reveal_data_btn: "גלה את הנתונים →",
+    btn_skip: "דלג →",
   }
 };
 
@@ -905,27 +1069,59 @@ function applyTranslations() {
   else document.body.classList.remove('rtl');
 }
 
+// ===================== WELCOME =====================
+function startDashboard() {
+  document.getElementById('welcome-screen').style.display = 'none';
+  document.getElementById('progress-bar').classList.add('visible');
+  document.querySelectorAll('.section').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+  const sB = document.getElementById('section-B');
+  if (sB) { sB.classList.add('active'); sB.style.display = 'block'; }
+  document.getElementById('sub-progress').classList.remove('visible');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-section') === 'B');
+  });
+  currentSection = 'B';
+  currentStepA = 1;
+  updateProgress();
+  updateSubProgress();
+  buildConceptCards();
+  currentConceptIdx = 0;
+  showConcept(0);
+  window.scrollTo(0, 0);
+}
+
 // ===================== NAV =====================
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+    document.getElementById('welcome-screen').style.display = 'none';
+    document.getElementById('progress-bar').classList.add('visible');
     switchSection(btn.getAttribute('data-section'));
   });
 });
 
 function switchSection(sec) {
   currentSection = sec;
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('section-' + sec).classList.add('active');
+  document.querySelectorAll('.section').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+  const target = document.getElementById('section-' + sec);
+  if (target) { target.classList.add('active'); target.style.display = 'block'; }
   document.querySelectorAll('.tab-btn').forEach(b => {
     b.classList.toggle('active', b.getAttribute('data-section') === sec);
   });
+  // Sub-progress strip only for Section A
+  const subProg = document.getElementById('sub-progress');
+  subProg.classList.toggle('visible', sec === 'A');
   updateProgress();
-  if (sec === 'C') {
-    setTimeout(() => { initChartMargins(); }, 100);
-  }
-  if (sec === 'B') buildConceptCards();
+  updateSubProgress();
+  if (sec === 'C') { /* chart init deferred to reveal click */ }
+  if (sec === 'B') { buildConceptCards(); currentConceptIdx = 0; showConcept(0); }
   if (sec === 'D') buildMultCards();
   window.scrollTo(0, 0);
+}
+
+function updateSubProgress() {
+  document.querySelectorAll('.sub-step-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i + 1 === currentStepA);
+  });
 }
 
 // ===================== STEP NAV (Section A) =====================
@@ -936,11 +1132,31 @@ function goStep(section, stepNum) {
     if (el) el.classList.add('active');
     currentStepA = stepNum;
     updateProgress();
-    if (stepNum === 1) { setTimeout(() => initChartPL(), 100); }
-    if (stepNum === 2) { setTimeout(() => initChartCF(), 100); }
-    if (stepNum === 4) { setTimeout(() => animateFlowArrows(), 300); }
+    updateSubProgress();
+    // Reset reveal state for this step
+    resetStepReveal(stepNum);
     window.scrollTo(0, 0);
   }
+}
+
+function resetStepReveal(stepNum) {
+  const stepId = 'a' + stepNum;
+  // Reset reveal-data button
+  const rd = document.getElementById('rd-' + stepId);
+  if (rd) rd.style.display = '';
+  // Hide data content
+  const dc = document.getElementById('dc-' + stepId);
+  if (dc) dc.classList.remove('shown');
+  // Hide all q-steps
+  document.querySelectorAll('[id^="qs-' + stepId + '-"]').forEach(q => q.classList.remove('active'));
+  // Hide Next button
+  const nextBtn = document.getElementById('next-' + stepId);
+  if (nextBtn && stepNum < 4) nextBtn.style.display = 'none';
+  // Reset q-state
+  delete stepQState[stepId];
+  // Destroy chart if re-entering (will be re-init on reveal)
+  if (stepNum === 1 && charts['pl']) { charts['pl'].destroy(); delete charts['pl']; }
+  if (stepNum === 2 && charts['cf']) { charts['cf'].destroy(); delete charts['cf']; }
 }
 
 // ===================== PROGRESS =====================
@@ -949,6 +1165,7 @@ const sectionLabels = { A: 'A', B: 'B', C: 'C', D: 'D' };
 
 function updateProgress() {
   const container = document.getElementById('progress-steps');
+  if (!container) return;
   container.innerHTML = '';
   const steps = sectionSteps[currentSection] || 1;
   const currentStep = currentSection === 'A' ? currentStepA : 1;
@@ -966,24 +1183,92 @@ function updateProgress() {
   }
 }
 
+// ===================== PROGRESSIVE REVEAL =====================
+// stepQuestions maps stepId → total question count
+const stepQuestions = { a1: 2, a2: 1, a3: 1, a4: 0, c1: 1, c2: 1 };
+// track which q-step is active per step
+const stepQState = {};
+
+function revealData(stepId) {
+  const rdWrap = document.getElementById('rd-' + stepId);
+  const dc = document.getElementById('dc-' + stepId);
+  if (rdWrap) rdWrap.style.display = 'none';
+  if (dc) dc.classList.add('shown');
+  // init charts when data revealed
+  if (stepId === 'a1') setTimeout(() => initChartPL(), 100);
+  if (stepId === 'a2') setTimeout(() => initChartCF(), 100);
+  if (stepId === 'a4') setTimeout(() => animateFlowArrows(), 300);
+  if (stepId === 'c1') setTimeout(() => initChartMargins(), 100);
+  // start first question after short delay
+  const total = stepQuestions[stepId] || 0;
+  if (total > 0) {
+    stepQState[stepId] = 0;
+    setTimeout(() => showQuestion(stepId, 0), 500);
+  } else {
+    // no questions — show Next immediately
+    showNextBtn(stepId);
+  }
+}
+
+function showQuestion(stepId, idx) {
+  const qs = document.getElementById('qs-' + stepId + '-' + idx);
+  if (qs) qs.classList.add('active');
+}
+
+function advanceQuestion(stepId) {
+  const current = stepQState[stepId] || 0;
+  const next = current + 1;
+  const total = stepQuestions[stepId] || 0;
+  if (next < total) {
+    stepQState[stepId] = next;
+    setTimeout(() => showQuestion(stepId, next), 400);
+  } else {
+    showNextBtn(stepId);
+  }
+}
+
+function showNextBtn(stepId) {
+  const btn = document.getElementById('next-' + stepId);
+  if (btn) { btn.style.display = ''; btn.style.animation = 'fadeIn 0.4s ease'; }
+}
+
+function skipQuestion(stepId, idx) {
+  advanceQuestion(stepId);
+}
+
+// Reveal-type questions that need to advance after reveal
+function toggleRevealQ(id, btn, stepId, idx) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const showing = el.classList.toggle('show');
+  btn.setAttribute('data-revealed', showing ? 'true' : 'false');
+  btn.textContent = showing ? t('hide_btn') : t('reveal_btn');
+  if (showing) {
+    // auto-advance after a moment so they can read
+    setTimeout(() => advanceQuestion(stepId), 800);
+  }
+}
+
 // ===================== QUESTIONS =====================
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('opt-btn') && !e.target.disabled) {
     const q = e.target.getAttribute('data-q');
     const isCorrect = e.target.getAttribute('data-correct') === 'true';
-    // Disable all options in this group
-    document.querySelectorAll('[data-q="' + q + '"]').forEach(btn => {
-      btn.disabled = true;
-    });
+    document.querySelectorAll('[data-q="' + q + '"]').forEach(btn => { btn.disabled = true; });
     e.target.classList.add(isCorrect ? 'correct' : 'wrong');
     if (!isCorrect) {
-      // Highlight correct
-      document.querySelectorAll('[data-q="' + q + '"][data-correct="true"]').forEach(btn => {
-        btn.classList.add('correct');
-      });
+      document.querySelectorAll('[data-q="' + q + '"][data-correct="true"]').forEach(btn => btn.classList.add('correct'));
     }
     const exp = document.getElementById(q + '-exp');
     if (exp) exp.classList.add('show');
+    // Find which stepId this question belongs to and advance
+    const qsParent = e.target.closest('[id^="qs-"]');
+    if (qsParent) {
+      const parts = qsParent.id.split('-'); // qs-a1-0
+      const stepId = parts[1];
+      const qIdx = parseInt(parts[2]);
+      setTimeout(() => advanceQuestion(stepId), 1200);
+    }
   }
 });
 
@@ -1000,25 +1285,32 @@ function initChartPL() {
   const ctx = document.getElementById('chart-pl');
   if (!ctx) return;
   if (charts['pl']) { charts['pl'].destroy(); }
-  const labels = t('chart_pl_labels');
-  const data = [
-    [0, 672.4],
-    [387.1, 672.4],
-    [0, 387.1],
-    [187.5, 387.1],
-    [0, 187.5],
-    [0, 183.8]
+  // Full 9-bar waterfall
+  const wfLabels = t('chart_pl_labels');
+  // [start, end] for each bar
+  const wfData = [
+    [0, 672.4],      // Revenue
+    [387.1, 672.4],  // Cost of Revenue (subtracted)
+    [0, 387.1],      // Gross Profit (total)
+    [187.5, 387.1],  // OpEx (subtracted)
+    [0, 187.5],      // EBIT (total)
+    [187.5, 204.9],  // D&A add-back (positive)
+    [0, 204.9],      // EBITDA (total)
+    [183.8, 204.9],  // Tax/Interest/other (subtracted)
+    [0, 183.8],      // Net Income (total)
   ];
-  const colors = ['#00c4a7','#ef4444','#22c55e','#ef4444','#3b82f6','#22c55e'];
+  const wfColors = ['#00c4a7','#ef4444','#22c55e','#ef4444','#3b82f6','#94a3b8','#00c4a7','#ef4444','#16a34a'];
+  const wfValues = [672.4, 285.3, 387.1, 199.5, 187.5, 17.4, 204.9, 21.1, 183.8];
   charts['pl'] = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels,
+      labels: wfLabels,
       datasets: [{
         label: '$M',
-        data: data,
-        backgroundColor: colors,
-        borderRadius: 6,
+        data: wfData,
+        backgroundColor: wfColors,
+        borderRadius: 5,
+        borderSkipped: false,
       }]
     },
     options: {
@@ -1028,14 +1320,14 @@ function initChartPL() {
         tooltip: {
           callbacks: {
             label: (ctx) => {
-              const v = ctx.raw;
-              return '$' + (v[1] - v[0]).toFixed(1) + 'M';
+              const v = wfValues[ctx.dataIndex];
+              return '$' + v.toFixed(1) + 'M';
             }
           }
         }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } },
+        x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 12, weight: '600' }, maxRotation: 30 } },
         y: {
           min: 0, max: 750,
           ticks: { callback: v => '$' + v + 'M', color: '#475569', font: { size: 12 } },
@@ -1188,13 +1480,14 @@ const conceptDefs = [
   { key: 'mc', tipKey: 'tip_market_cap' },
 ];
 
-let cardsBuilt = false;
+let currentConceptIdx = 0;
 function buildConceptCards() {
   const grid = document.getElementById('concepts-grid');
   grid.innerHTML = '';
   conceptDefs.forEach((def, i) => {
     const card = document.createElement('div');
     card.className = 'concept-card';
+    card.style.display = 'none';
     const nameKey = 'c_' + def.key + '_name';
     const defKey = 'c_' + def.key + '_def';
     const numKey = 'c_' + def.key + '_num';
@@ -1216,6 +1509,39 @@ function buildConceptCards() {
     `;
     grid.appendChild(card);
   });
+  showConcept(currentConceptIdx);
+}
+
+function showConcept(idx) {
+  const grid = document.getElementById('concepts-grid');
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.concept-card');
+  if (cards.length === 0) return;
+  cards.forEach((c, i) => {
+    c.style.display = 'none';
+    c.style.opacity = '0';
+  });
+  if (cards[idx]) {
+    cards[idx].style.display = 'block';
+    // Force reflow then fade in
+    requestAnimationFrame(() => {
+      cards[idx].style.transition = 'opacity 0.3s ease';
+      cards[idx].style.opacity = '1';
+    });
+  }
+  const counter = document.getElementById('concept-counter');
+  if (counter) counter.textContent = (idx + 1) + ' / ' + conceptDefs.length;
+  const prevBtn = document.getElementById('concept-prev');
+  const nextBtn = document.getElementById('concept-next');
+  if (prevBtn) prevBtn.disabled = idx === 0;
+  if (nextBtn) nextBtn.disabled = idx === conceptDefs.length - 1;
+}
+
+function moveConcept(dir) {
+  const newIdx = currentConceptIdx + dir;
+  if (newIdx < 0 || newIdx >= conceptDefs.length) return;
+  currentConceptIdx = newIdx;
+  showConcept(currentConceptIdx);
 }
 
 function toggleTip(id) {
@@ -1237,10 +1563,13 @@ function buildMultCards() {
     // Rebuild for translation
     grid.innerHTML = '';
   }
-  multData.forEach(m => {
+  multData.forEach((m, i) => {
     const card = document.createElement('div');
     card.className = 'mult-card';
+    const expId = 'mult-exp-' + i;
     card.innerHTML = `
+      <button class="mult-explain-toggle" onclick="toggleMultExplain('${expId}',this)">▶ ${t('mult_what_means')}</button>
+      <div class="mult-explain-body" id="${expId}">${t('mult_' + m.key + '_explain')}</div>
       <div class="mult-name">${t('mult_' + m.key + '_name')}</div>
       <div class="mult-val" style="color:${m.color}">${m.val}</div>
       <div class="mult-formula">${t('mult_' + m.key + '_formula')}</div>
@@ -1255,34 +1584,40 @@ function buildMultCards() {
   });
 }
 
+function toggleMultExplain(id, btn) {
+  const el = document.getElementById(id);
+  const open = el.classList.toggle('show');
+  btn.textContent = (open ? '▼ ' : '▶ ') + t('mult_what_means');
+}
+
 // ===================== SLIDER =====================
-function updateSlider(val) {
-  const pct = parseInt(val);
-  document.getElementById('slider-pct').textContent = pct + '%';
-  const baseEBITDA = 204.9;
-  const baseEV = 4250;
-  const baseMultiple = 20.7;
-  const basePrice = 140;
-  const shares = 29;
-  const debt = 350;
-  const cash = 600;
+function updateSlider(pct) {
+  const baseEBITDA = 204.9, baseMultiple = 20.7, debt = 350, cash = 600, shares = 29;
+  const sign = pct >= 0 ? '+' : '';
+  document.getElementById('slider-pct').textContent = sign + pct + '%';
   const newEBITDA = baseEBITDA * (1 + pct / 100);
   const impliedEV = newEBITDA * baseMultiple;
-  const newMultiple = impliedEV / newEBITDA;
   const impliedMC = impliedEV - debt + cash;
   const impliedPrice = impliedMC / shares;
+  const isPositive = pct > 0, isNegative = pct < 0;
+  const stats = document.querySelectorAll('.slider-stat');
+  stats.forEach(s => { s.classList.toggle('positive', isPositive); s.classList.toggle('negative', isNegative); });
   document.getElementById('ss-ebitda').textContent = '$' + newEBITDA.toFixed(1) + 'M';
-  document.getElementById('ss-ev-ebitda').textContent = newMultiple.toFixed(1) + 'x';
+  document.getElementById('ss-ev-ebitda').textContent = baseMultiple.toFixed(1) + 'x';
   document.getElementById('ss-impl-ev').textContent = '$' + Math.round(impliedEV) + 'M';
   document.getElementById('ss-impl-price').textContent = '~$' + Math.round(impliedPrice);
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const sl = document.getElementById('ebitda-slider');
+  if (sl) sl.addEventListener('input', e => updateSlider(parseInt(e.target.value)));
+});
 
 // ===================== LANGUAGE TOGGLE =====================
 document.getElementById('lang-toggle').addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'he' : 'en';
   applyTranslations();
   // Rebuild dynamic sections
-  if (currentSection === 'B') buildConceptCards();
+  if (currentSection === 'B') { buildConceptCards(); showConcept(currentConceptIdx); }
   if (currentSection === 'D') buildMultCards();
   // Rebuild charts
   if (currentSection === 'A') {
@@ -1294,9 +1629,10 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
 
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+  document.getElementById('sub-progress').classList.remove('visible');
   updateProgress();
   applyTranslations();
-  setTimeout(() => initChartPL(), 200);
 });
 </script>
 </body>
