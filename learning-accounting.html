@@ -204,10 +204,22 @@ body.rtl{direction:rtl}
 /* ===== KEY CONCEPTS (section-B) ===== */
 .kc-progress-bar{height:6px;background:#1e3a5f;border-radius:3px;margin-bottom:20px;overflow:hidden}
 .kc-progress-fill{height:100%;background:linear-gradient(90deg,#00c4a7,#22c55e);border-radius:3px;transition:width 0.4s ease;width:7.14%}
-.kc-split{display:flex;gap:24px;align-items:flex-start}
-.kc-card-panel{flex:0 0 55%;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;min-height:480px;padding-bottom:100px}
-.kc-chart-panel{flex:0 0 calc(45% - 24px);background:#0a1628;border-radius:16px;padding:16px;position:sticky;top:140px;min-height:480px;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
-.kc-chart-title{color:#00c4a7;font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;text-align:center}
+.kc-split{display:flex;gap:16px;align-items:flex-start}
+.kc-doc-panel{flex:0 0 22%;background:#0d1b2a;border-radius:12px;border:1px solid #2a3a4a;min-height:400px;padding:16px;position:sticky;top:140px}
+.kc-doc-type{font-size:20px;font-weight:700;color:#00c4a7;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.kc-doc-table{width:100%;border-collapse:collapse}
+.kc-doc-row td{font-size:14px;color:#6b8fa8;padding:6px 10px;line-height:1.3}
+.kc-doc-row.kc-doc-sep td{border-top:1px solid #2a3a4a;padding-top:8px}
+.kc-doc-row.kc-doc-hl td{background:#00c9a7;color:#fff;font-weight:700;font-size:15px;border-radius:4px}
+.kc-doc-bs{display:flex;gap:8px;margin-top:4px}
+.kc-doc-bs-col{flex:1}
+.kc-doc-bs-header{font-size:13px;font-weight:700;color:#00c4a7;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;padding:0 4px}
+.kc-doc-bs-row{font-size:14px;color:#6b8fa8;padding:5px 4px;line-height:1.3}
+.kc-doc-bs-row.kc-doc-sep{border-top:1px solid #2a3a4a;padding-top:7px;margin-top:2px}
+.kc-doc-bs-row.kc-doc-hl{background:#00c9a7;color:#fff;font-weight:700;font-size:15px;border-radius:4px}
+.kc-card-panel{flex:0 0 43%;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;min-height:480px;padding-bottom:100px}
+.kc-chart-panel{flex:0 0 calc(35% - 32px);background:#0a1628;border-radius:16px;padding:16px;position:sticky;top:140px;min-height:480px;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
+.kc-chart-title{color:#00c4a7;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;text-align:center}
 .kc-chart-label{color:#aab;font-size:12px;text-align:center;margin-top:8px;min-height:18px;transition:opacity 0.3s}
 .kc-card-term{font-size:28px;font-weight:900;color:#00c4a7;margin-bottom:16px}
 .kc-card-plain{font-size:20px;line-height:1.7;color:#1a2744;margin-bottom:18px}
@@ -215,9 +227,15 @@ body.rtl{direction:rtl}
 .kc-card-profdef{border:1px solid #d1d5db;border-radius:10px;padding:14px 16px;background:#f8fafc;flex:1;min-width:0}
 .kc-card-profdef-label{font-size:20px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
 .kc-card-profdef p{font-size:20px;color:#475569;line-height:1.6;margin:0}
-.kc-formula-box{background:#0a1628;border-radius:10px;padding:16px;flex:0 0 42%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.kc-formula-box{background:#0a1628;border-radius:10px;padding:16px;flex:0 0 50%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .kc-formula-label{font-size:20px;font-weight:700;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
 .kc-formula-text{font-size:20px;font-weight:800;color:#e2e8f0;line-height:1.3;text-align:center}
+.formula-display{display:flex;align-items:center;justify-content:center;gap:12px;padding:16px}
+.formula-text{font-size:20px;font-weight:700;color:white;font-family:'Courier New',monospace;letter-spacing:1px;word-break:break-word}
+.formula-equals{font-size:22px;font-weight:700;color:white}
+.formula-fraction{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
+.formula-numerator,.formula-denominator{font-size:16px;font-weight:600;color:white;padding:2px 8px}
+.formula-divider{width:100%;border-top:2px solid white;display:block}
 .kc-card-number{background:#e0fdf4;border:1px solid #00c4a7;border-radius:10px;padding:12px 16px;font-size:20px;font-weight:800;color:#065f46;margin-bottom:18px}
 .kc-number-label{font-size:20px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.5px}
 .kc-card-insight{background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:14px 16px;font-size:20px;line-height:1.6;color:#78350f}
@@ -235,7 +253,7 @@ body.rtl{direction:rtl}
 /* Mobile */
 @media(max-width:700px){
   .kc-split{flex-direction:column}
-  .kc-card-panel,.kc-chart-panel{flex:none;width:100%}
+  .kc-doc-panel,.kc-card-panel,.kc-chart-panel{flex:none;width:100%}
   .kc-chart-panel{min-height:300px;position:static}
 }
 </style>
@@ -498,14 +516,16 @@ body.rtl{direction:rtl}
 
   <!-- Split layout -->
   <div class="kc-split">
-    <!-- LEFT: Card panel -->
+    <!-- FAR LEFT: Document panel (placeholder) -->
+    <div class="kc-doc-panel" id="kc-doc-panel"></div>
+    <!-- MIDDLE: Card panel -->
     <div class="kc-card-panel" id="kc-card-panel">
       <!-- populated by JS -->
     </div>
     <!-- RIGHT: Flowchart panel -->
     <div class="kc-chart-panel">
       <div class="kc-chart-title">Nova's Financial Picture</div>
-      <svg id="kc-svg" viewBox="0 0 480 545" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto"></svg>
+      <svg id="kc-svg" viewBox="0 0 340 300" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto"></svg>
       <div class="kc-chart-label" id="kc-chart-label"></div>
     </div>
   </div>
@@ -1215,6 +1235,9 @@ const sectionLabels = { A: 'A', B: 'B', C: 'C', D: 'D' };
 function updateProgress() {
   const container = document.getElementById('progress-steps');
   if (!container) return;
+  // Key Concepts section has its own card counter — hide the circular step badges
+  const bar = document.getElementById('progress-bar');
+  if (currentSection === 'B') { if (bar) bar.classList.remove('visible'); return; }
   container.innerHTML = '';
   const steps = sectionSteps[currentSection] || 1;
   const currentStep = currentSection === 'A' ? currentStepA : 1;
@@ -1554,8 +1577,8 @@ const kcCards = [
     profDefHe: "מבוטא כשולי רווח גולמי (רווח גולמי ÷ הכנסות × 100%), מודד יעילות ייצור וכוח תמחור. שולי רווח גולמי גבוהים מסמנים עלויות ייצור נמוכות, תמחור פרמיום, או שניהם.",
     number: '$387.1M in 2024',
     numberHe: '$387.1M בשנת 2024',
-    formula: 'Gross Profit = Revenue − COGS',
-    formulaHe: 'רווח גולמי = הכנסות − עלות מכר',
+    formula: 'Revenue − COGS',
+    formulaHe: 'הכנסות − עלות מכר',
     insight: "Nova's 57.6% gross margin puts it closer to software companies than to hardware manufacturers. This is the fingerprint of a company with genuine pricing power.",
     insightHe: "שולי הרווח הגולמי של 57.6% ממקמים את נובה קרוב יותר לחברות תוכנה מאשר ליצרני חומרה. זה טביעת האצבע של חברה עם כוח תמחור אמיתי.",
     reveals: ['gross_profit']
@@ -1582,8 +1605,8 @@ const kcCards = [
     profDefHe: "רווח לפני ריבית ומסים. נקרא גם הכנסה תפעולית. מודד רווחיות מפעילות ליבה, ללא השפעות מבנה ההון ותחום המס. מאפשר השוואה שווה בין חברות עם מבני מימון שונים.",
     number: '$187.5M in 2024',
     numberHe: '$187.5M בשנת 2024',
-    formula: 'Op. Profit (EBIT) = Gross Profit − OPEX',
-    formulaHe: 'רווח תפעולי (EBIT) = רווח גולמי − OPEX',
+    formula: 'Gross Profit − OPEX',
+    formulaHe: 'רווח גולמי − OPEX',
     insight: "Operating Profit (EBIT) deliberately ignores debt and taxes. Why? So you can compare a company that borrowed heavily against one that didn't — on a level playing field. The business performance, not the financing choices.",
     insightHe: "רווח תפעולי (EBIT) מתעלם במכוון מחוב ומסים. מדוע? כדי שתוכלו להשוות חברה שלוותה הרבה לחברה שלא לוותה — על מגרש שווה. ביצועי העסק, לא בחירות המימון.",
     reveals: ['ebit']
@@ -1610,8 +1633,8 @@ const kcCards = [
     profDefHe: "רווח לפני ריבית, מסים, פחת והפחתות. נמצא בשימוש נרחב כפרוקסי לתזרים מזומנים תפעולי וכמכנה במכפיל EV/EBITDA. מסיר חיובים לא-מזומניים ואפקטי מימון לבידוד הביצועים התפעוליים.",
     number: '$204.9M in 2024',
     numberHe: '$204.9M בשנת 2024',
-    formula: 'EBITDA = Op. Profit (EBIT) + D&A',
-    formulaHe: 'EBITDA = רווח תפעולי (EBIT) + פחת',
+    formula: 'Op. Profit (EBIT) + D&A',
+    formulaHe: 'רווח תפעולי (EBIT) + פחת',
     insight: "EBITDA ($204.9M) is HIGHER than Net Profit ($183.8M). That seems backwards. No: taxes and interest reduce net profit, but EBITDA ignores both. EBITDA is 'bigger' because it hasn't been reduced by those items yet.",
     insightHe: "EBITDA ($204.9M) גבוה מרווח נקי ($183.8M). זה נראה הפוך. לא: מסים וריבית מקטינים את הרווח הנקי, אך EBITDA מתעלם משניהם. EBITDA 'גדול יותר' כי הוא עדיין לא הוקטן על ידי פריטים אלה.",
     reveals: ['ebitda']
@@ -1625,8 +1648,8 @@ const kcCards = [
     profDefHe: "הרווח השיורי לאחר כל ההוצאות, הריבית והמסים. נקרא גם הכנסה נקייה. מזין את EPS (רווח למניה) ומהווה בסיס למכפיל P/E. אם נשמר, הוא מגדיל את הון המניות במאזן.",
     number: '$183.8M in 2024',
     numberHe: '$183.8M בשנת 2024',
-    formula: 'Net Profit = EBITDA − Interest − Tax',
-    formulaHe: 'רווח נקי = EBITDA − ריבית − מס',
+    formula: 'EBITDA − Interest − Tax',
+    formulaHe: 'EBITDA − ריבית − מס',
     insight: "Nova keeps 27 cents of every revenue dollar as pure profit. The average S&P 500 company keeps about 11 cents. Nova is nearly 2.5× more profitable than average — a direct result of that 57.6% gross margin we saw in Card 3.",
     insightHe: "נובה שומרת 27 סנט מכל דולר הכנסה כרווח טהור. חברת S&P 500 ממוצעת שומרת כ-11 סנט. נובה כמעט 2.5 פעמים יותר רווחית מהממוצע — תוצאה ישירה של שולי הרווח הגולמי של 57.6% שראינו בכרטיס 3.",
     reveals: ['net_profit', 'np_arrow', 'pl_badge']
@@ -1642,7 +1665,7 @@ const kcCards = [
     numberHe: '$1.4B בשנת 2024',
     insight: "A company can be profitable and still go bankrupt — if it runs out of working capital. Enron was 'profitable' on paper right up until it collapsed. Profit is accounting. Working capital is survival.",
     insightHe: "חברה יכולה להיות רווחית ועדיין לפשוט את הרגל — אם נגמר לה ההון החוזר. אנרון הייתה 'רווחית' על הנייר ממש עד לקריסתה. רווח הוא חשבונאות. הון חוזר הוא הישרדות.",
-    reveals: ['bs_assets', 'bs_liab', 'bs_equity', 'np_to_bs', 'np_to_bs_label']
+    reveals: ['bs_assets', 'bs_liab', 'bs_equity']
   },
   {
     term: 'Working Capital',
@@ -1653,8 +1676,8 @@ const kcCards = [
     profDefHe: "מדד לנזילות לטווח קצר ויעילות תפעולית. הון חוזר חיובי מציין שהחברה יכולה לעמוד בהתחייבויות קרובות. המרכיבים מניעים את מחזור המרת המזומן.",
     number: '~$550M in 2024',
     numberHe: '~$550M בשנת 2024',
-    formula: 'Working Capital = Current Assets − Current Liabilities',
-    formulaHe: 'הון חוזר = נכסים שוטפים − התחייבויות שוטפות',
+    formula: 'Current Assets − Current Liabilities',
+    formulaHe: 'נכסים שוטפים − התחייבויות שוטפות',
     insight: "A company can be profitable and still go bankrupt if it runs out of working capital. Enron was 'profitable' on paper until the very end. Cash is survival; profit is a score.",
     insightHe: "חברה יכולה להיות רווחית ועדיין לפשוט את הרגל אם נגמר לה ההון החוזר. אנרון הייתה 'רווחית' על הנייר עד הסוף ממש. מזומן הוא הישרדות; רווח הוא ניקוד.",
     reveals: []
@@ -1681,8 +1704,8 @@ const kcCards = [
     profDefHe: "נחשב על ידי רבים מהמשקיעים למדד האמין ביותר לביצועים פיננסיים כי קשה יותר לתמרן אותו מאשר את הרווח הנקי. FCF גבוה ביחס לרווח מסמן עסק איכותי.",
     number: '$218.1M in 2024',
     numberHe: '$218.1M בשנת 2024',
-    formula: 'FCF = Operating Cash Flow − CAPEX',
-    formulaHe: 'FCF = תזרים תפעולי − CAPEX',
+    formula: 'Operating Cash Flow − CAPEX',
+    formulaHe: 'תזרים תפעולי − CAPEX',
     insight: "FCF of $218M is HIGHER than Net Profit of $184M. This is the hallmark of a high-quality business: it generates more real cash than its accounting profit suggests. Cash is harder to fake than earnings.",
     insightHe: "FCF של $218M גבוה מרווח נקי של $184M. זה סימן ההיכר של עסק איכותי: הוא מייצר יותר מזומן אמיתי ממה שהרווח החשבונאי שלו מרמז. מזומן קשה יותר לזייף מרווחים.",
     reveals: ['ocf', 'np_to_ocf', 'cf_branch', 'fcf']
@@ -1709,8 +1732,8 @@ const kcCards = [
     profDefHe: "מייצג את עלות הרכישה הכוללת התיאורטית. משמש כמונה במכפילי EV/EBITDA ו-EV/Revenue כי הוא משקף את מלוא מבנה ההון, לא רק הון המניות.",
     number: '~$4,250M in 2024',
     numberHe: '~$4,250M בשנת 2024',
-    formula: 'EV = Market Cap + Debt − Cash',
-    formulaHe: 'EV = שווי שוק + חוב − מזומן',
+    formula: 'Market Cap + Debt − Cash',
+    formulaHe: 'שווי שוק + חוב − מזומן',
     insight: "Nova's EV ($4.25B) is actually LOWER than its Market Cap ($4.5B). Why? Because Nova has more cash than debt — so a buyer effectively gets a discount. A cash-rich company is cheaper to acquire than its market cap alone suggests.",
     insightHe: "EV של נובה ($4.25B) נמוך בפועל משווי השוק שלה ($4.5B). מדוע? כי לנובה יש יותר מזומן מאשר חוב — כך שרוכש מקבל למעשה הנחה. חברה עשירה במזומן זולה יותר לרכישה ממה שמעיד שווי השוק שלה לבד.",
     reveals: ['ev', 'final_badge']
@@ -1718,282 +1741,197 @@ const kcCards = [
 ];
 
 // Flowchart node definitions — pre-defined positions in the 480x545 SVG
-const kcFlowNodes = {
-  // P&L spine (left column, x:10–175, 60px gaps between nodes)
-  revenue:      { x:10, y:10,  w:165, h:38, fill:'#0d9488', label:'Revenue',           sub:'$672.4M',  group:'pl' },
-  gross_profit: { x:10, y:108, w:165, h:38, fill:'#16a34a', label:'Gross Profit',       sub:'$387.1M',  group:'pl' },
-  ebit:         { x:10, y:206, w:165, h:38, fill:'#2563eb', label:'Op. Profit (EBIT)',  sub:'$187.5M',  group:'pl' },
-  ebitda:       { x:10, y:304, w:165, h:38, fill:'#00c4a7', label:'EBITDA',             sub:'$204.9M',  group:'pl' },
-  net_profit:   { x:10, y:402, w:165, h:38, fill:'#15803d', label:'Net Profit',         sub:'$183.8M',  group:'pl' },
-  // D&A: kept in DOM but never revealed (replaced by pill annotation on da_arrow)
-  da:           { x:190, y:248, w:105, h:28, fill:'#64748b', label:'+D&A',             sub:'$17.4M',   group:'pl', small:true },
-  // Right column — Balance Sheet (x:230–385)
-  bs_assets:    { x:230, y:393, w:155, h:36, fill:'#1d4ed8', label:'Assets $1.4B',      sub:'incl. ~$550M w. cap.', group:'bs' },
-  bs_liab:      { x:230, y:443, w:74,  h:30, fill:'#3b82f6', label:'Liab.',             sub:'$700M',    group:'bs', small:true },
-  bs_equity:    { x:316, y:443, w:74,  h:30, fill:'#3b82f6', label:'Equity',            sub:'$700M',    group:'bs', small:true },
-  // Cash Flow — OCF and FCF in centre-right column (x:220–330)
-  ocf:          { x:220, y:225, w:110, h:30, fill:'#7c3aed', label:'Oper. Cash Flow',   sub:'$235.3M',  group:'cf', small:true },
-  fcf:          { x:220, y:332, w:110, h:30, fill:'#6d28d9', label:'Free CF',           sub:'$218.1M',  group:'cf', small:true },
-  // Valuation (top right, x:230–385)
-  mktcap:       { x:230, y:10,  w:155, h:30, fill:'#b45309', label:'Market Cap',        sub:'~$4.5B',   group:'val' },
-  ev:           { x:230, y:50,  w:155, h:30, fill:'#d97706', label:'Enterprise V.',     sub:'~$4.25B',  group:'val' },
-};
-
-// Arrow definitions
-const kcFlowArrows = {
-  cogs_arrow:      { fx:'revenue',     fy:'bottom', tx:'gross_profit', ty:'top',   label:'−COGS $285.3M',        color:'#ef4444', diamond:true },
-  opex_arrow:      { fx:'gross_profit',fy:'bottom', tx:'ebit',         ty:'top',   label:'−OPEX $199.5M',        color:'#ef4444', diamond:true },
-  // D&A: straight vertical line within P&L column (no side-arc, no pill)
-  da_arrow:        { fx:'ebit',        fy:'bottom', tx:'ebitda',       ty:'top',   label:'+D&A',                 color:'#94a3b8', dashed:true },
-  ebitda_arrow:    { fx:'da',          fy:'bottom', tx:'ebitda',       ty:'right', label:'',                     color:'#94a3b8', dashed:true, skip:true },
-  np_arrow:        { fx:'ebitda',      fy:'bottom', tx:'net_profit',   ty:'top',   label:'−Tax/Int',             color:'#ef4444', diamond:true },
-  bs_arrows:       { fx:'bs_assets',   fy:'bottom', tx:'bs_liab',      ty:'top',   label:'',                     color:'#3b82f6', skip:true },
-  np_to_bs:        { fx:'net_profit',  fy:'right',  tx:'bs_assets',    ty:'left',  label:'',                     color:'#22c55e' },
-  // Cash Flow: Net Profit → OCF (pill annotation) → FCF (−CAPEX diamond)
-  np_to_ocf:       { fx:'net_profit',  fy:'right',  tx:'ocf',          ty:'left',  label:'+ D&A & adjustments',  color:'#7c3aed', pill:true },
-  cf_branch:       { fx:'ocf',         fy:'bottom', tx:'fcf',          ty:'top',   label:'−CAPEX $17.2M',        color:'#7c3aed', diamond:true },
-};
-
-// Which node/arrow IDs become visible on each card
-const kcRevealMap = {
-  revenue: ['revenue'],
-  cogs_arrow: ['cogs_arrow'],
-  gross_profit: ['gross_profit'],
-  opex_arrow: ['opex_arrow'],
-  ebit: ['ebit'],
-  da: ['da', 'da_arrow'],
-  da_arrow: [],
-  ebitda: ['ebitda', 'ebitda_arrow'],
-  ebitda_arrow: [],
-  net_profit: ['net_profit', 'np_arrow', 'pl_badge'],
-  np_arrow: [],
-  pl_badge: [],
-  bs_assets: ['bs_assets', 'bs_liab', 'bs_equity', 'bs_arrows', 'np_to_bs'],
-  bs_liab: [],
-  bs_equity: [],
-  bs_arrows: [],
-  np_to_bs: [],
-  wc: ['wc'],
-  cf_branch: [],
-  fcf: ['fcf'],
-  mktcap: ['mktcap'],
-  ev: ['ev', 'final_badge'],
-  final_badge: [],
-};
-
-function kcBuildSVG() {
+function kcDrawChart(idx) {
   const svg = document.getElementById('kc-svg');
   if (!svg) return;
-  svg.innerHTML = '';
+  const NS = 'http://www.w3.org/2000/svg';
 
-  // Defs for arrowheads
-  const defs = `<defs>
-    <marker id="ah-r" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#ef4444"/></marker>
-    <marker id="ah-g" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#22c55e"/></marker>
-    <marker id="ah-b" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3b82f6"/></marker>
-    <marker id="ah-p" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#7c3aed"/></marker>
-    <marker id="ah-gray" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#94a3b8"/></marker>
-  </defs>`;
-  svg.innerHTML = defs;
+  // ── Layout constants ─────────────────────────────────────────────
+  // P&L spine: x=10, w=165, center x=92
+  const PCX = 92, PLX = 10, PLW = 165;
+  const REV_Y=20,  REV_H=38;   // Revenue      bottom=58
+  const GP_Y=126,  GP_H=38;    // Gross Profit bottom=164
+  const EB_Y=232,  EB_H=38;    // EBIT         bottom=270
+  const ED_Y=354,  ED_H=38;    // EBITDA       bottom=392
+  const NP_Y=464,  NP_H=38;    // Net Profit   bottom=502
+  // Diamond midpoints (center of gap between adjacent nodes)
+  const COGS_CY   = Math.round((REV_Y+REV_H + GP_Y) / 2);  // 92
+  const OPEX_CY   = Math.round((GP_Y+GP_H  + EB_Y) / 2);   // 198
+  const DA_CY     = Math.round((EB_Y+EB_H  + ED_Y) / 2);   // 312
+  const TAXINT_CY = Math.round((ED_Y+ED_H  + NP_Y) / 2);   // 428
+  const DW=40, DH=22;  // diamond half-width, half-height
+  // Right branch starts at x=185 (P&L ends at x=175; 10px gap; rightmost node 185+150=335 < 340)
+  const RX = 185;
+  // Cash Flow — vertically aligned with P&L counterparts
+  const OCF_Y=EB_Y,  OCF_H=32, OCF_W=120;  // same Y as EBIT
+  const FCF_Y=ED_Y,  FCF_H=32, FCF_W=120;  // same Y as EBITDA
+  const CAP_CX=RX+OCF_W/2, CAP_CY=DA_CY;  // same Y as D&A pill
+  // Balance Sheet — Assets at same Y as Net Profit
+  const ASS_Y=NP_Y,  ASS_H=38, ASS_W=150;
+  const LIB_Y=ASS_Y+ASS_H+10, LIB_H=28, LIB_W=72;
+  const EQ_X=RX+LIB_W+6;
+  // Valuation
+  const MC_Y=20, MC_H=32, MC_W=150;
+  const EV_Y=62, EV_H=32, EV_W=150;
 
-  // Draw arrows first (behind nodes)
-  Object.entries(kcFlowArrows).forEach(([id, a]) => {
-    if (a.skip) return; // skip deprecated arrows
-    const fromN = kcFlowNodes[a.fx];
-    const toN = kcFlowNodes[a.tx];
-    if (!fromN || !toN) return;
+  // ── SVG element helpers ──────────────────────────────────────────
+  function mk(tag, attrs, txt) {
+    const e = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k,v]) => e.setAttribute(k,v));
+    if (txt !== undefined) e.textContent = txt;
+    return e;
+  }
+  function add(el) { svg.appendChild(el); return el; }
 
-    let x1, y1, x2, y2;
-    if (a.fy === 'bottom') { x1 = fromN.x + fromN.w/2; y1 = fromN.y + fromN.h; }
-    else if (a.fy === 'right') { x1 = fromN.x + fromN.w; y1 = fromN.y + fromN.h/2; }
-    else { x1 = fromN.x + fromN.w/2; y1 = fromN.y; }
-    if (a.ty === 'top') { x2 = toN.x + toN.w/2; y2 = toN.y; }
-    else if (a.ty === 'left') { x2 = toN.x; y2 = toN.y + toN.h/2; }
-    else if (a.ty === 'right') { x2 = toN.x + toN.w; y2 = toN.y + toN.h/2; }
-    else { x2 = toN.x + toN.w/2; y2 = toN.y + toN.h; }
+  // ── Full clear + defs ────────────────────────────────────────────
+  svg.innerHTML = [
+    '<defs>',
+    '<marker id="dc-r"  markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#ef4444"/></marker>',
+    '<marker id="dc-g"  markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#22c55e"/></marker>',
+    '<marker id="dc-p"  markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#8b5cf6"/></marker>',
+    '<marker id="dc-gr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#94a3b8"/></marker>',
+    '</defs>'
+  ].join('');
 
-    const markerColor = a.color === '#ef4444' ? 'ah-r' : a.color === '#22c55e' ? 'ah-g' : a.color === '#3b82f6' ? 'ah-b' : a.color === '#7c3aed' ? 'ah-p' : 'ah-gray';
+  // ── Dynamic viewBox height based on visible content ──────────────
+  const svgH = idx >= 8 ? 555 : idx >= 7 ? 535 : idx >= 6 ? 410 : idx >= 5 ? 368 : 300;
+  svg.setAttribute('viewBox', `0 0 340 ${svgH}`);
 
-    // Path calculation
-    let pathD;
-    if (a.fy === 'right' && a.ty === 'left') {
-      const mx = (x1 + x2) / 2;
-      pathD = `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
-    } else if (a.fy === 'right' && a.ty === 'right') {
-      // D&A add-back arc: loop to the right and come back
-      const mx = Math.max(x1, x2) + 55;
-      pathD = `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
-    } else if (a.fy === 'bottom' && a.ty === 'right') {
-      pathD = `M${x1},${y1} C${x1},${y2} ${x2},${y2} ${x2},${y2}`;
-    } else if (a.fy === 'right' && a.ty === 'top') {
-      pathD = `M${x1},${y1} C${x2},${y1} ${x2},${y1} ${x2},${y2}`;
-    } else {
-      pathD = `M${x1},${y1} L${x2},${y2}`;
-    }
+  // ── Drawing primitives ───────────────────────────────────────────
+  function vline(x1,y1,y2,color,dashed) {
+    const a = {d:`M${x1},${y1} L${x1},${y2-4}`, fill:'none', stroke:color,
+               'stroke-width':'2', 'marker-end':`url(#${color==='#ef4444'?'dc-r':color==='#94a3b8'?'dc-gr':'dc-p'})`};
+    if (dashed) a['stroke-dasharray']='5 3';
+    add(mk('path',a));
+  }
+  function curve(d,color) {
+    add(mk('path',{d,fill:'none',stroke:color,'stroke-width':'2','marker-end':`url(#${color==='#22c55e'?'dc-g':'dc-p'})`}));
+  }
+  function diamond(cx,cy,l1,l2) {
+    add(mk('polygon',{points:`${cx},${cy-DH} ${cx+DW},${cy} ${cx},${cy+DH} ${cx-DW},${cy}`,fill:'#e05555'}));
+    add(mk('text',{x:cx,y:l2?cy-8:cy,'text-anchor':'middle',fill:'#fff','font-size':'12','font-weight':'800','dominant-baseline':'middle'},l1));
+    if (l2) add(mk('text',{x:cx,y:cy+8,'text-anchor':'middle',fill:'rgba(255,255,255,0.9)','font-size':'10','font-weight':'700','dominant-baseline':'middle'},l2));
+  }
+  function pill(cx,cy,text) {
+    add(mk('rect',{x:cx-46,y:cy-11,width:92,height:22,rx:11,fill:'#334155'}));
+    add(mk('text',{x:cx,y:cy,'text-anchor':'middle',fill:'#e2e8f0','font-size':'10','font-weight':'700','dominant-baseline':'middle'},text));
+  }
+  function node(x,y,w,h,fill,label,sub) {
+    add(mk('rect',{x,y,width:w,height:h,rx:7,fill}));
+    add(mk('text',{x:x+w/2,y:sub?y+h*0.38:y+h/2,'text-anchor':'middle',fill:'#fff','font-size':'13','font-weight':'700','dominant-baseline':'middle'},label));
+    if (sub) add(mk('text',{x:x+w/2,y:y+h*0.72,'text-anchor':'middle',fill:'rgba(255,255,255,0.8)','font-size':'11','dominant-baseline':'middle'},sub));
+  }
+  function snode(x,y,w,h,fill,label,sub) {
+    add(mk('rect',{x,y,width:w,height:h,rx:5,fill}));
+    add(mk('text',{x:x+w/2,y:sub?y+h*0.38:y+h/2,'text-anchor':'middle',fill:'#fff','font-size':'12','font-weight':'700','dominant-baseline':'middle'},label));
+    if (sub) add(mk('text',{x:x+w/2,y:y+h*0.72,'text-anchor':'middle',fill:'rgba(255,255,255,0.8)','font-size':'10','dominant-baseline':'middle'},sub));
+  }
+  function badge(x,y,text,fill) {
+    add(mk('text',{x,y,fill:fill||'#22c55e','font-size':'11','font-weight':'700','text-anchor':'start'},text));
+  }
 
-    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-    g.id = 'kca-' + id;
-    g.setAttribute('class','kc-arrow');
-    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-    path.setAttribute('d', pathD);
-    path.setAttribute('fill','none');
-    path.setAttribute('stroke', a.color);
-    path.setAttribute('stroke-width','2');
-    path.setAttribute('marker-end',`url(#${markerColor})`);
-    if (a.dashed) path.setAttribute('stroke-dasharray','5 3');
-    g.appendChild(path);
+  // ── Render by card index ─────────────────────────────────────────
 
-    // Arrow label — diamond, pill, or plain text
-    if (a.label) {
-      const lx = (x1 + x2) / 2;
-      const ly = (y1 + y2) / 2;
+  // Card 1+ : Revenue
+  node(PLX, REV_Y, PLW, REV_H, '#00c9a7', 'Revenue', '$672.4M');
 
-      if (a.diamond) {
-        // Large diamond centered on the arrow midpoint
-        const dx = lx, dy = ly;
-        const hw = 42, hh = 28; // half-width, half-height
-        const diamond = document.createElementNS('http://www.w3.org/2000/svg','polygon');
-        diamond.setAttribute('points', `${dx},${dy-hh} ${dx+hw},${dy} ${dx},${dy+hh} ${dx-hw},${dy}`);
-        diamond.setAttribute('fill','#E05555');
-        g.appendChild(diamond);
-        const parts = a.label.split(' ');
-        const line1 = parts[0];
-        const line2 = parts.slice(1).join(' ');
-        const txt1 = document.createElementNS('http://www.w3.org/2000/svg','text');
-        txt1.setAttribute('x', dx); txt1.setAttribute('y', line2 ? dy - 8 : dy);
-        txt1.setAttribute('text-anchor','middle'); txt1.setAttribute('fill','#fff');
-        txt1.setAttribute('font-size','11'); txt1.setAttribute('font-weight','800');
-        txt1.setAttribute('dominant-baseline','middle');
-        txt1.textContent = line1;
-        g.appendChild(txt1);
-        if (line2) {
-          const txt2 = document.createElementNS('http://www.w3.org/2000/svg','text');
-          txt2.setAttribute('x', dx); txt2.setAttribute('y', dy + 8);
-          txt2.setAttribute('text-anchor','middle'); txt2.setAttribute('fill','rgba(255,255,255,0.92)');
-          txt2.setAttribute('font-size','10'); txt2.setAttribute('font-weight','700');
-          txt2.setAttribute('dominant-baseline','middle');
-          txt2.textContent = line2;
-          g.appendChild(txt2);
-        }
-      } else if (a.pill) {
-        // Pill: for right→right arcs sit at rightmost point; otherwise at path midpoint
-        const px = (a.fy === 'right' && a.ty === 'right') ? x1 + 55 : lx;
-        const py = (y1 + y2) / 2;
-        const pw = 46, ph = 12;
-        const pill = document.createElementNS('http://www.w3.org/2000/svg','rect');
-        pill.setAttribute('x', px - pw); pill.setAttribute('y', py - ph);
-        pill.setAttribute('width', pw * 2); pill.setAttribute('height', ph * 2);
-        pill.setAttribute('rx', ph); pill.setAttribute('fill','#334155');
-        g.appendChild(pill);
-        const ptxt = document.createElementNS('http://www.w3.org/2000/svg','text');
-        ptxt.setAttribute('x', px); ptxt.setAttribute('y', py);
-        ptxt.setAttribute('text-anchor','middle'); ptxt.setAttribute('fill','#e2e8f0');
-        ptxt.setAttribute('font-size','9'); ptxt.setAttribute('font-weight','700');
-        ptxt.setAttribute('dominant-baseline','middle');
-        ptxt.textContent = a.label;
-        g.appendChild(ptxt);
-      } else {
-        const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
-        txt.setAttribute('x', lx); txt.setAttribute('y', ly - 5);
-        txt.setAttribute('text-anchor','middle');
-        txt.setAttribute('fill', a.color);
-        txt.setAttribute('font-size','9'); txt.setAttribute('font-weight','700');
-        txt.textContent = a.label;
-        g.appendChild(txt);
-      }
-    }
-    svg.appendChild(g);
-  });
+  // Card 2+ : COGS diamond + arrow stub
+  if (idx >= 1) {
+    vline(PCX, REV_Y+REV_H, GP_Y, '#ef4444');
+    diamond(PCX, COGS_CY, '−COGS', '$285.3M');
+  }
 
-  // Draw nodes
-  Object.entries(kcFlowNodes).forEach(([id, n]) => {
-    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-    g.id = 'kcn-' + id;
-    g.setAttribute('class','kc-node');
-    g.style.cursor = 'pointer';
-    g.onclick = () => kcNodeClick(id, n);
+  // Card 3+ : Gross Profit
+  if (idx >= 2) {
+    node(PLX, GP_Y, PLW, GP_H, '#00c9a7', 'Gross Profit', '$387.1M');
+  }
 
-    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-    rect.setAttribute('x', n.x); rect.setAttribute('y', n.y);
-    rect.setAttribute('width', n.w); rect.setAttribute('height', n.h);
-    rect.setAttribute('rx','7'); rect.setAttribute('fill', n.fill);
-    g.appendChild(rect);
+  // Card 4+ : OPEX diamond
+  if (idx >= 3) {
+    vline(PCX, GP_Y+GP_H, EB_Y, '#ef4444');
+    diamond(PCX, OPEX_CY, '−OPEX', '$199.5M');
+  }
 
-    const fontSize = n.small ? 10 : 11;
-    const label = document.createElementNS('http://www.w3.org/2000/svg','text');
-    label.setAttribute('x', n.x + n.w/2);
-    label.setAttribute('y', n.y + (n.small ? n.h*0.42 : n.h*0.38));
-    label.setAttribute('text-anchor','middle');
-    label.setAttribute('fill','#fff');
-    label.setAttribute('font-size', fontSize);
-    label.setAttribute('font-weight','700');
-    label.setAttribute('dominant-baseline','middle');
-    label.textContent = n.label;
-    g.appendChild(label);
+  // Card 5+ : EBIT
+  if (idx >= 4) {
+    node(PLX, EB_Y, PLW, EB_H, '#3b82f6', 'Op. Profit (EBIT)', '$187.5M');
+  }
 
-    if (n.sub && !n.small) {
-      const sub = document.createElementNS('http://www.w3.org/2000/svg','text');
-      sub.setAttribute('x', n.x + n.w/2);
-      sub.setAttribute('y', n.y + n.h*0.72);
-      sub.setAttribute('text-anchor','middle');
-      sub.setAttribute('fill','rgba(255,255,255,0.8)');
-      sub.setAttribute('font-size','9');
-      sub.setAttribute('dominant-baseline','middle');
-      sub.textContent = n.sub;
-      g.appendChild(sub);
-    }
-    svg.appendChild(g);
-  });
+  // Card 6+ : D&A dashed arrow + pill
+  if (idx >= 5) {
+    vline(PCX, EB_Y+EB_H, ED_Y, '#94a3b8', true);
+    pill(PCX, DA_CY, '+D&A  $17.4M');
+  }
 
-  // Special badges (drawn after nodes so they render on top)
-  const badgeDefs = [
-    { id:'pl_badge',       x:25,  y:455, fill:'#22c55e', anchor:'start',  text:'P&L Complete ✓' },
-    { id:'final_badge',    x:175, y:530, fill:'#00c4a7', anchor:'start',  text:'Full picture built ✓' },
-    { id:'np_to_bs_label', x:202, y:387, fill:'#22c55e', anchor:'middle', text:'→ Retained Earnings' },
-  ];
-  badgeDefs.forEach(({id, x, y, fill, anchor, text}) => {
-    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-    g.id = 'kcn-' + id;
-    g.setAttribute('class','kc-node');
-    const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
-    txt.setAttribute('x', x); txt.setAttribute('y', y);
-    txt.setAttribute('fill', fill);
-    txt.setAttribute('font-size','9');
-    txt.setAttribute('font-weight','700');
-    txt.setAttribute('text-anchor', anchor);
-    txt.textContent = text;
-    g.appendChild(txt);
-    svg.appendChild(g);
-  });
-}
+  // Card 7+ : EBITDA
+  if (idx >= 6) {
+    node(PLX, ED_Y, PLW, ED_H, '#00c9a7', 'EBITDA', '$204.9M');
+  }
 
-function kcNodeClick(id, n) {
-  // Show label in chart-label div
-  const lbl = document.getElementById('kc-chart-label');
-  if (lbl) lbl.textContent = n.label + ': ' + n.sub;
-  // Pulse effect
-  const el = document.getElementById('kcn-' + id);
-  if (el) {
-    el.style.transform = 'scale(1.08)';
-    setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+  // Card 8+ : Tax/Int diamond + Net Profit + badge
+  if (idx >= 7) {
+    vline(PCX, ED_Y+ED_H, NP_Y, '#ef4444');
+    diamond(PCX, TAXINT_CY, '−Tax/Int', null);
+    node(PLX, NP_Y, PLW, NP_H, '#00c9a7', 'Net Profit', '$183.8M');
+    badge(PLX, NP_Y+NP_H+16, 'P&L Complete ✓', '#22c55e');
+  }
+
+  // Card 9+ : Balance Sheet branch
+  if (idx >= 8) {
+    // Arrow: Net Profit right → Equity (NO arrow to Assets)
+    curve(`M${PLX+PLW},${NP_Y+NP_H/2} C${EQ_X+LIB_W/2},${NP_Y+NP_H/2} ${EQ_X+LIB_W/2},${LIB_Y+LIB_H/2} ${EQ_X},${LIB_Y+LIB_H/2}`, '#22c55e');
+    node(RX, ASS_Y, ASS_W, ASS_H, '#3b82f6', 'Assets', '$1.4B');
+    snode(RX,    LIB_Y, LIB_W, LIB_H, '#60a5fa', 'Liab.',  '$700M');
+    snode(EQ_X,  LIB_Y, LIB_W, LIB_H, '#60a5fa', 'Equity', '$700M');
+  }
+
+  // Card 11+ : OCF + arrow from Net Profit with pill
+  if (idx >= 10) {
+    snode(RX, OCF_Y, OCF_W, OCF_H, '#8b5cf6', 'Oper. Cash Flow', '$235.3M');
+  }
+
+  // Card 12+ : CAPEX diamond + Free CF
+  if (idx >= 11) {
+    vline(CAP_CX, OCF_Y+OCF_H, FCF_Y, '#8b5cf6');
+    // Smaller diamond for CAPEX (fits between OCF and FCF)
+    const cdw=36, cdh=19;
+    add(mk('polygon',{points:`${CAP_CX},${CAP_CY-cdh} ${CAP_CX+cdw},${CAP_CY} ${CAP_CX},${CAP_CY+cdh} ${CAP_CX-cdw},${CAP_CY}`,fill:'#e05555'}));
+    add(mk('text',{x:CAP_CX,y:CAP_CY-7,'text-anchor':'middle',fill:'#fff','font-size':'10','font-weight':'800','dominant-baseline':'middle'},'−CAPEX'));
+    add(mk('text',{x:CAP_CX,y:CAP_CY+7,'text-anchor':'middle',fill:'rgba(255,255,255,0.9)','font-size':'9','font-weight':'700','dominant-baseline':'middle'},'$17.2M'));
+    snode(RX, FCF_Y, FCF_W, FCF_H, '#8b5cf6', 'Free CF', '$218.1M');
+  }
+
+  // Card 13+ : Market Cap
+  if (idx >= 12) {
+    snode(RX, MC_Y, MC_W, MC_H, '#f59e0b', 'Market Cap', '~$4.5B');
+  }
+
+  // Card 14+ : Enterprise Value
+  if (idx >= 13) {
+    snode(RX, EV_Y, EV_W, EV_H, '#f59e0b', 'Enterprise V.', '~$4.25B');
   }
 }
 
-function kcShowNodes(cardIdx) {
-  // Show exactly the nodes/arrows revealed by cards 0..cardIdx (bidirectional)
-  const allReveals = new Set();
-  for (let i = 0; i <= cardIdx; i++) {
-    const card = kcCards[i];
-    if (card && card.reveals) card.reveals.forEach(r => allReveals.add(r));
+function renderFormula(f) {
+  if (!f) return '';
+  // Normalize hyphen-minus to proper minus sign U+2212
+  f = f.replace(/ - /g, ' \u2212 ');
+  // Detect fraction: "LHS = numerator / denominator"
+  const divMatch = f.match(/^(.+?)\s*=\s*(.+?)\s*[\/\u00f7]\s*(.+)$/);
+  if (divMatch) {
+    const lhs = divMatch[1].trim();
+    const num  = divMatch[2].trim();
+    const den  = divMatch[3].trim();
+    return `<div class="formula-display">` +
+      `<span class="formula-equals">${lhs} =</span>` +
+      `<div class="formula-fraction">` +
+        `<span class="formula-numerator">${num}</span>` +
+        `<span class="formula-divider"></span>` +
+        `<span class="formula-denominator">${den}</span>` +
+      `</div></div>`;
   }
-  document.querySelectorAll('.kc-node,.kc-arrow').forEach(el => {
-    const id = el.id.replace('kcn-','').replace('kca-','');
-    if (allReveals.has(id)) {
-      el.classList.add('visible');
-    } else {
-      el.classList.remove('visible');
-    }
-  });
+  // Simple formula
+  return `<div class="formula-display"><span class="formula-text">${f}</span></div>`;
 }
 
 function kcRenderCard(idx) {
@@ -2021,7 +1959,7 @@ function kcRenderCard(idx) {
       </div>
       <div class="kc-formula-box">
         <div class="kc-formula-label">${formulaLabel}</div>
-        <div class="kc-formula-text">${formula}</div>
+        <div class="kc-formula-text">${renderFormula(formula)}</div>
       </div>
     </div>` : `
     <div class="kc-card-profdef" style="margin-bottom:18px">
@@ -2053,8 +1991,89 @@ function kcRenderCard(idx) {
   if (prev) prev.disabled = idx === 0;
   if (next) next.disabled = idx === kcCards.length - 1;
 
-  // Update flowchart — always reflects current card (bidirectional)
-  kcShowNodes(idx);
+  // Update flowchart — full re-render for current card (bidirectional)
+  kcDrawChart(idx);
+
+  // Update document panel
+  kcRenderDoc(idx);
+}
+
+function kcRenderDoc(idx) {
+  const panel = document.getElementById('kc-doc-panel');
+  if (!panel) return;
+
+  function row(prefix, label, hl, sep) {
+    const hlClass = hl ? ' kc-doc-hl' : '';
+    const sepClass = sep ? ' kc-doc-sep' : '';
+    return `<tr class="kc-doc-row${hlClass}${sepClass}"><td>${prefix}${label}</td></tr>`;
+  }
+
+  if (idx <= 7) {
+    // P&L Statement (cards 1–8, idx 0–7)
+    const hlMap = ['Revenue','COGS','Gross Profit','OPEX','EBIT','D&A','EBITDA','Net Profit'];
+    const hl = hlMap[idx];
+    panel.innerHTML = `
+      <div class="kc-doc-type">P&amp;L Statement</div>
+      <table class="kc-doc-table">
+        ${row('','Revenue', hl==='Revenue', false)}
+        ${row('−\u2009','Cost of Revenue (COGS)', hl==='COGS', false)}
+        ${row('=\u2009','Gross Profit', hl==='Gross Profit', true)}
+        ${row('−\u2009','Operating Expenses (OPEX)', hl==='OPEX', false)}
+        ${row('=\u2009','Operating Profit (EBIT)', hl==='EBIT', true)}
+        ${row('+\u2009','D&amp;A', hl==='D&A', false)}
+        ${row('=\u2009','EBITDA', hl==='EBITDA', true)}
+        ${row('−\u2009','Tax &amp; Interest', false, false)}
+        ${row('=\u2009','Net Profit', hl==='Net Profit', true)}
+      </table>`;
+
+  } else if (idx <= 9) {
+    // Balance Sheet (cards 9–10, idx 8–9)
+    const hlAssets  = idx === 8;
+    const hlEquity  = idx === 8;
+    const hlCurrent = idx === 9;
+    panel.innerHTML = `
+      <div class="kc-doc-type">Balance Sheet</div>
+      <div class="kc-doc-bs">
+        <div class="kc-doc-bs-col">
+          <div class="kc-doc-bs-header">Assets</div>
+          <div class="kc-doc-bs-row${hlCurrent ? ' kc-doc-hl' : ''}">Current Assets</div>
+          <div class="kc-doc-bs-row">Other Assets</div>
+          <div class="kc-doc-bs-row kc-doc-sep${hlAssets ? ' kc-doc-hl' : ''}">Total: $1.4B</div>
+        </div>
+        <div class="kc-doc-bs-col">
+          <div class="kc-doc-bs-header">Liabilities &amp; Equity</div>
+          <div class="kc-doc-bs-row">Total Debt</div>
+          <div class="kc-doc-bs-row">Other Liabilities</div>
+          <div class="kc-doc-bs-row kc-doc-sep${hlEquity ? ' kc-doc-hl' : ''}">Shareholders' Equity</div>
+          <div class="kc-doc-bs-row kc-doc-sep">Total: $1.4B</div>
+        </div>
+      </div>`;
+
+  } else if (idx <= 11) {
+    // Cash Flow (cards 11–12, idx 10–11)
+    const hlMap2 = {10:'CAPEX', 11:'FCF'};
+    const hl2 = hlMap2[idx];
+    panel.innerHTML = `
+      <div class="kc-doc-type">Cash Flow Statement</div>
+      <table class="kc-doc-table">
+        ${row('','Operating Cash Flow', false, false)}
+        ${row('−\u2009','CAPEX', hl2==='CAPEX', false)}
+        ${row('=\u2009','Free Cash Flow', hl2==='FCF', true)}
+      </table>`;
+
+  } else {
+    // Valuation (cards 13–14, idx 12–13)
+    const hlMktCap = idx === 12;
+    const hlEV     = idx === 13;
+    panel.innerHTML = `
+      <div class="kc-doc-type">Valuation</div>
+      <table class="kc-doc-table">
+        ${row('','Market Capitalization', hlMktCap, false)}
+        ${row('+\u2009','Total Debt', false, false)}
+        ${row('−\u2009','Cash &amp; Equivalents', false, false)}
+        ${row('=\u2009','Enterprise Value (EV)', hlEV, true)}
+      </table>`;
+  }
 }
 
 function kcMove(dir) {
@@ -2067,7 +2086,6 @@ function kcMove(dir) {
 function kcInit() {
   kcIdx = 0;
   kcMaxSeen = 0;
-  kcBuildSVG();
   kcRenderCard(0);
 }
 
