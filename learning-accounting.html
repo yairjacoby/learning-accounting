@@ -217,31 +217,42 @@ body.rtl{direction:rtl}
 .kc-doc-bs-row{font-size:14px;color:#6b8fa8;padding:5px 4px;line-height:1.3}
 .kc-doc-bs-row.kc-doc-sep{border-top:1px solid #2a3a4a;padding-top:7px;margin-top:2px}
 .kc-doc-bs-row.kc-doc-hl{background:#00c9a7;color:#fff;font-weight:700;font-size:15px;border-radius:4px}
-.kc-card-panel{flex:0 0 43%;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;min-height:480px;padding-bottom:100px}
+.kc-card-panel{flex:0 0 43%;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:16px;min-height:480px;padding-bottom:80px}
 .kc-chart-panel{flex:0 0 calc(35% - 32px);background:#0a1628;border-radius:16px;padding:16px;position:sticky;top:140px;min-height:480px;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
 .kc-chart-title{color:#00c4a7;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;text-align:center}
 .kc-chart-label{color:#aab;font-size:12px;text-align:center;margin-top:8px;min-height:18px;transition:opacity 0.3s}
-.kc-card-term{font-size:28px;font-weight:900;color:#00c4a7;margin-bottom:16px}
-.kc-card-plain{font-size:20px;line-height:1.7;color:#1a2744;margin-bottom:18px}
+.kc-card-term{font-size:28px;font-weight:900;color:#00c4a7;margin-bottom:6px}
+.kc-card-hook{font-size:18px;font-weight:700;color:#0f172a;margin-bottom:6px;line-height:1.4}
+.kc-card-plain{font-size:15px;line-height:1.6;color:#1a2744;margin-bottom:8px}
+.kc-card-formal{font-size:15px;font-style:italic;color:#64748b;margin-bottom:12px;line-height:1.5}
+.kc-bottom-row{display:grid;grid-template-columns:45% 1fr;gap:12px;align-items:stretch}
+.kc-bottom-left{display:flex;flex-direction:column;gap:8px}
+.kc-bottom-left .kc-card-number{margin-bottom:0}
+.kc-bottom-left .kc-formula-box{flex:1;margin-bottom:0}
+.kc-bottom-row .kc-card-insight{height:100%;margin-bottom:0;box-sizing:border-box}
 .kc-profdef-row{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
 .kc-card-profdef{border:1px solid #d1d5db;border-radius:10px;padding:14px 16px;background:#f8fafc;flex:1;min-width:0}
 .kc-card-profdef-label{font-size:20px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
 .kc-card-profdef p{font-size:20px;color:#475569;line-height:1.6;margin:0}
 .kc-formula-box{background:#0a1628;border-radius:10px;padding:16px;flex:0 0 50%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.kc-formula-label{font-size:20px;font-weight:700;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
-.kc-formula-text{font-size:20px;font-weight:800;color:#e2e8f0;line-height:1.3;text-align:center}
+.kc-formula-label{font-size:18px;font-weight:700;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.kc-formula-text{font-size:15px;font-weight:800;color:#e2e8f0;line-height:1.3;text-align:center}
 .formula-display{display:flex;align-items:center;justify-content:center;gap:12px;padding:16px}
-.formula-text{font-size:20px;font-weight:700;color:white;font-family:'Courier New',monospace;letter-spacing:1px;word-break:break-word}
+.formula-text{font-size:15px;font-weight:700;color:white;font-family:'Courier New',monospace;letter-spacing:1px;word-break:break-word}
 .formula-equals{font-size:22px;font-weight:700;color:white}
 .formula-fraction{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
 .formula-numerator,.formula-denominator{font-size:16px;font-weight:600;color:white;padding:2px 8px}
 .formula-divider{width:100%;border-top:2px solid white;display:block}
-.kc-card-number{background:#e0fdf4;border:1px solid #00c4a7;border-radius:10px;padding:12px 16px;font-size:20px;font-weight:800;color:#065f46;margin-bottom:18px}
-.kc-number-label{font-size:20px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.5px}
-.kc-card-insight{background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:14px 16px;font-size:20px;line-height:1.6;color:#78350f}
-.kc-card-insight strong{display:block;margin-bottom:4px;color:#92400e;font-size:20px}
-.kc-nav{display:flex;align-items:center;justify-content:space-between;position:fixed;bottom:0;left:0;right:0;background:#f0f4f8;border-top:2px solid #00c4a7;padding:14px 32px;z-index:50}
-.kc-counter{color:#475569;font-size:15px;font-weight:700}
+.kc-card-number{background:#e0fdf4;border:1px solid #00c4a7;border-radius:10px;padding:12px 16px;font-size:15px;font-weight:800;color:#065f46;margin-bottom:18px}
+.kc-number-label{font-size:18px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.5px}
+.kc-card-insight{background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.6;color:#78350f}
+.kc-card-insight strong{display:block;margin-bottom:4px;color:#92400e;font-size:18px}
+.kc-arrow-btn{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,0.35);border:2px solid rgba(255,255,255,0.2);color:white;font-size:28px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:50;transition:background 0.2s;padding:0}
+.kc-arrow-btn:hover{background:rgba(0,201,167,0.7)}
+.kc-arrow-btn.hidden{opacity:0;pointer-events:none}
+#kc-prev{left:12px}
+#kc-next{right:12px}
+.kc-counter{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.4);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.6);z-index:50;pointer-events:none}
 /* SVG node animations */
 .kc-node{opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform-origin:center;transform:scale(0.85)}
 .kc-node.visible{opacity:1;transform:scale(1)}
@@ -505,7 +516,6 @@ body.rtl{direction:rtl}
 
   <!-- SECTION B -->
   <div class="section" id="section-B">
-  <div class="consultant-callout" data-t="callout_b">These are the terms you'll hear in every client meeting and deck. Knowing them cold is table stakes.</div>
   <div class="section-header">
     <h1 data-t="sec_b_title">Key Financial Concepts</h1>
     <p data-t="sec_b_sub">Follow the money — 14 cards that build one complete financial picture of Nova Ltd.</p>
@@ -531,11 +541,9 @@ body.rtl{direction:rtl}
   </div>
 
   <!-- Card counter + nav -->
-  <div class="kc-nav">
-    <button class="btn-nav" id="kc-prev" onclick="kcMove(-1)" data-t="btn_prev">← Previous</button>
-    <span class="kc-counter" id="kc-counter">Card 1 of 14</span>
-    <button class="btn-nav" id="kc-next" onclick="kcMove(1)" data-t="btn_next">Next →</button>
-  </div>
+  <button class="kc-arrow-btn hidden" id="kc-prev" onclick="kcMove(-1)">&#8249;</button>
+  <button class="kc-arrow-btn" id="kc-next" onclick="kcMove(1)">&#8250;</button>
+  <span class="kc-counter" id="kc-counter">1 / 14</span>
 
 </div>
 
@@ -1545,8 +1553,12 @@ const kcCards = [
   {
     term: 'Revenue',
     termHe: 'הכנסות',
-    plain: "Nova sells precision measurement equipment to chip factories like TSMC and Samsung. Every time a factory pays for that equipment, that payment is Revenue. It's the starting point — money coming in the door before any costs are deducted. Think of it as the total size of the bucket before anything leaks out.",
+    hook: "The total money Nova earns from selling its products — before any costs are deducted.",
+    hookHe: "סך הכסף שנובה מרוויחה ממכירת מוצריה — לפני ניכוי כל עלות.",
+    plain: "Nova sells precision measurement equipment to chip factories like TSMC and Samsung. Every time a factory pays, that payment is Revenue — it's the starting point, the total size of the bucket before anything leaks out.",
     plainHe: "נובה מוכרת ציוד מדידה מדויק למפעלי שבבים כמו TSMC ו-Samsung. כל תשלום עבור הציוד הזה הוא הכנסה. זו נקודת ההתחלה — כסף שנכנס לפני שמנכים עלויות כלשהן. חשבו על זה כגודל הדלי הכולל לפני שמשהו דולף ממנו.",
+    formal: "Formally: Total income generated from the sale of goods or services during a reporting period. Also called the top line.",
+    formalHe: "רשמית: סך ההכנסות שנוצרו ממכירת סחורות או שירותים בתקופת דיווח. נקראת גם 'השורה העליונה'.",
     profDef: "Total income generated from the sale of goods or services during a reporting period. Also called 'the top line' because it appears first on the P&L statement.",
     profDefHe: "סך ההכנסות שנוצרו ממכירת מוצרים או שירותים בתקופת דיווח. נקראת גם 'השורה העליונה' כיוון שמופיעה ראשונה בדוח רווח-הפסד.",
     number: '$672.4M in 2024',
@@ -1558,8 +1570,12 @@ const kcCards = [
   {
     term: 'COGS (Cost of Revenue)',
     termHe: 'עלות מכר (COGS)',
-    plain: "To make that measurement equipment, Nova has to buy components, run manufacturing lines, and pay the engineers who physically build the machines. All those direct production costs are called COGS — Cost of Goods Sold. It's the price Nova pays to create what it sells.",
+    hook: "The direct cost of making what Nova sells.",
+    hookHe: "העלות הישירה של ייצור מה שנובה מוכרת.",
+    plain: "To make that equipment, Nova buys components, runs manufacturing lines, and pays the engineers who build the machines. All those direct production costs are COGS — the price Nova pays to create what it sells.",
     plainHe: "כדי לייצר את ציוד המדידה, נובה חייבת לקנות רכיבים, להפעיל קווי ייצור ולשלם למהנדסים שבונים את המכונות. כל עלויות הייצור הישירות האלה נקראות עלות מכר. זה המחיר שנובה משלמת כדי ליצור את מה שהיא מוכרת.",
+    formal: "Formally: Direct costs attributable to the production of goods sold, including materials, direct labour, and manufacturing overhead.",
+    formalHe: "רשמית: עלויות ישירות המיוחסות לייצור הסחורה שנמכרה, כולל חומרים, עבודה ישירה ועלויות ייצור.",
     profDef: "Direct costs attributable to the production of goods sold. Includes raw materials, direct labour, and manufacturing overhead. Does NOT include selling, marketing, or management costs — those appear separately as OPEX.",
     profDefHe: "עלויות ישירות המיוחסות לייצור הסחורה שנמכרה. כוללת חומרי גלם, עבודה ישירה ועלויות ייצור. אינה כוללת עלויות מכירה, שיווק וניהול — אלה מופיעות בנפרד כ-OPEX.",
     number: '$285.3M in 2024',
@@ -1571,8 +1587,12 @@ const kcCards = [
   {
     term: 'Gross Profit',
     termHe: 'רווח גולמי',
-    plain: "What's left after paying to make the product. If Nova sells a machine for $100 and it costs $42 to make, Gross Profit is $58. Simple. It tells you how efficiently a company makes and prices its product — before all the other company costs kick in.",
+    hook: "What's left after paying to make the product.",
+    hookHe: "מה שנשאר אחרי תשלום עלות ייצור המוצר.",
+    plain: "If Nova sells a machine for $100 and it costs $42 to make, Gross Profit is $58. It tells you how efficiently a company makes and prices its product — before all the other company costs kick in.",
     plainHe: "מה שנשאר לאחר תשלום עלות הייצור. אם נובה מוכרת מכונה ב-$100 ועולה $42 לייצר, הרווח הגולמי הוא $58. פשוט. זה מראה כמה ביעילות חברה מייצרת ומתמחרת את מוצרה — לפני שכל יתר עלויות החברה נכנסות לתמונה.",
+    formal: "Formally: Revenue minus Cost of Revenue. The primary measure of production efficiency and pricing power.",
+    formalHe: "רשמית: הכנסות פחות עלות מכר. המדד העיקרי ליעילות ייצור וכוח תמחור.",
     profDef: "Expressed as Gross Margin (Gross Profit ÷ Revenue × 100%), it measures production efficiency and pricing power. A high gross margin signals either low production costs, premium pricing, or both.",
     profDefHe: "מבוטא כשולי רווח גולמי (רווח גולמי ÷ הכנסות × 100%), מודד יעילות ייצור וכוח תמחור. שולי רווח גולמי גבוהים מסמנים עלויות ייצור נמוכות, תמחור פרמיום, או שניהם.",
     number: '$387.1M in 2024',
@@ -1586,8 +1606,12 @@ const kcCards = [
   {
     term: 'OPEX (Operating Expenses)',
     termHe: 'הוצאות תפעול (OPEX)',
-    plain: "Beyond making the product, Nova has to actually run the company — pay the sales team, fund R&D labs, cover management salaries and office costs. None of that is directly tied to building a specific machine. All of it together is OPEX: the cost of operating the business day-to-day.",
+    hook: "The cost of running the company — beyond making the product.",
+    hookHe: "עלות ניהול החברה — מעבר לייצור המוצר.",
+    plain: "Nova has to pay the sales team, fund R&D labs, and cover management salaries — none of that is tied to building a specific machine. All of it together is OPEX: the cost of operating the business day-to-day.",
     plainHe: "מעבר לייצור המוצר, נובה חייבת גם לנהל את החברה — לשלם לצוות המכירות, לממן מעבדות מחקר, לכסות משכורות ניהול ועלויות משרד. אף אחד מאלה אינו קשור ישירות לבניית מכונה ספציפית. כל זה ביחד הוא OPEX: עלות ניהול העסק יום-יום.",
+    formal: "Formally: Ongoing costs for running the business not directly tied to production. Includes R&D, sales, marketing, and G&A.",
+    formalHe: "רשמית: עלויות שוטפות לניהול העסק שאינן קשורות ישירות לייצור. כוללות R&D, מכירות, שיווק ומנהלה.",
     profDef: "Operating Expenses are all costs required to run the business that are not directly tied to production. Primarily composed of R&D and SG&A (Sales, General & Administrative). Appears below Gross Profit on the P&L.",
     profDefHe: "הוצאות תפעול הן כל העלויות הנדרשות לניהול העסק שאינן קשורות ישירות לייצור. מורכבות בעיקר מ-R&D ו-SG&A (מכירות, כלליות ומנהלה). מופיעות מתחת לרווח הגולמי בדוח רווח-הפסד.",
     number: '$199.5M in 2024',
@@ -1599,8 +1623,12 @@ const kcCards = [
   {
     term: 'Operating Profit (EBIT)',
     termHe: 'רווח תפעולי (EBIT)',
-    plain: "After paying to make the product AND run the company, what's left is Operating Profit (EBIT) — Earnings Before Interest and Tax. It's pure operating profit: what the business itself earns from its actual operations, before we factor in how the company is financed or where it pays taxes.",
+    hook: "What the business earns from its actual operations — before financing and taxes enter the picture.",
+    hookHe: "מה שהעסק מרוויח מפעילותו בפועל — לפני מימון ומסים.",
+    plain: "After paying to make the product AND run the company, what's left is Operating Profit. It strips out how the company is financed and where it pays taxes, making it perfect for comparing companies across different countries and structures.",
     plainHe: "לאחר תשלום עלויות הייצור וניהול החברה, מה שנשאר הוא רווח תפעולי (EBIT) — רווח לפני ריבית ומסים. זה הרווח התפעולי הטהור: מה שהעסק עצמו מרוויח מפעילותו בפועל, לפני שמחשבים כיצד החברה ממומנת ואיפה היא משלמת מסים.",
+    formal: "Formally: Earnings Before Interest and Tax. Measures core operational profitability independent of capital structure.",
+    formalHe: "רשמית: רווח לפני ריבית ומס. מודד רווחיות תפעולית ליבה ללא תלות במבנה ההון.",
     profDef: "Earnings Before Interest and Taxes. Also called Operating Income. Measures profitability from core operations, excluding the effects of capital structure (debt vs. equity) and tax jurisdiction. Enables apples-to-apples comparison between companies with different financing structures.",
     profDefHe: "רווח לפני ריבית ומסים. נקרא גם הכנסה תפעולית. מודד רווחיות מפעילות ליבה, ללא השפעות מבנה ההון ותחום המס. מאפשר השוואה שווה בין חברות עם מבני מימון שונים.",
     number: '$187.5M in 2024',
@@ -1614,8 +1642,12 @@ const kcCards = [
   {
     term: 'Depreciation (D&A)',
     termHe: 'פחת (D&A)',
-    plain: "Nova bought a $50M lab machine a few years ago. That machine doesn't show up as a $50M cost in year 1 — its cost is spread across its useful life (say, 10 years). Each year, $5M appears as an expense called Depreciation. Here's the twist: no cash actually leaves Nova this year. It's a bookkeeping entry that reflects the machine wearing out.",
+    hook: "A non-cash expense that spreads the cost of assets over time.",
+    hookHe: "הוצאה לא-מזומנית המפזרת את עלות הנכסים לאורך זמן.",
+    plain: "Nova bought a $50M lab machine and spreads that cost over 10 years — $5M per year appears as Depreciation. The twist: no cash actually leaves Nova that year. It's a bookkeeping entry that reflects the machine wearing out.",
     plainHe: "נובה רכשה מכונת מעבדה ב-$50M לפני מספר שנים. המכונה הזאת לא מופיעה כעלות של $50M בשנה 1 — עלותה מפוצלת לאורך חייה השימושיים (נניח 10 שנים). בכל שנה מופיעים $5M כהוצאה הנקראת פחת. הטוויסט: לא יוצא מזומן בפועל מנובה השנה. זו רישום חשבונאי המשקף את הישנות המכונה.",
+    formal: "Formally: Systematic allocation of a tangible asset's cost over its useful life. Amortization is the equivalent for intangible assets. Together: D&A.",
+    formalHe: "רשמית: הקצאה שיטתית של עלות נכס מוחשי לאורך חייו השימושיים. הפחתות הן המקבילה לנכסים לא-מוחשיים. יחד: D&A.",
     profDef: "The systematic allocation of a tangible asset's cost over its estimated useful life. A non-cash expense — reduces reported profit but not actual cash. Amortization is the equivalent for intangible assets (patents, software). Together: D&A.",
     profDefHe: "הקצאה שיטתית של עלות נכס מוחשי לאורך חייו השימושיים המשוערים. הוצאה לא-מזומנית — מקטינה רווח מדווח אך לא מזומן בפועל. הפחתות הן המקבילה לנכסים לא-מוחשיים (פטנטים, תוכנה). יחד: D&A.",
     number: '~$17.4M in 2024',
@@ -1627,8 +1659,12 @@ const kcCards = [
   {
     term: 'EBITDA',
     termHe: 'EBITDA',
-    plain: "Take Operating Profit (EBIT), and add back Depreciation. Why? Because depreciation is a non-cash expense — no money actually left Nova's bank account. EBITDA is the closest thing to 'how much cash does this business generate from operations' before financing, taxes, and accounting timing.",
+    hook: "Operating Profit with non-cash charges added back — the closest thing to operational cash generation.",
+    hookHe: "רווח תפעולי עם חיובים לא-מזומניים מוסיפים בחזרה — הדבר הקרוב ביותר לייצור מזומן תפעולי.",
+    plain: "Take Operating Profit (EBIT) and add back Depreciation. Because depreciation is a non-cash expense, no money actually left Nova's bank — so EBITDA strips it out to show true operating cash power.",
     plainHe: "קחו את רווח תפעולי (EBIT), והוסיפו בחזרה את הפחת. מדוע? כי פחת הוא הוצאה לא-מזומנית — לא יצא מזומן בפועל מחשבון הבנק של נובה. EBITDA הוא הדבר הקרוב ביותר ל'כמה מזומן מייצר העסק מפעילות' לפני מימון, מסים ותזמון חשבונאי.",
+    formal: "Formally: Earnings Before Interest, Taxes, Depreciation and Amortization. The most widely used proxy for operational cash flow in valuation.",
+    formalHe: "רשמית: רווח לפני ריבית, מסים, פחת והפחתות. הפרוקסי הנפוץ ביותר לתזרים מזומנים תפעולי בהערכות שווי.",
     profDef: "Earnings Before Interest, Taxes, Depreciation and Amortization. Widely used as a proxy for operating cash flow and as the denominator in EV/EBITDA valuation multiples. Strips out non-cash charges and financing effects to isolate operational performance.",
     profDefHe: "רווח לפני ריבית, מסים, פחת והפחתות. נמצא בשימוש נרחב כפרוקסי לתזרים מזומנים תפעולי וכמכנה במכפיל EV/EBITDA. מסיר חיובים לא-מזומניים ואפקטי מימון לבידוד הביצועים התפעוליים.",
     number: '$204.9M in 2024',
@@ -1642,8 +1678,12 @@ const kcCards = [
   {
     term: 'Net Profit',
     termHe: 'רווח נקי',
-    plain: "After literally everything — making the product, running the company, paying interest on any debt, and paying corporate taxes — whatever is left belongs to shareholders. That's Net Profit. It's the final answer at the bottom of the P&L. The 'bottom line' people always talk about.",
+    hook: "The final answer — what's left for shareholders after everything.",
+    hookHe: "התשובה הסופית — מה שנשאר לבעלי המניות אחרי הכל.",
+    plain: "After making the product, running the company, paying interest on debt, and paying corporate taxes — whatever remains belongs to shareholders. That's Net Profit: the bottom line people always talk about.",
     plainHe: "לאחר ממש הכל — ייצור המוצר, ניהול החברה, תשלום ריבית על חוב, ותשלום מסי חברה — מה שנשאר שייך לבעלי המניות. זה הרווח הנקי. זוהי התשובה הסופית בתחתית דוח רווח-הפסד. 'השורה התחתונה' עליה כולם מדברים.",
+    formal: "Formally: Residual profit after all expenses, interest, and taxes. Also called Net Income. The basis for EPS and P/E multiples.",
+    formalHe: "רשמית: רווח שיורי לאחר כל ההוצאות, הריבית והמסים. נקרא גם הכנסה נקייה. הבסיס למכפילי EPS ו-P/E.",
     profDef: "The residual profit after all expenses, interest, and taxes. Also called Net Income. Feeds into EPS (Earnings Per Share) and is the foundation of the P/E multiple. If retained, it grows shareholders' equity on the Balance Sheet.",
     profDefHe: "הרווח השיורי לאחר כל ההוצאות, הריבית והמסים. נקרא גם הכנסה נקייה. מזין את EPS (רווח למניה) ומהווה בסיס למכפיל P/E. אם נשמר, הוא מגדיל את הון המניות במאזן.",
     number: '$183.8M in 2024',
@@ -1657,8 +1697,12 @@ const kcCards = [
   {
     term: 'Assets, Liabilities & Equity',
     termHe: 'נכסים, התחייבויות והון עצמי',
-    plain: "Now switch documents. The Balance Sheet is a photograph of the company on one specific day. Left side: everything Nova owns (Assets — cash, equipment, patents). Right side: everything it owes to others (Liabilities — loans, bills) PLUS what belongs to shareholders (Equity). The rule: Assets always equals Liabilities plus Equity. Always.",
+    hook: "A snapshot of everything Nova owns, owes, and what's left for shareholders.",
+    hookHe: "צילום של כל מה שנובה מחזיקה, חייבת, ומה שנשאר לבעלי המניות.",
+    plain: "The Balance Sheet has two sides that always balance: what the company owns (Assets) equals what it owes (Liabilities) plus what belongs to shareholders (Equity). It's a photograph of financial position at one point in time.",
     plainHe: "עכשיו נחליף מסמכים. המאזן הוא צילום של החברה ביום ספציפי אחד. צד שמאל: כל מה שנובה מחזיקה (נכסים — מזומן, ציוד, פטנטים). צד ימין: כל מה שהיא חייבת לאחרים (התחייבויות — הלוואות, חשבונות) בתוספת מה שמגיע לבעלי המניות (הון עצמי). הכלל: נכסים תמיד שווים להתחייבויות פלוס הון עצמי. תמיד.",
+    formal: "Formally: Assets = Liabilities + Equity. The fundamental accounting equation that underpins all financial statements.",
+    formalHe: "רשמית: נכסים = התחייבויות + הון עצמי. משוואת החשבונאות הבסיסית העומדת בבסיס כל הדוחות הפיננסיים.",
     profDef: "The balance sheet presents a company's financial position at a specific point in time. Assets = resources controlled by the entity. Liabilities = present financial obligations. Equity = residual interest of shareholders (Assets − Liabilities). The accounting equation Assets = Liabilities + Equity must always hold.",
     profDefHe: "המאזן מציג את המצב הפיננסי של חברה בנקודת זמן ספציפית. נכסים = משאבים בשליטת הישות. התחייבויות = חובות פיננסיים נוכחיים. הון עצמי = ריבית שיורית של בעלי המניות (נכסים − התחייבויות). משוואת החשבונאות נכסים = התחייבויות + הון עצמי חייבת תמיד לעמוד.",
     number: '$1.4B in 2024',
@@ -1670,8 +1714,12 @@ const kcCards = [
   {
     term: 'Working Capital',
     termHe: 'הון חוזר',
-    plain: "Not all assets are equal. Some are cash or things you can turn into cash quickly this year — like money customers owe you or inventory you're about to sell (Current Assets). Working Capital is the difference between your short-term assets and short-term bills. It tells you: can Nova pay its bills for the next 12 months?",
+    hook: "The cash available to run day-to-day operations.",
+    hookHe: "המזומן הזמין להפעלת הפעילות השוטפת יום-יום.",
+    plain: "Working Capital is the difference between what Nova can turn into cash soon (current assets) and what it has to pay soon (current liabilities). A positive number means Nova can fund its operations without borrowing.",
     plainHe: "לא כל הנכסים שווים. חלקם הם מזומן או דברים שניתן להמיר למזומן במהירות השנה — כמו כסף שלקוחות חייבים לכם או מלאי שעומדים למכור (נכסים שוטפים). הון חוזר הוא ההפרש בין נכסים שוטפים לחשבונות לטווח קצר. הוא אומר לכם: האם נובה יכולה לשלם את חשבונותיה ב-12 החודשים הבאים?",
+    formal: "Formally: Current Assets minus Current Liabilities. Measures short-term liquidity and operational efficiency.",
+    formalHe: "רשמית: נכסים שוטפים פחות התחייבויות שוטפות. מודד נזילות לטווח קצר ויעילות תפעולית.",
     profDef: "A measure of short-term liquidity and operational efficiency. Positive working capital indicates the company can meet near-term obligations. Components drive the Cash Conversion Cycle.",
     profDefHe: "מדד לנזילות לטווח קצר ויעילות תפעולית. הון חוזר חיובי מציין שהחברה יכולה לעמוד בהתחייבויות קרובות. המרכיבים מניעים את מחזור המרת המזומן.",
     number: '~$550M in 2024',
@@ -1685,8 +1733,12 @@ const kcCards = [
   {
     term: 'CAPEX',
     termHe: 'CAPEX — הוצאות הון',
-    plain: "When Nova buys a new testing machine or builds a new facility, that's CAPEX — Capital Expenditure. Here's the key thing: CAPEX doesn't appear as an expense on the P&L. Instead it becomes an Asset on the Balance Sheet, then gets depreciated over time. But it absolutely does consume cash — which is why cash flow and profit are different numbers.",
+    hook: "Money spent on physical assets that will generate value for years to come.",
+    hookHe: "כסף שהוצא על נכסים פיזיים שייצרו ערך לשנים הבאות.",
+    plain: "When Nova buys a new lab or manufacturing tool, that's CAPEX — Capital Expenditure. Unlike OPEX which is expensed immediately, CAPEX gets depreciated over time. Nova's 2.6% of revenue CAPEX is very low, signalling an asset-light business.",
     plainHe: "כאשר נובה קונה מכונת בדיקה חדשה או בונה מתקן חדש, זה CAPEX — הוצאות הון. הדבר המרכזי: CAPEX אינו מופיע כהוצאה בדוח רווח-הפסד. במקום זאת הוא הופך לנכס במאזן, ואז מופחת לאורך זמן. אבל הוא בהחלט צורך מזומן — ולכן תזרים מזומנים ורווח הם מספרים שונים.",
+    formal: "Formally: Funds used to acquire, upgrade, or maintain physical assets such as equipment, buildings, and technology.",
+    formalHe: "רשמית: כספים המשמשים לרכישה, שדרוג או תחזוקה של נכסים פיזיים כגון ציוד, בניינים וטכנולוגיה.",
     profDef: "Capital Expenditure represents funds used to acquire or maintain long-term physical assets (PP&E). Capitalized on the Balance Sheet and depreciated over the asset's useful life. Appears as a cash outflow in the Investing Activities section of the Cash Flow Statement.",
     profDefHe: "הוצאות הון מייצגות כספים המשמשים לרכישה או תחזוקה של נכסים פיזיים לטווח ארוך (PP&E). מהוונות במאזן ומופחתות לאורך חיי הנכס. מופיעות כיציאת מזומן בסעיף פעילות השקעות בדוח תזרים המזומנים.",
     number: '$17.2M in 2024',
@@ -1698,8 +1750,12 @@ const kcCards = [
   {
     term: 'Free Cash Flow',
     termHe: 'תזרים מזומנים חופשי (FCF)',
-    plain: "Take the cash generated from running the business (Operating Cash Flow), subtract what was spent on maintaining and growing assets (CAPEX), and what's left is Free Cash Flow. It's the cash a business generates that it can truly do anything with — pay dividends, buy back shares, pay down debt, or make acquisitions.",
+    hook: "The cash a business truly generates — after investing in its own future.",
+    hookHe: "המזומן שעסק באמת מייצר — לאחר השקעה בעתידו שלו.",
+    plain: "Take the cash from running the business (Operating Cash Flow), subtract what was spent on assets (CAPEX), and what's left is Free Cash Flow. It's the cash Nova can use for anything — dividends, buybacks, acquisitions, or paying down debt.",
     plainHe: "קחו את המזומן שנוצר מניהול העסק (תזרים מזומנים תפעולי), הפחיתו את מה שהוצא על תחזוקה וגידול נכסים (CAPEX), ומה שנשאר הוא תזרים מזומנים חופשי. זה המזומן שהעסק מייצר שניתן לעשות איתו ממש כל דבר — לשלם דיבידנדים, לרכוש מניות בחזרה, לפרוע חוב, או לרכוש חברות.",
+    formal: "Formally: Operating Cash Flow minus Capital Expenditures. Considered the most reliable measure of financial performance because it is harder to manipulate than net income.",
+    formalHe: "רשמית: תזרים מזומנים תפעולי פחות הוצאות הון. נחשב למדד האמין ביותר לביצועים פיננסיים כי קשה יותר לתמרן אותו מאשר את הרווח הנקי.",
     profDef: "Considered by many investors as the most reliable measure of financial performance because it is harder to manipulate than net income. High FCF relative to profit signals a high-quality business.",
     profDefHe: "נחשב על ידי רבים מהמשקיעים למדד האמין ביותר לביצועים פיננסיים כי קשה יותר לתמרן אותו מאשר את הרווח הנקי. FCF גבוה ביחס לרווח מסמן עסק איכותי.",
     number: '$218.1M in 2024',
@@ -1713,8 +1769,12 @@ const kcCards = [
   {
     term: 'Market Cap',
     termHe: 'שווי שוק',
-    plain: "If you wanted to buy every single share of Nova on the stock market today, what would it cost? That total bill is Market Cap — Market Capitalization. It's what the public stock market thinks Nova's equity is worth right now, at this moment. It changes every second the market is open.",
+    hook: "The stock market's current opinion of what Nova's equity is worth.",
+    hookHe: "דעתו הנוכחית של שוק המניות על שווי הון המניות של נובה.",
+    plain: "If you wanted to buy every single Nova share today, the total bill is Market Cap. It changes every second the market is open — reflecting investor sentiment, growth expectations, and macro conditions.",
     plainHe: "אם הייתם רוצים לקנות כל מניה בודדת של נובה בשוק ההון היום, כמה היה עולה? החשבון הכולל הזה הוא שווי שוק — Market Capitalization. זה מה ששוק המניות הציבורי חושב שהון המניות של נובה שווה עכשיו, ברגע זה. זה משתנה כל שנייה שהשוק פתוח.",
+    formal: "Formally: Current Share Price × Total Shares Outstanding. Represents equity value as priced by public markets. Does not include debt.",
+    formalHe: "רשמית: מחיר מניה נוכחי × סך מניות בסחר. מייצג את שווי ההון כפי שתומחר על ידי שווקים ציבוריים. אינו כולל חוב.",
     profDef: "Market Capitalization = Current Share Price × Total Shares Outstanding. Represents the total equity value as priced by public markets. Does NOT include debt. Used to classify: small-cap (<$2B), mid-cap ($2–10B), large-cap (>$10B).",
     profDefHe: "שווי שוק = מחיר מניה נוכחי × סך מניות בסחר. מייצג את שווי ההון הכולל כפי שתומחר על ידי שווקים ציבוריים. אינו כולל חוב. משמש לסיווג: קטן (<$2B), בינוני ($2–10B), גדול (>$10B).",
     number: '~$4.5B in 2024',
@@ -1726,8 +1786,12 @@ const kcCards = [
   {
     term: 'Enterprise Value (EV)',
     termHe: 'שווי פירמה (EV)',
-    plain: "Market Cap is the price of the equity. Enterprise Value is the price of the WHOLE company — what an acquirer would actually pay. Take Market Cap, add all the debt you'd inherit, then subtract the cash you'd receive. EV is the true acquisition price.",
+    hook: "The true acquisition price — what a buyer actually pays to own the whole company.",
+    hookHe: "מחיר הרכישה האמיתי — מה שקונה משלם בפועל כדי להחזיק בכל החברה.",
+    plain: "Market Cap is the price of the equity. EV is what an acquirer actually pays — inheriting all debt but also receiving all cash. A company with more cash than debt will have an EV lower than its Market Cap, like Nova.",
     plainHe: "שווי שוק הוא מחיר ההון. שווי פירמה הוא מחיר כל החברה — מה שרוכש ישלם בפועל. קחו שווי שוק, הוסיפו את כל החוב שתירשו, ואז הפחיתו את המזומן שתקבלו. EV הוא מחיר הרכישה האמיתי.",
+    formal: "Formally: Market Cap + Total Debt − Cash. Used as the numerator in EV/EBITDA and EV/Revenue multiples because it reflects the full capital structure.",
+    formalHe: "רשמית: שווי שוק + חוב כולל − מזומן. משמש כמונה במכפילי EV/EBITDA ו-EV/Revenue כי הוא משקף את מלוא מבנה ההון.",
     profDef: "Represents the theoretical total acquisition cost. Used as the numerator in EV/EBITDA and EV/Revenue multiples because it reflects the full capital structure, not just equity.",
     profDefHe: "מייצג את עלות הרכישה הכוללת התיאורטית. משמש כמונה במכפילי EV/EBITDA ו-EV/Revenue כי הוא משקף את מלוא מבנה ההון, לא רק הון המניות.",
     number: '~$4,250M in 2024',
@@ -1940,56 +2004,52 @@ function kcRenderCard(idx) {
   const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
   const isHe = lang === 'he';
 
-  const term = isHe ? card.termHe : card.term;
-  const plain = isHe ? card.plainHe : card.plain;
-  const profDef = isHe ? card.profDefHe : card.profDef;
-  const number = isHe ? card.numberHe : card.number;
+  const term    = isHe ? card.termHe    : card.term;
+  const hook    = isHe ? (card.hookHe   || card.hook)   : card.hook;
+  const plain   = isHe ? card.plainHe   : card.plain;
+  const formal  = isHe ? (card.formalHe || card.formal) : card.formal;
+  const number  = isHe ? card.numberHe  : card.number;
   const formula = isHe ? card.formulaHe : card.formula;
   const insight = isHe ? card.insightHe : card.insight;
 
-  const profDefLabel = isHe ? '📘 הגדרה מקצועית' : '📘 Professional definition';
   const formulaLabel = isHe ? '📐 נוסחה' : '📐 Formula';
-  const novaLabel = isHe ? 'המספר של נובה:' : "Nova's number:";
+  const novaLabel    = isHe ? 'המספר של נובה:' : "Nova's number:";
 
-  const profDefBlock = formula ? `
-    <div class="kc-profdef-row">
-      <div class="kc-card-profdef">
-        <div class="kc-card-profdef-label">${profDefLabel}</div>
-        <p>${profDef}</p>
-      </div>
+  const formulaBox = formula ? `
       <div class="kc-formula-box">
         <div class="kc-formula-label">${formulaLabel}</div>
         <div class="kc-formula-text">${renderFormula(formula)}</div>
-      </div>
-    </div>` : `
-    <div class="kc-card-profdef" style="margin-bottom:18px">
-      <div class="kc-card-profdef-label">${profDefLabel}</div>
-      <p>${profDef}</p>
-    </div>`;
+      </div>` : '';
 
   const panel = document.getElementById('kc-card-panel');
   if (!panel) return;
   panel.innerHTML = `
     <div class="kc-card-term">${term}</div>
+    <div class="kc-card-hook">${hook}</div>
     <div class="kc-card-plain">${plain}</div>
-    ${profDefBlock}
-    <div class="kc-card-number"><span class="kc-number-label">${novaLabel}</span> ${number}</div>
-    <div class="kc-card-insight"><strong>💡 Did you know?</strong>${insight}</div>
+    <div class="kc-card-formal">${formal}</div>
+    <div class="kc-bottom-row">
+      <div class="kc-bottom-left">
+        <div class="kc-card-number"><span class="kc-number-label">${novaLabel}</span> ${number}</div>
+        ${formulaBox}
+      </div>
+      <div class="kc-card-insight"><strong>💡 Did you know?</strong>${insight}</div>
+    </div>
   `;
 
   // Update counter
   const counter = document.getElementById('kc-counter');
-  if (counter) counter.textContent = `Card ${idx + 1} of ${kcCards.length}`;
+  if (counter) counter.textContent = `${idx + 1} / ${kcCards.length}`;
 
   // Update progress bar
   const fill = document.getElementById('kc-prog-fill');
   if (fill) fill.style.width = ((idx + 1) / kcCards.length * 100) + '%';
 
-  // Update prev/next buttons
+  // Update floating arrow visibility
   const prev = document.getElementById('kc-prev');
   const next = document.getElementById('kc-next');
-  if (prev) prev.disabled = idx === 0;
-  if (next) next.disabled = idx === kcCards.length - 1;
+  if (prev) prev.classList.toggle('hidden', idx === 0);
+  if (next) next.classList.toggle('hidden', idx === kcCards.length - 1);
 
   // Update flowchart — full re-render for current card (bidirectional)
   kcDrawChart(idx);
@@ -2159,7 +2219,7 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
   // Rebuild dynamic sections — preserve card position in Key Concepts
   if (currentSection === 'B') {
     const savedIdx = kcIdx;
-    setTimeout(() => { kcBuildSVG(); kcIdx = savedIdx; kcRenderCard(savedIdx); }, 50);
+    kcRenderCard(savedIdx);
   }
   if (currentSection === 'D') buildMultCards();
   // Rebuild charts
