@@ -170,9 +170,9 @@ body.rtl{direction:rtl}
 .kc-intro-tab.active{color:#00c4a7;border-bottom-color:#00c4a7}
 .kc-intro-pane{display:none}
 .kc-intro-pane.active{display:block}
-.kc-rpt-wrap{display:flex;gap:0;align-items:flex-start;background:#fff;border-radius:0 0 12px 12px;padding:20px 16px 16px;border:1px solid #e2e8f0;border-top:none}
-.kc-rpt-table-col{flex:0 0 62%;min-width:0}
-.kc-rpt-callout-col{flex:1;padding-left:14px;position:relative;min-height:320px}
+.kc-rpt-wrap{display:flex;gap:0;align-items:stretch;background:#fff;border-radius:0 0 12px 12px;padding:20px 16px 16px;border:1px solid #e2e8f0;border-top:none}
+.kc-rpt-table-col{flex:0 0 65%;min-width:0}
+.kc-rpt-callout-col{flex:1;padding-left:14px;position:relative}
 .kc-rpt-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0a1628;margin-bottom:2px}
 .kc-rpt-subtitle{font-size:11px;color:#94a3b8;margin-bottom:14px}
 .kc-rpt-table{width:100%;border-collapse:collapse;font-size:13px}
@@ -197,14 +197,13 @@ body.rtl{direction:rtl}
 .kc-rpt-result-purple td{font-weight:800;font-size:14px;color:#8b5cf6;background:rgba(139,92,246,0.08)}
 .kc-rpt-result-purple td:first-child{border-top:1px solid #2a3a4a}
 .kc-rpt-result-purple td:last-child{border-top:1px solid #2a3a4a;color:#8b5cf6}
-.kc-rpt-eq-wrap{display:flex;gap:12px}
-.kc-rpt-eq-col{flex:1;border-right:1px solid #e2e8f0;padding-right:12px}
-.kc-rpt-eq-col:last-child{border-right:none;padding-right:0;padding-left:0}
-.kc-callout{position:relative;background:#fff;border:1.5px solid #00c9a7;border-radius:8px;padding:8px 12px;font-size:12px;color:#0f172a;max-width:180px;box-shadow:0 2px 8px rgba(0,0,0,0.12);line-height:1.4;margin-bottom:12px}
-.kc-callout::before{content:'';position:absolute;left:-9px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-right-color:#00c9a7}
-.kc-callout::after{content:'';position:absolute;left:-7px;top:50%;transform:translateY(-50%);border:4px solid transparent;border-right-color:#fff}
+.kc-callout{position:absolute;background:#fff;border:1.5px solid #00c9a7;border-radius:8px;padding:8px 12px;font-size:12px;color:#0f172a;max-width:175px;box-shadow:0 2px 8px rgba(0,0,0,0.12);line-height:1.4}
+.kc-callout::before{content:'';position:absolute;left:-8px;top:50%;transform:translateY(-50%);border-width:6px 8px 6px 0;border-style:solid;border-color:transparent #00c9a7 transparent transparent}
 .kc-intro-pill{display:inline-block;background:rgba(0,196,167,0.12);color:#00c4a7;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin:14px auto 20px;letter-spacing:0.5px}
 .kc-intro-pill-wrap{text-align:center}
+#kc-back-link{display:none;margin:0 0 8px}
+#kc-back-link a{font-size:12px;color:#94a3b8;text-decoration:none;cursor:pointer}
+#kc-back-link a:hover{color:#64748b}
 .kc-intro-btn{display:block;margin:0 auto;background:#00c4a7;color:#0a1628;border:none;padding:14px 48px;border-radius:10px;font-size:18px;font-weight:800;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,196,167,0.3)}
 .kc-intro-btn:hover{background:#00a891;transform:translateY(-2px)}
 /* ===== KEY CONCEPTS (section-B) ===== */
@@ -335,10 +334,10 @@ body.rtl{direction:rtl}
           <div class="kc-rpt-title">Consolidated Statements of Operations</div>
           <div class="kc-rpt-subtitle">Year ended December 31, 2024 &nbsp;(USD thousands)</div>
           <table class="kc-rpt-table">
-            <tr class="kc-rpt-section"><td>Revenues</td><td>$672,396</td></tr>
+            <tr class="kc-rpt-section" id="pl-r-rev"><td>Revenues</td><td>$672,396</td></tr>
             <tr class="kc-rpt-indent"><td>Products</td><td>538,352</td></tr>
             <tr class="kc-rpt-indent"><td>Services</td><td>134,044</td></tr>
-            <tr class="kc-rpt-cost"><td>Cost of revenues</td><td>(285,310)</td></tr>
+            <tr class="kc-rpt-cost" id="pl-r-cost"><td>Cost of revenues</td><td>(285,310)</td></tr>
             <tr class="kc-rpt-result" id="pl-r-gross"><td>Gross profit</td><td>$387,086</td></tr>
             <tr class="kc-rpt-section"><td>Operating expenses:</td><td></td></tr>
             <tr class="kc-rpt-cost-indent"><td>R&amp;D, net</td><td>(110,257)</td></tr>
@@ -351,10 +350,10 @@ body.rtl{direction:rtl}
           </table>
         </div>
         <div class="kc-rpt-callout-col">
-          <div class="kc-callout" style="margin-top:2px">The top line &#8212; every dollar Nova earned this year</div>
-          <div class="kc-callout" style="margin-top:44px">After production costs only. Nova keeps 57.6&#162; of every $1</div>
-          <div class="kc-callout" style="margin-top:30px">Pure business performance &#8212; before financing and tax</div>
-          <div class="kc-callout" style="margin-top:34px">The bottom line &#8212; what shareholders actually keep</div>
+          <div class="kc-callout" data-anchor="pl-r-cost">The direct cost of making the product &#8212; materials, manufacturing, engineers. $285M out of $672M revenue</div>
+          <div class="kc-callout" data-anchor="pl-r-gross">Nova keeps 57.6&#162; of every $1 of revenue &#8212; that&#8217;s exceptional</div>
+          <div class="kc-callout" data-anchor="pl-r-oi">Strips out financing and tax &#8212; perfect for comparing companies</div>
+          <div class="kc-callout" data-anchor="pl-r-ni">What shareholders actually keep</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 1&#8211;8</span></div>
@@ -362,48 +361,48 @@ body.rtl{direction:rtl}
 
     <!-- TAB 2: Balance Sheet -->
     <div class="kc-intro-pane" id="kc-pane-b">
-      <div class="kc-rpt-wrap" style="flex-direction:column">
-        <div style="display:flex;gap:16px;width:100%">
-          <!-- Assets -->
-          <div style="flex:1">
-            <div class="kc-rpt-title" style="color:#3b82f6">Assets</div>
-            <table class="kc-rpt-table">
-              <tr class="kc-rpt-section"><td colspan="2">Current Assets</td></tr>
-              <tr class="kc-rpt-indent"><td>Cash and equivalents</td><td>$550,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Accounts receivable</td><td>180,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Inventory</td><td>170,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Other current assets</td><td>100,000</td></tr>
-              <tr class="kc-rpt-result" id="bs-r-ca"><td>Total Current Assets</td><td>$1,000,000</td></tr>
-              <tr class="kc-rpt-section"><td colspan="2">Non-Current Assets</td></tr>
-              <tr class="kc-rpt-indent"><td>PP&amp;E, net</td><td>120,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Intangibles &amp; other</td><td>280,000</td></tr>
-              <tr class="kc-rpt-result-lg" id="bs-r-ta"><td>Total Assets</td><td>$1,400,000</td></tr>
-            </table>
-          </div>
-          <!-- Liabilities & Equity -->
-          <div style="flex:1;border-left:1px solid #e2e8f0;padding-left:16px">
-            <div class="kc-rpt-title" style="color:#e05555">Liabilities &amp; Equity</div>
-            <table class="kc-rpt-table">
-              <tr class="kc-rpt-section"><td colspan="2">Current Liabilities</td></tr>
-              <tr class="kc-rpt-indent"><td>Accounts payable</td><td>$80,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Other current</td><td>370,000</td></tr>
-              <tr class="kc-rpt-result"><td>Total Current Liabilities</td><td>$450,000</td></tr>
-              <tr class="kc-rpt-section"><td colspan="2">Non-Current Liabilities</td></tr>
-              <tr class="kc-rpt-indent"><td>Long-term debt</td><td>250,000</td></tr>
-              <tr class="kc-rpt-indent"><td>Other</td><td>100,000</td></tr>
-              <tr class="kc-rpt-result" id="bs-r-tl"><td>Total Liabilities</td><td>$700,000</td></tr>
-              <tr class="kc-rpt-section"><td colspan="2">Shareholders&#8217; Equity</td></tr>
-              <tr class="kc-rpt-result" id="bs-r-eq"><td>Total Equity</td><td>$700,000</td></tr>
-              <tr class="kc-rpt-result-lg"><td>Total Liabilities &amp; Equity</td><td>$1,400,000</td></tr>
-            </table>
+      <div class="kc-rpt-wrap">
+        <div class="kc-rpt-table-col" style="flex:0 0 70%">
+          <div class="kc-rpt-title">Consolidated Balance Sheets</div>
+          <div class="kc-rpt-subtitle">As of December 31, 2024 &nbsp;(USD thousands)</div>
+          <div style="display:flex;gap:12px">
+            <div style="flex:1">
+              <div class="kc-rpt-title" style="color:#3b82f6;font-size:10px;margin-bottom:4px">Assets</div>
+              <table class="kc-rpt-table">
+                <tr class="kc-rpt-section"><td colspan="2">Current Assets</td></tr>
+                <tr class="kc-rpt-indent"><td>Cash and equivalents</td><td>$550,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Accounts receivable</td><td>180,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Inventory</td><td>170,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Other current assets</td><td>100,000</td></tr>
+                <tr class="kc-rpt-result" id="bs-r-ca"><td>Total Current Assets</td><td>$1,000,000</td></tr>
+                <tr class="kc-rpt-section"><td colspan="2">Non-Current Assets</td></tr>
+                <tr class="kc-rpt-indent"><td>PP&amp;E, net</td><td>120,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Intangibles &amp; other</td><td>280,000</td></tr>
+                <tr class="kc-rpt-result-lg"><td>Total Assets</td><td>$1,400,000</td></tr>
+              </table>
+            </div>
+            <div style="flex:1;border-left:1px solid #e2e8f0;padding-left:10px">
+              <div class="kc-rpt-title" style="color:#e05555;font-size:10px;margin-bottom:4px">Liabilities &amp; Equity</div>
+              <table class="kc-rpt-table">
+                <tr class="kc-rpt-section"><td colspan="2">Current Liabilities</td></tr>
+                <tr class="kc-rpt-indent"><td>Accounts payable</td><td>$80,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Other current</td><td>370,000</td></tr>
+                <tr class="kc-rpt-result"><td>Total Current Liabilities</td><td>$450,000</td></tr>
+                <tr class="kc-rpt-section"><td colspan="2">Non-Current Liabilities</td></tr>
+                <tr class="kc-rpt-indent"><td>Long-term debt</td><td>250,000</td></tr>
+                <tr class="kc-rpt-indent"><td>Other</td><td>100,000</td></tr>
+                <tr class="kc-rpt-result"><td>Total Liabilities</td><td>$700,000</td></tr>
+                <tr class="kc-rpt-section"><td colspan="2">Shareholders&#8217; Equity</td></tr>
+                <tr class="kc-rpt-result" id="bs-r-eq"><td>Total Equity</td><td>$700,000</td></tr>
+                <tr class="kc-rpt-result-lg" id="bs-r-lne"><td>Total Liabilities &amp; Equity</td><td>$1,400,000</td></tr>
+              </table>
+            </div>
           </div>
         </div>
-        <!-- Callouts below the two-col layout -->
-        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-          <div class="kc-callout" style="position:static;max-width:210px">&#x2192; <strong>Current Assets $1M:</strong> Can be converted to cash within 12 months</div>
-          <div class="kc-callout" style="position:static;max-width:210px">&#x2192; <strong>Total Assets = Total L+E:</strong> These two sides always balance &#8212; it&#8217;s the law of accounting</div>
-          <div class="kc-callout" style="position:static;max-width:210px">&#x2192; <strong>Total Liabilities $700K:</strong> What Nova owes &#8212; to banks, suppliers, employees</div>
-          <div class="kc-callout" style="position:static;max-width:210px">&#x2192; <strong>Equity $700K:</strong> Net profit flows here over time as retained earnings</div>
+        <div class="kc-rpt-callout-col" style="flex:0 0 30%;padding-left:14px">
+          <div class="kc-callout" data-anchor="bs-r-ca">Assets Nova expects to use within 12 months &#8212; vs factories and equipment which last for years</div>
+          <div class="kc-callout" data-anchor="bs-r-eq">Net profit flows here year after year</div>
+          <div class="kc-callout" data-anchor="bs-r-lne">Both sides always equal &#8212; that&#8217;s why it&#8217;s called a balance sheet</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 9&#8211;10</span></div>
@@ -433,10 +432,10 @@ body.rtl{direction:rtl}
           </table>
         </div>
         <div class="kc-rpt-callout-col">
-          <div class="kc-callout" style="margin-top:28px">Starts here &#8212; same number as the P&amp;L bottom line</div>
-          <div class="kc-callout" style="margin-top:52px">Profit + non-cash items. Did the cash actually arrive?</div>
-          <div class="kc-callout" style="margin-top:44px">Spent on future assets &#8212; labs, equipment, technology</div>
-          <div class="kc-callout" style="margin-top:68px">Nova&#8217;s actual usable cash &#8212; higher than net profit</div>
+          <div class="kc-callout" data-anchor="cf-r-ni">Same number as the P&amp;L bottom line &#8212; the bridge between statements</div>
+          <div class="kc-callout" data-anchor="cf-r-ops">Net profit adjusted for non-cash costs like D&amp;A &#8212; because that cash never actually left Nova</div>
+          <div class="kc-callout" data-anchor="cf-r-capex">The machines, factories and labs &#8212; Nova investing in its own future capacity</div>
+          <div class="kc-callout" data-anchor="cf-r-fcf">Cash Nova can truly do anything with &#8212; dividends, buybacks, acquisitions. And it&#8217;s higher than net profit.</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 11&#8211;12</span></div>
@@ -444,6 +443,8 @@ body.rtl{direction:rtl}
 
     <button class="kc-intro-btn" onclick="kcStartCards()">Let&#8217;s dive in &#x2192;</button>
   </div>
+  <!-- back link: shown when cards are active -->
+  <div id="kc-back-link"><a onclick="kcInit()" href="javascript:void(0)">&#8592; Reports overview</a></div>
   <!-- Progress bar -->
   <div class="kc-progress-bar" id="kc-progress-bar"><div class="kc-progress-fill" id="kc-prog-fill"></div></div>
 
@@ -1900,36 +1901,62 @@ function kcMove(dir) {
 function kcInit() {
   kcIdx = 0;
   kcMaxSeen = 0;
-  // Show intro screen, hide card UI
   const intro = document.getElementById('kc-intro');
   const progBar = document.getElementById('kc-progress-bar');
   const split = document.querySelector('.kc-split');
   const prev = document.getElementById('kc-prev');
   const next = document.getElementById('kc-next');
   const counter = document.getElementById('kc-counter');
+  const backLink = document.getElementById('kc-back-link');
   if (intro) intro.style.display = '';
   if (progBar) progBar.style.display = 'none';
   if (split) split.style.display = 'none';
   if (prev) prev.classList.add('hidden');
   if (next) next.classList.add('hidden');
   if (counter) counter.textContent = '0 / 14';
+  if (backLink) backLink.style.display = 'none';
+  // Reset to P&L tab
+  document.querySelectorAll('.kc-intro-pane').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.kc-intro-tab').forEach(function(b){b.classList.remove('active');});
+  var plPane = document.getElementById('kc-pane-pl');
+  var plTab = document.querySelector('.kc-intro-tab');
+  if (plPane) plPane.classList.add('active');
+  if (plTab) plTab.classList.add('active');
+  setTimeout(kcPositionCallouts, 80);
 }
 
 function kcIntroTab(id, btn) {
-    document.querySelectorAll('.kc-intro-pane').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.kc-intro-tab').forEach(b => b.classList.remove('active'));
-    document.getElementById('kc-pane-' + id).classList.add('active');
-    btn.classList.add('active');
-  }
-  function kcStartCards() {
+  document.querySelectorAll('.kc-intro-pane').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.kc-intro-tab').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('kc-pane-' + id).classList.add('active');
+  btn.classList.add('active');
+  requestAnimationFrame(kcPositionCallouts);
+}
+function kcStartCards() {
   const intro = document.getElementById('kc-intro');
   const progBar = document.getElementById('kc-progress-bar');
   const split = document.querySelector('.kc-split');
+  const backLink = document.getElementById('kc-back-link');
   if (intro) intro.style.display = 'none';
   if (progBar) progBar.style.display = '';
   if (split) split.style.display = '';
+  if (backLink) backLink.style.display = 'block';
   kcRenderCard(0);
 }
+function kcPositionCallouts() {
+  document.querySelectorAll('.kc-intro-pane.active [data-anchor]').forEach(function(callout) {
+    var anchorId = callout.getAttribute('data-anchor');
+    var anchor = document.getElementById(anchorId);
+    var col = callout.parentElement;
+    if (!anchor || !col) return;
+    var ar = anchor.getBoundingClientRect();
+    var cr = col.getBoundingClientRect();
+    if (cr.height === 0) return;
+    var top = ar.top - cr.top + ar.height / 2 - callout.offsetHeight / 2;
+    callout.style.top = Math.max(4, top) + 'px';
+  });
+}
+window.addEventListener('resize', kcPositionCallouts);
 
 // ===================== SECTION D: MULTIPLES =====================
 const multData = [
