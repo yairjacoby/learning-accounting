@@ -170,9 +170,10 @@ body.rtl{direction:rtl}
 .kc-intro-tab.active{color:#00c4a7;border-bottom-color:#00c4a7}
 .kc-intro-pane{display:none}
 .kc-intro-pane.active{display:block}
-.kc-rpt-wrap{display:flex;gap:0;align-items:stretch;background:#fff;border-radius:0 0 12px 12px;padding:20px 16px 16px;border:1px solid #e2e8f0;border-top:none}
-.kc-rpt-table-col{flex:0 0 65%;min-width:0}
-.kc-rpt-callout-col{flex:1;padding-left:14px;position:relative}
+.kc-rpt-wrap{display:flex;gap:0;align-items:flex-start;background:#fff;border-radius:0 0 12px 12px;padding:20px 16px 16px;border:1px solid #e2e8f0;border-top:none}
+.kc-rpt-table-col{flex:0 0 56%;min-width:0}
+.kc-rpt-col-left{flex:0 0 22%;position:relative;min-height:200px;padding-right:10px}
+.kc-rpt-col-right{flex:0 0 22%;position:relative;min-height:200px;padding-left:10px}
 .kc-rpt-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0a1628;margin-bottom:2px}
 .kc-rpt-subtitle{font-size:11px;color:#94a3b8;margin-bottom:14px}
 .kc-rpt-table{width:100%;border-collapse:collapse;font-size:13px}
@@ -199,6 +200,8 @@ body.rtl{direction:rtl}
 .kc-rpt-result-purple td:last-child{border-top:1px solid #2a3a4a;color:#8b5cf6}
 .kc-callout{position:absolute;background:#fff;border:1.5px solid #00c9a7;border-radius:8px;padding:8px 12px;font-size:12px;color:#0f172a;max-width:175px;box-shadow:0 2px 8px rgba(0,0,0,0.12);line-height:1.4}
 .kc-callout::before{content:'';position:absolute;left:-8px;top:50%;transform:translateY(-50%);border-width:6px 8px 6px 0;border-style:solid;border-color:transparent #00c9a7 transparent transparent}
+.kc-callout-l{position:absolute;background:#fff;border:1.5px solid #00c9a7;border-radius:8px;padding:8px 12px;font-size:12px;color:#0f172a;max-width:175px;box-shadow:0 2px 8px rgba(0,0,0,0.12);line-height:1.4}
+.kc-callout-l::after{content:'';position:absolute;right:-8px;top:50%;transform:translateY(-50%);border-width:6px 0 6px 8px;border-style:solid;border-color:transparent transparent transparent #00c9a7}
 .kc-intro-pill{display:inline-block;background:rgba(0,196,167,0.12);color:#00c4a7;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin:14px auto 20px;letter-spacing:0.5px}
 .kc-intro-pill-wrap{text-align:center}
 #kc-back-link{display:none;margin:0 0 8px}
@@ -330,6 +333,10 @@ body.rtl{direction:rtl}
     <!-- TAB 1: P&L -->
     <div class="kc-intro-pane active" id="kc-pane-pl">
       <div class="kc-rpt-wrap">
+        <div class="kc-rpt-col-left">
+          <div class="kc-callout-l" data-anchor="pl-r-cost" data-he="עלות ישירה של ייצור המוצר — חומרי גלם, ייצור, מהנדסים. 285 מיליון מתוך 672 מיליון הכנסות">The direct cost of making the product &#8212; materials, manufacturing, engineers. $285M out of $672M revenue</div>
+          <div class="kc-callout-l" data-anchor="pl-r-oi" data-he="מנטרל מימון ומס — מושלם להשוואה בין חברות">Strips out financing and tax &#8212; perfect for comparing companies</div>
+        </div>
         <div class="kc-rpt-table-col">
           <div class="kc-rpt-title">Consolidated Statements of Operations</div>
           <div class="kc-rpt-subtitle">Year ended December 31, 2024 &nbsp;(USD thousands)</div>
@@ -349,11 +356,9 @@ body.rtl{direction:rtl}
             <tr class="kc-rpt-result-lg" id="pl-r-ni"><td>Net income</td><td>$183,762</td></tr>
           </table>
         </div>
-        <div class="kc-rpt-callout-col">
-          <div class="kc-callout" data-anchor="pl-r-cost">The direct cost of making the product &#8212; materials, manufacturing, engineers. $285M out of $672M revenue</div>
-          <div class="kc-callout" data-anchor="pl-r-gross">Nova keeps 57.6&#162; of every $1 of revenue &#8212; that&#8217;s exceptional</div>
-          <div class="kc-callout" data-anchor="pl-r-oi">Strips out financing and tax &#8212; perfect for comparing companies</div>
-          <div class="kc-callout" data-anchor="pl-r-ni">What shareholders actually keep</div>
+        <div class="kc-rpt-col-right">
+          <div class="kc-callout" data-anchor="pl-r-gross" data-he="נובה שומרת 57.6 אגורות מכל שקל הכנסה — זה יוצא דופן">Nova keeps 57.6&#162; of every $1 of revenue &#8212; that&#8217;s exceptional</div>
+          <div class="kc-callout" data-anchor="pl-r-ni" data-he="מה שבעלי המניות שומרים בפועל">What shareholders actually keep</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 1&#8211;8</span></div>
@@ -362,7 +367,11 @@ body.rtl{direction:rtl}
     <!-- TAB 2: Balance Sheet -->
     <div class="kc-intro-pane" id="kc-pane-b">
       <div class="kc-rpt-wrap">
-        <div class="kc-rpt-table-col" style="flex:0 0 70%">
+        <div class="kc-rpt-col-left">
+          <div class="kc-callout-l" data-anchor="bs-r-ca" data-he="נכסים שנובה מצפה להשתמש בהם תוך 12 חודשים — לעומת מפעלים וציוד שנמשכים שנים">Assets Nova expects to use within 12 months &#8212; vs factories and equipment which last for years</div>
+          <div class="kc-callout-l" data-anchor="bs-r-tl" data-he="מה שנובה חייבת — לבנקים, לספקים ולעובדים">What Nova owes &#8212; to banks, suppliers, and employees</div>
+        </div>
+        <div class="kc-rpt-table-col">
           <div class="kc-rpt-title">Consolidated Balance Sheets</div>
           <div class="kc-rpt-subtitle">As of December 31, 2024 &nbsp;(USD thousands)</div>
           <div style="display:flex;gap:12px">
@@ -391,7 +400,7 @@ body.rtl{direction:rtl}
                 <tr class="kc-rpt-section"><td colspan="2">Non-Current Liabilities</td></tr>
                 <tr class="kc-rpt-indent"><td>Long-term debt</td><td>250,000</td></tr>
                 <tr class="kc-rpt-indent"><td>Other</td><td>100,000</td></tr>
-                <tr class="kc-rpt-result"><td>Total Liabilities</td><td>$700,000</td></tr>
+                <tr class="kc-rpt-result" id="bs-r-tl"><td>Total Liabilities</td><td>$700,000</td></tr>
                 <tr class="kc-rpt-section"><td colspan="2">Shareholders&#8217; Equity</td></tr>
                 <tr class="kc-rpt-result" id="bs-r-eq"><td>Total Equity</td><td>$700,000</td></tr>
                 <tr class="kc-rpt-result-lg" id="bs-r-lne"><td>Total Liabilities &amp; Equity</td><td>$1,400,000</td></tr>
@@ -399,10 +408,9 @@ body.rtl{direction:rtl}
             </div>
           </div>
         </div>
-        <div class="kc-rpt-callout-col" style="flex:0 0 30%;padding-left:14px">
-          <div class="kc-callout" data-anchor="bs-r-ca">Assets Nova expects to use within 12 months &#8212; vs factories and equipment which last for years</div>
-          <div class="kc-callout" data-anchor="bs-r-eq">Net profit flows here year after year</div>
-          <div class="kc-callout" data-anchor="bs-r-lne">Both sides always equal &#8212; that&#8217;s why it&#8217;s called a balance sheet</div>
+        <div class="kc-rpt-col-right">
+          <div class="kc-callout" data-anchor="bs-r-eq" data-he="הרווח הנקי זורם לכאן שנה אחר שנה">Net profit flows here year after year</div>
+          <div class="kc-callout" data-anchor="bs-r-lne" data-he="שני הצדדים תמיד שווים — זו הסיבה שנקרא מאזן">Both sides always equal &#8212; that&#8217;s why it&#8217;s called a balance sheet</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 9&#8211;10</span></div>
@@ -411,6 +419,10 @@ body.rtl{direction:rtl}
     <!-- TAB 3: Cash Flow -->
     <div class="kc-intro-pane" id="kc-pane-cf">
       <div class="kc-rpt-wrap">
+        <div class="kc-rpt-col-left">
+          <div class="kc-callout-l" data-anchor="cf-r-ni" data-he="אותו מספר כמו שורת הרווח בדוח רווח והפסד — הגשר בין הדוחות">Same number as the P&amp;L bottom line &#8212; the bridge between statements</div>
+          <div class="kc-callout-l" data-anchor="cf-r-capex" data-he="המכונות, המפעלים והמעבדות — נובה משקיעה בכושר הייצור העתידי שלה">The machines, factories and labs &#8212; Nova investing in its own future capacity</div>
+        </div>
         <div class="kc-rpt-table-col">
           <div class="kc-rpt-title">Consolidated Statements of Cash Flows</div>
           <div class="kc-rpt-subtitle">Year ended December 31, 2024 &nbsp;(USD thousands)</div>
@@ -431,11 +443,9 @@ body.rtl{direction:rtl}
             <tr class="kc-rpt-result-purple" id="cf-r-fcf"><td>Free Cash Flow <span style="font-size:10px;font-weight:400">(Operating CF &#8722; CAPEX)</span></td><td>$218,100</td></tr>
           </table>
         </div>
-        <div class="kc-rpt-callout-col">
-          <div class="kc-callout" data-anchor="cf-r-ni">Same number as the P&amp;L bottom line &#8212; the bridge between statements</div>
-          <div class="kc-callout" data-anchor="cf-r-ops">Net profit adjusted for non-cash costs like D&amp;A &#8212; because that cash never actually left Nova</div>
-          <div class="kc-callout" data-anchor="cf-r-capex">The machines, factories and labs &#8212; Nova investing in its own future capacity</div>
-          <div class="kc-callout" data-anchor="cf-r-fcf">Cash Nova can truly do anything with &#8212; dividends, buybacks, acquisitions. And it&#8217;s higher than net profit.</div>
+        <div class="kc-rpt-col-right">
+          <div class="kc-callout" data-anchor="cf-r-ops" data-he="רווח נקי מותאם לעלויות לא מזומניות כמו פחת — כי אותו מזומן מעולם לא עזב את נובה">Net profit adjusted for non-cash costs like D&amp;A &#8212; because that cash never actually left Nova</div>
+          <div class="kc-callout" data-anchor="cf-r-fcf" data-he="מזומן שנובה יכולה לעשות איתו כל דבר — דיבידנדים, רכישות, רכישה עצמית. וזה גבוה מהרווח הנקי">Cash Nova can truly do anything with &#8212; dividends, buybacks, acquisitions. And it&#8217;s higher than net profit.</div>
         </div>
       </div>
       <div class="kc-intro-pill-wrap"><span class="kc-intro-pill">Covered in cards 11&#8211;12</span></div>
@@ -465,7 +475,7 @@ body.rtl{direction:rtl}
   </div>
 
   <!-- Card counter + nav -->
-  <button class="kc-arrow-btn hidden" id="kc-prev" onclick="kcMove(-1)">&#8249;</button>
+  <button class="kc-arrow-btn hidden" id="kc-prev" onclick="kcMoveBack()">&#8249;</button>
   <button class="kc-arrow-btn" id="kc-next" onclick="kcMove(1)">&#8250;</button>
   <span class="kc-counter" id="kc-counter">1 / 14</span>
 
@@ -1300,6 +1310,7 @@ const kcCards = [
     formal: "Formally: Total income generated from the sale of goods or services during a reporting period. Also called the top line.",
     formalHe: "רשמית: סך ההכנסות שנוצרו ממכירת סחורות או שירותים בתקופת דיווח. נקראת גם 'השורה העליונה'.",
     usedwhen: "Comparing company size year-over-year or vs. competitors; as the denominator in all margin calculations.",
+    usedwhenHe: "השוואת גודל החברה משנה לשנה או מול מתחרים; כמכנה בכל חישובי המרג'ין.",
     profDef: "Total income generated from the sale of goods or services during a reporting period. Also called 'the top line' because it appears first on the P&L statement.",
     profDefHe: "סך ההכנסות שנוצרו ממכירת מוצרים או שירותים בתקופת דיווח. נקראת גם 'השורה העליונה' כיוון שמופיעה ראשונה בדוח רווח-הפסד.",
     number: '$672.4M in 2024',
@@ -1318,6 +1329,7 @@ const kcCards = [
     formal: "Formally: Direct costs attributable to the production of goods sold, including materials, direct labour, and manufacturing overhead.",
     formalHe: "רשמית: עלויות ישירות המיוחסות לייצור הסחורה שנמכרה, כולל חומרים, עבודה ישירה ועלויות ייצור.",
     usedwhen: "Calculating gross margin; benchmarking production efficiency against sector peers.",
+    usedwhenHe: "חישוב מרג'ין גולמי; בנצ'מרקינג של יעילות ייצור מול עמיתים בענף.",
     profDef: "Direct costs attributable to the production of goods sold. Includes raw materials, direct labour, and manufacturing overhead. Does NOT include selling, marketing, or management costs — those appear separately as OPEX.",
     profDefHe: "עלויות ישירות המיוחסות לייצור הסחורה שנמכרה. כוללת חומרי גלם, עבודה ישירה ועלויות ייצור. אינה כוללת עלויות מכירה, שיווק וניהול — אלה מופיעות בנפרד כ-OPEX.",
     number: '$285.3M in 2024',
@@ -1336,6 +1348,7 @@ const kcCards = [
     formal: "Formally: Revenue minus Cost of Revenue. The primary measure of production efficiency and pricing power.",
     formalHe: "רשמית: הכנסות פחות עלות מכר. המדד העיקרי ליעילות ייצור וכוח תמחור.",
     usedwhen: "Starting point for any margin analysis; assessing pricing power and production efficiency.",
+    usedwhenHe: "נקודת מוצא לכל ניתוח מרג'ין; הערכת כוח תמחור ויעילות ייצור.",
     profDef: "Expressed as Gross Margin (Gross Profit ÷ Revenue × 100%), it measures production efficiency and pricing power. A high gross margin signals either low production costs, premium pricing, or both.",
     profDefHe: "מבוטא כשולי רווח גולמי (רווח גולמי ÷ הכנסות × 100%), מודד יעילות ייצור וכוח תמחור. שולי רווח גולמי גבוהים מסמנים עלויות ייצור נמוכות, תמחור פרמיום, או שניהם.",
     number: '$387.1M in 2024',
@@ -1356,6 +1369,7 @@ const kcCards = [
     formal: "Formally: Ongoing costs for running the business not directly tied to production. Includes R&D, sales, marketing, and G&A.",
     formalHe: "רשמית: עלויות שוטפות לניהול העסק שאינן קשורות ישירות לייצור. כוללות R&D, מכירות, שיווק ומנהלה.",
     usedwhen: "Understanding cost structure; comparing R&D and sales spend relative to revenue across companies.",
+    usedwhenHe: "הבנת מבנה העלויות; השוואת הוצאות מו''פ ומכירות ביחס להכנסות בין חברות.",
     profDef: "Operating Expenses are all costs required to run the business that are not directly tied to production. Primarily composed of R&D and SG&A (Sales, General & Administrative). Appears below Gross Profit on the P&L.",
     profDefHe: "הוצאות תפעול הן כל העלויות הנדרשות לניהול העסק שאינן קשורות ישירות לייצור. מורכבות בעיקר מ-R&D ו-SG&A (מכירות, כלליות ומנהלה). מופיעות מתחת לרווח הגולמי בדוח רווח-הפסד.",
     number: '$199.5M in 2024',
@@ -1374,6 +1388,7 @@ const kcCards = [
     formal: "Formally: Earnings Before Interest and Tax. Measures core operational profitability independent of capital structure.",
     formalHe: "רשמית: רווח לפני ריבית ומס. מודד רווחיות תפעולית ליבה ללא תלות במבנה ההון.",
     usedwhen: "Comparing operational performance across companies with different debt levels or tax jurisdictions; EBIT margin benchmarking.",
+    usedwhenHe: "השוואת ביצועים תפעוליים בין חברות עם רמות חוב שונות או תחומי שיפוט מס שונים; בנצ'מרקינג של מרג'ין EBIT.",
     profDef: "Earnings Before Interest and Taxes. Also called Operating Income. Measures profitability from core operations, excluding the effects of capital structure (debt vs. equity) and tax jurisdiction. Enables apples-to-apples comparison between companies with different financing structures.",
     profDefHe: "רווח לפני ריבית ומסים. נקרא גם הכנסה תפעולית. מודד רווחיות מפעילות ליבה, ללא השפעות מבנה ההון ותחום המס. מאפשר השוואה שווה בין חברות עם מבני מימון שונים.",
     number: '$187.5M in 2024',
@@ -1394,6 +1409,7 @@ const kcCards = [
     formal: "Formally: Systematic allocation of a tangible asset's cost over its useful life. Amortization is the equivalent for intangible assets. Together: D&A.",
     formalHe: "רשמית: הקצאה שיטתית של עלות נכס מוחשי לאורך חייו השימושיים. הפחתות הן המקבילה לנכסים לא-מוחשיים. יחד: D&A.",
     usedwhen: "Bridging from EBIT to EBITDA; explaining why reported profit differs from actual cash generation.",
+    usedwhenHe: "מעבר מ-EBIT ל-EBITDA; הסבר מדוע הרווח המדווח שונה מיצירת המזומן בפועל.",
     profDef: "The systematic allocation of a tangible asset's cost over its estimated useful life. A non-cash expense — reduces reported profit but not actual cash. Amortization is the equivalent for intangible assets (patents, software). Together: D&A.",
     profDefHe: "הקצאה שיטתית של עלות נכס מוחשי לאורך חייו השימושיים המשוערים. הוצאה לא-מזומנית — מקטינה רווח מדווח אך לא מזומן בפועל. הפחתות הן המקבילה לנכסים לא-מוחשיים (פטנטים, תוכנה). יחד: D&A.",
     number: '~$17.4M in 2024',
@@ -1412,6 +1428,7 @@ const kcCards = [
     formal: "Formally: Earnings Before Interest, Taxes, Depreciation and Amortization. The most widely used proxy for operational cash flow in valuation.",
     formalHe: "רשמית: רווח לפני ריבית, מסים, פחת והפחתות. הפרוקסי הנפוץ ביותר לתזרים מזומנים תפעולי בהערכות שווי.",
     usedwhen: "The primary metric in deal models and CIMs; EV/EBITDA valuation; comparing companies across capital structures.",
+    usedwhenHe: "המדד העיקרי במודלי עסקאות ו-CIM; הערכת שווי EV/EBITDA; השוואת חברות על פני מבני הון שונים.",
     profDef: "Earnings Before Interest, Taxes, Depreciation and Amortization. Widely used as a proxy for operating cash flow and as the denominator in EV/EBITDA valuation multiples. Strips out non-cash charges and financing effects to isolate operational performance.",
     profDefHe: "רווח לפני ריבית, מסים, פחת והפחתות. נמצא בשימוש נרחב כפרוקסי לתזרים מזומנים תפעולי וכמכנה במכפיל EV/EBITDA. מסיר חיובים לא-מזומניים ואפקטי מימון לבידוד הביצועים התפעוליים.",
     number: '$204.9M in 2024',
@@ -1432,6 +1449,7 @@ const kcCards = [
     formal: "Formally: Residual profit after all expenses, interest, and taxes. Also called Net Income. The basis for EPS and P/E multiples.",
     formalHe: "רשמית: רווח שיורי לאחר כל ההוצאות, הריבית והמסים. נקרא גם הכנסה נקייה. הבסיס למכפילי EPS ו-P/E.",
     usedwhen: "EPS calculations; P/E ratio; tracking reported performance vs. analyst consensus estimates.",
+    usedwhenHe: "חישובי EPS; מכפיל P/E; מעקב אחר ביצועים מדווחים מול תחזיות קונצנזוס אנליסטים.",
     profDef: "The residual profit after all expenses, interest, and taxes. Also called Net Income. Feeds into EPS (Earnings Per Share) and is the foundation of the P/E multiple. If retained, it grows shareholders' equity on the Balance Sheet.",
     profDefHe: "הרווח השיורי לאחר כל ההוצאות, הריבית והמסים. נקרא גם הכנסה נקייה. מזין את EPS (רווח למניה) ומהווה בסיס למכפיל P/E. אם נשמר, הוא מגדיל את הון המניות במאזן.",
     number: '$183.8M in 2024',
@@ -1452,6 +1470,7 @@ const kcCards = [
     formal: "Formally: Assets = Liabilities + Equity. The fundamental accounting equation that underpins all financial statements.",
     formalHe: "רשמית: נכסים = התחייבויות + הון עצמי. משוואת החשבונאות הבסיסית העומדת בבסיס כל הדוחות הפיננסיים.",
     usedwhen: "Assessing financial stability; calculating leverage ratios, return on equity, and book value.",
+    usedwhenHe: "הערכת יציבות פיננסית; חישוב יחסי מינוף, תשואה על הון ושווי ספרים.",
     profDef: "The balance sheet presents a company's financial position at a specific point in time. Assets = resources controlled by the entity. Liabilities = present financial obligations. Equity = residual interest of shareholders (Assets − Liabilities). The accounting equation Assets = Liabilities + Equity must always hold.",
     profDefHe: "המאזן מציג את המצב הפיננסי של חברה בנקודת זמן ספציפית. נכסים = משאבים בשליטת הישות. התחייבויות = חובות פיננסיים נוכחיים. הון עצמי = ריבית שיורית של בעלי המניות (נכסים − התחייבויות). משוואת החשבונאות נכסים = התחייבויות + הון עצמי חייבת תמיד לעמוד.",
     number: '$1.4B in 2024',
@@ -1470,6 +1489,7 @@ const kcCards = [
     formal: "Formally: Current Assets minus Current Liabilities. Measures short-term liquidity and operational efficiency.",
     formalHe: "רשמית: נכסים שוטפים פחות התחייבויות שוטפות. מודד נזילות לטווח קצר ויעילות תפעולית.",
     usedwhen: "Evaluating short-term liquidity; understanding cash conversion efficiency in operational due diligence.",
+    usedwhenHe: "הערכת נזילות לטווח קצר; הבנת יעילות המרת המזומן בבדיקת נאותות תפעולית.",
     profDef: "A measure of short-term liquidity and operational efficiency. Positive working capital indicates the company can meet near-term obligations. Components drive the Cash Conversion Cycle.",
     profDefHe: "מדד לנזילות לטווח קצר ויעילות תפעולית. הון חוזר חיובי מציין שהחברה יכולה לעמוד בהתחייבויות קרובות. המרכיבים מניעים את מחזור המרת המזומן.",
     number: '~$550M in 2024',
@@ -1490,6 +1510,7 @@ const kcCards = [
     formal: "Formally: Funds used to acquire, upgrade, or maintain physical assets such as equipment, buildings, and technology.",
     formalHe: "רשמית: כספים המשמשים לרכישה, שדרוג או תחזוקה של נכסים פיזיים כגון ציוד, בניינים וטכנולוגיה.",
     usedwhen: "Assessing how asset-intensive a business is; FCF calculation; comparing reinvestment needs across sectors.",
+    usedwhenHe: "הערכת עוצמת הנכסים של העסק; חישוב FCF; השוואת צרכי השקעה חוזרת בין ענפים.",
     profDef: "Capital Expenditure represents funds used to acquire or maintain long-term physical assets (PP&E). Capitalized on the Balance Sheet and depreciated over the asset's useful life. Appears as a cash outflow in the Investing Activities section of the Cash Flow Statement.",
     profDefHe: "הוצאות הון מייצגות כספים המשמשים לרכישה או תחזוקה של נכסים פיזיים לטווח ארוך (PP&E). מהוונות במאזן ומופחתות לאורך חיי הנכס. מופיעות כיציאת מזומן בסעיף פעילות השקעות בדוח תזרים המזומנים.",
     number: '$17.2M in 2024',
@@ -1508,6 +1529,7 @@ const kcCards = [
     formal: "Formally: Operating Cash Flow minus Capital Expenditures. Considered the most reliable measure of financial performance because it is harder to manipulate than net income.",
     formalHe: "רשמית: תזרים מזומנים תפעולי פחות הוצאות הון. נחשב למדד האמין ביותר לביצועים פיננסיים כי קשה יותר לתמרן אותו מאשר את הרווח הנקי.",
     usedwhen: "The primary metric in due diligence and LBO models; assessing dividend capacity and debt repayment ability.",
+    usedwhenHe: "המדד העיקרי בבדיקת נאותות ומודלי LBO; הערכת יכולת דיבידנד ופירעון חוב.",
     profDef: "Considered by many investors as the most reliable measure of financial performance because it is harder to manipulate than net income. High FCF relative to profit signals a high-quality business.",
     profDefHe: "נחשב על ידי רבים מהמשקיעים למדד האמין ביותר לביצועים פיננסיים כי קשה יותר לתמרן אותו מאשר את הרווח הנקי. FCF גבוה ביחס לרווח מסמן עסק איכותי.",
     number: '$218.1M in 2024',
@@ -1528,6 +1550,7 @@ const kcCards = [
     formal: "Formally: Current Share Price × Total Shares Outstanding. Represents equity value as priced by public markets. Does not include debt.",
     formalHe: "רשמית: מחיר מניה נוכחי × סך מניות בסחר. מייצג את שווי ההון כפי שתומחר על ידי שווקים ציבוריים. אינו כולל חוב.",
     usedwhen: "Comparing company sizes; calculating P/E and P/B ratios; understanding equity value vs. enterprise value.",
+    usedwhenHe: "השוואת גודל חברות; חישוב מכפילי P/E ו-P/B; הבנת ערך הון עצמי לעומת ערך פירמה.",
     profDef: "Market Capitalization = Current Share Price × Total Shares Outstanding. Represents the total equity value as priced by public markets. Does NOT include debt. Used to classify: small-cap (<$2B), mid-cap ($2–10B), large-cap (>$10B).",
     profDefHe: "שווי שוק = מחיר מניה נוכחי × סך מניות בסחר. מייצג את שווי ההון הכולל כפי שתומחר על ידי שווקים ציבוריים. אינו כולל חוב. משמש לסיווג: קטן (<$2B), בינוני ($2–10B), גדול (>$10B).",
     number: '~$4.5B in 2024',
@@ -1546,6 +1569,7 @@ const kcCards = [
     formal: "Formally: Market Cap + Total Debt − Cash. Used as the numerator in EV/EBITDA and EV/Revenue multiples because it reflects the full capital structure.",
     formalHe: "רשמית: שווי שוק + חוב כולל − מזומן. משמש כמונה במכפילי EV/EBITDA ו-EV/Revenue כי הוא משקף את מלוא מבנה ההון.",
     usedwhen: "Standard numerator in EV/EBITDA and EV/Revenue multiples; determining acquisition price in M&A transactions.",
+    usedwhenHe: "המונה הסטנדרטי במכפילי EV/EBITDA ו-EV/Revenue; קביעת מחיר רכישה בעסקאות M&A.",
     profDef: "Represents the theoretical total acquisition cost. Used as the numerator in EV/EBITDA and EV/Revenue multiples because it reflects the full capital structure, not just equity.",
     profDefHe: "מייצג את עלות הרכישה הכוללת התיאורטית. משמש כמונה במכפילי EV/EBITDA ו-EV/Revenue כי הוא משקף את מלוא מבנה ההון, לא רק הון המניות.",
     number: '~$4,250M in 2024',
@@ -1782,7 +1806,7 @@ function kcRenderCard(idx) {
     <div class="kc-card-hook">${hook}</div>
     <div class="kc-card-plain">${plain}</div>
     <div class="kc-card-formal">${formal}</div>
-    <div class="kc-card-usedwhen"><span style="color:#00c4a7">●</span> <strong>Used when:</strong> ${card.usedwhen}</div>
+    <div class="kc-card-usedwhen"><span style="color:#00c4a7">●</span> <strong>${isHe ? 'בשימוש כאשר:' : 'Used when:'}</strong> ${isHe ? (card.usedwhenHe || card.usedwhen) : card.usedwhen}</div>
     <div class="kc-bottom-row">
       <div class="kc-bottom-left">
         <div class="kc-card-number"><span class="kc-number-label">${novaLabel}</span> ${number}</div>
@@ -1803,7 +1827,7 @@ function kcRenderCard(idx) {
   // Update floating arrow visibility
   const prev = document.getElementById('kc-prev');
   const next = document.getElementById('kc-next');
-  if (prev) prev.classList.toggle('hidden', idx === 0);
+  if (prev) prev.classList.remove('hidden');
   if (next) next.classList.toggle('hidden', idx === kcCards.length - 1);
 
   // Update flowchart — full re-render for current card (bidirectional)
@@ -1891,6 +1915,10 @@ function kcRenderDoc(idx) {
   }
 }
 
+function kcMoveBack() {
+  if (kcIdx === 0) { kcInit(); }
+  else { kcMove(-1); }
+}
 function kcMove(dir) {
   const newIdx = kcIdx + dir;
   if (newIdx < 0 || newIdx >= kcCards.length) return;
@@ -1943,17 +1971,49 @@ function kcStartCards() {
   if (backLink) backLink.style.display = 'block';
   kcRenderCard(0);
 }
+function kcUpdateCalloutLang() {
+  var isHe = currentLang === 'he';
+  document.querySelectorAll('[data-anchor][data-he]').forEach(function(callout) {
+    if (isHe) {
+      if (!callout.getAttribute('data-en')) {
+        callout.setAttribute('data-en', callout.textContent);
+      }
+      callout.textContent = callout.getAttribute('data-he');
+    } else {
+      var en = callout.getAttribute('data-en');
+      if (en) callout.textContent = en;
+    }
+  });
+}
 function kcPositionCallouts() {
-  document.querySelectorAll('.kc-intro-pane.active [data-anchor]').forEach(function(callout) {
-    var anchorId = callout.getAttribute('data-anchor');
-    var anchor = document.getElementById(anchorId);
-    var col = callout.parentElement;
-    if (!anchor || !col) return;
-    var ar = anchor.getBoundingClientRect();
-    var cr = col.getBoundingClientRect();
-    if (cr.height === 0) return;
-    var top = ar.top - cr.top + ar.height / 2 - callout.offsetHeight / 2;
-    callout.style.top = Math.max(4, top) + 'px';
+  var MIN_GAP = 50;
+  document.querySelectorAll('.kc-intro-pane.active').forEach(function(pane) {
+    ['.kc-rpt-col-left', '.kc-rpt-col-right'].forEach(function(colSel) {
+      var col = pane.querySelector(colSel);
+      if (!col) return;
+      var callouts = Array.from(col.querySelectorAll('[data-anchor]'));
+      // First pass: align each callout to its anchor row centre
+      callouts.forEach(function(callout) {
+        var anchorId = callout.getAttribute('data-anchor');
+        var anchor = document.getElementById(anchorId);
+        if (!anchor) return;
+        var ar = anchor.getBoundingClientRect();
+        var cr = col.getBoundingClientRect();
+        if (cr.height === 0) return;
+        var top = ar.top - cr.top + ar.height / 2 - callout.offsetHeight / 2;
+        callout.style.top = Math.max(4, top) + 'px';
+      });
+      // Second pass: enforce minimum gap per column
+      for (var i = 1; i < callouts.length; i++) {
+        var prev = callouts[i - 1];
+        var curr = callouts[i];
+        var prevTop = parseFloat(prev.style.top) || 0;
+        var currTop = parseFloat(curr.style.top) || 0;
+        if (currTop < prevTop + MIN_GAP) {
+          curr.style.top = (prevTop + MIN_GAP) + 'px';
+        }
+      }
+    });
   });
 }
 window.addEventListener('resize', kcPositionCallouts);
@@ -2030,6 +2090,8 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
     const intro = document.getElementById('kc-intro');
     if (!intro || intro.style.display === 'none') {
       kcRenderCard(kcIdx);
+    } else {
+      kcUpdateCalloutLang();
     }
   }
   if (currentSection === 'D') buildMultCards();
